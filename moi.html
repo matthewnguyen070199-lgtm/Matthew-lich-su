@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lịch Sử THPT 2026 – Học, luyện tập và thi thử</title>
+<style>
+  :root {
+    --bg:#f5f7fb;
+    --panel:#ffffff;
+    --soft:#eef3ff;
+    --line:#dbe4f2;
+    --text:#10213a;
+    --muted:#5c6b82;
+    --accent:#2b6ef3;
+    --accent-2:#6f4ef6;
+    --good:#1f9d55;
+    --warn:#d97706;
+    --bad:#dc2626;
+    --shadow:0 12px 30px rgba(16,33,58,.08);
+    --radius:18px;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; }
+  a { color:inherit; }
+  .app { display:grid; grid-template-columns: 290px 1fr; min-height:100vh; }
+  .sidebar {
+    background:linear-gradient(180deg,#0f2040 0%, #162d59 100%);
+    color:#fff; padding:24px 18px; position:sticky; top:0; height:100vh;
+  }
+  .brand {
+    padding:18px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
+    border-radius:20px; margin-bottom:18px;
+  }
+  .brand h1 { margin:0 0 8px; font-size:1.25rem; line-height:1.2; }
+  .brand p { margin:0; font-size:.92rem; color:rgba(255,255,255,.82); }
+  .nav { display:grid; gap:10px; margin:18px 0; }
+  .nav button {
+    width:100%; text-align:left; border:0; cursor:pointer; padding:13px 14px; border-radius:14px;
+    background:rgba(255,255,255,.06); color:#fff; font-weight:700; transition:.18s ease;
+  }
+  .nav button:hover, .nav button.active { background:#fff; color:#10213a; }
+  .nav small { display:block; color:inherit; opacity:.75; font-weight:500; margin-top:3px; }
+  .sidebox {
+    margin-top:16px; padding:14px; border-radius:16px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
+  }
+  .sidebox h3 { margin:0 0 8px; font-size:.98rem; }
+  .sidebox p,.sidebox li { color:rgba(255,255,255,.86); font-size:.92rem; line-height:1.5; }
+  .sidebox ul { margin:8px 0 0 18px; padding:0; }
+  main { padding:24px; }
+  .hero {
+    background:linear-gradient(135deg,#fefefe 0%, #eef3ff 45%, #f8f3ff 100%);
+    border:1px solid var(--line); box-shadow:var(--shadow); border-radius:26px; padding:24px; margin-bottom:20px;
+  }
+  .hero h2 { margin:0 0 10px; font-size:1.8rem; line-height:1.2; }
+  .hero p { margin:0; color:var(--muted); max-width:950px; line-height:1.6; }
+  .row { display:grid; gap:18px; }
+  .grid-4 { grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .grid-3 { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .grid-2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .card {
+    background:var(--panel); border:1px solid var(--line); box-shadow:var(--shadow);
+    border-radius:var(--radius); padding:18px;
+  }
+  .card h3,.card h4 { margin:0 0 10px; }
+  .muted { color:var(--muted); }
+  .kpi .num { font-size:1.8rem; font-weight:800; margin-bottom:6px; }
+  .pill {
+    display:inline-flex; align-items:center; gap:8px; padding:7px 11px; background:var(--soft); border:1px solid var(--line);
+    border-radius:999px; font-size:.88rem; font-weight:700;
+  }
+  .section-title {
+    display:flex; align-items:center; justify-content:space-between; gap:12px; margin:22px 0 14px;
+  }
+  .section-title h3 { margin:0; font-size:1.2rem; }
+  .module-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:16px; }
+  .module-card {
+    position:relative; overflow:hidden; cursor:pointer; transition:transform .16s ease, border-color .16s ease;
+  }
+  .module-card:hover { transform:translateY(-2px); border-color:#b7caee; }
+  .module-card .module-id {
+    position:absolute; top:14px; right:14px; width:36px; height:36px; border-radius:12px;
+    display:grid; place-items:center; font-weight:900; color:#fff; background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  }
+  .progress {
+    height:10px; background:#ecf1fb; border-radius:999px; overflow:hidden; border:1px solid #e3eaf6;
+  }
+  .progress > span { display:block; height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); }
+  .taglist { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag {
+    font-size:.82rem; padding:5px 9px; border-radius:999px; background:#f7f9fc; border:1px solid var(--line); color:var(--muted);
+  }
+  .btns { display:flex; flex-wrap:wrap; gap:10px; }
+  button.primary, button.secondary, button.danger {
+    border:0; cursor:pointer; border-radius:14px; padding:12px 15px; font-weight:800; font-size:.95rem;
+  }
+  button.primary { background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; }
+  button.secondary { background:#fff; color:var(--text); border:1px solid var(--line); }
+  button.danger { background:#fff1f2; color:var(--bad); border:1px solid #fecdd3; }
+  .module-detail .header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+  .timeline { display:grid; gap:10px; }
+  .timeline-item { display:grid; grid-template-columns:100px 1fr; gap:12px; padding:10px 12px; background:#fafcff; border:1px solid var(--line); border-radius:14px; }
+  .timeline-item .tdate { font-weight:800; color:var(--accent); }
+  .list-clean { margin:0; padding-left:18px; line-height:1.65; }
+  .practice-wrap { display:grid; gap:16px; }
+  .question-card { background:#fff; border:1px solid var(--line); border-radius:18px; padding:18px; }
+  .question-head { display:flex; justify-content:space-between; gap:12px; margin-bottom:10px; }
+  .options { display:grid; gap:10px; margin-top:14px; }
+  .option {
+    display:flex; gap:12px; align-items:flex-start; padding:12px; border:1px solid var(--line); border-radius:14px; cursor:pointer; background:#fff;
+  }
+  .option:hover { background:#fafcff; }
+  .option input { margin-top:3px; }
+  .feedback {
+    margin-top:16px; padding:14px; border-radius:16px; border:1px solid var(--line);
+  }
+  .feedback.good { background:#eefcf4; border-color:#bfe8d1; }
+  .feedback.bad { background:#fff3f2; border-color:#ffd0cb; }
+  .mock-legend { display:flex; flex-wrap:wrap; gap:10px; }
+  .mock-shell { display:grid; gap:18px; }
+  .exam-top {
+    display:flex; align-items:center; justify-content:space-between; gap:12px; position:sticky; top:12px; z-index:3;
+    background:rgba(245,247,251,.92); backdrop-filter: blur(8px); padding:10px; border-radius:18px;
+  }
+  .timer { font-size:1.15rem; font-weight:900; }
+  .q-number {
+    min-width:36px; height:36px; border-radius:12px; display:grid; place-items:center; background:var(--soft); font-weight:800; color:var(--accent);
+  }
+  .tf-grid { display:grid; gap:12px; }
+  .tf-statement { display:grid; grid-template-columns:1fr auto auto; gap:10px; align-items:center; padding:11px 12px; border:1px solid var(--line); border-radius:14px; }
+  .bar-list { display:grid; gap:12px; }
+  .bar-row { display:grid; grid-template-columns:180px 1fr 70px; gap:12px; align-items:center; }
+  .bar-row .bar { height:12px; background:#edf2fb; border-radius:999px; overflow:hidden; border:1px solid #e4ebf8; }
+  .bar-row .bar span { display:block; height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); }
+  .alert {
+    padding:14px 16px; border-radius:16px; border:1px solid #d9e5ff; background:#f4f8ff;
+    color:#274678; line-height:1.6;
+  }
+  .table-wrap { overflow:auto; }
+  table { width:100%; border-collapse:collapse; }
+  th,td { padding:12px 10px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+  th { color:var(--muted); font-size:.9rem; }
+  .hidden { display:none !important; }
+  .center { text-align:center; }
+  .tiny { font-size:.84rem; }
+  .score-big { font-size:2.3rem; font-weight:900; }
+  .chip {
+    display:inline-block; padding:5px 9px; border-radius:999px; border:1px solid var(--line); background:#fff;
+    font-size:.83rem; color:var(--muted); margin-right:6px; margin-bottom:6px;
+  }
+  .footer-note { margin-top:24px; color:var(--muted); font-size:.9rem; line-height:1.6; }
+  .file-input { padding:10px; background:#fff; border:1px dashed var(--line); border-radius:14px; width:100%; }
+  .empty {
+    border:1px dashed var(--line); border-radius:18px; padding:28px; text-align:center; color:var(--muted); background:#fbfcff;
+  }
+  @media (max-width: 1100px) {
+    .app { grid-template-columns:1fr; }
+    .sidebar { position:relative; height:auto; }
+    .grid-4,.grid-3,.grid-2 { grid-template-columns:1fr; }
+    .bar-row { grid-template-columns:1fr; }
+    .timeline-item { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>Lịch Sử THPT 2026</h1>
+      <p>Học bài như một kênh học, luyện tập theo module, thi thử sát form 2026 và tracking điểm yếu hằng ngày.</p>
+    </div>
+
+    <div class="nav" id="nav"></div>
+
+    <div class="sidebox">
+      <h3>Form mock test đang bám</h3>
+      <ul>
+        <li>24 câu trắc nghiệm nhiều lựa chọn</li>
+        <li>4 câu đúng/sai, mỗi câu 4 ý</li>
+        <li>Chấm phần đúng/sai theo thang 0.1 / 0.25 / 0.5 / 1</li>
+        <li>Thời gian: 50 phút</li>
+      </ul>
+    </div>
+
+    <div class="sidebox">
+      <h3>Nhắc học thông minh</h3>
+      <p id="sideReminder">Mở Dashboard để xem phần kiến thức yếu nhất hôm nay.</p>
+    </div>
+  </aside>
+
+  <main>
+    <section class="hero">
+      <h2>Bộ website ôn thi Lịch sử THPT 2026</h2>
+      <p>
+        Bản này được làm theo 3 chặng rõ ràng: <b>học bài</b> như một kênh tự học, <b>luyện tập</b> theo module với giải thích khi sai, rồi <b>thi thử</b> sát form đang dùng cho 2026. Hệ thống cũng tự lưu tiến độ và nhắc bạn quay lại đúng phần còn yếu.
+      </p>
+    </section>
+
+    <section id="view-dashboard"></section>
+    <section id="view-learn" class="hidden"></section>
+    <section id="view-modules" class="hidden"></section>
+    <section id="view-practice" class="hidden"></section>
+    <section id="view-mock" class="hidden"></section>
+    <section id="view-review" class="hidden"></section>
+    <section id="view-mistakes" class="hidden"></section>
+    <section id="view-settings" class="hidden"></section>
+  </main>
+</div>
+
+<script>
+const DATA = {"modules": [{"id": "A", "title": "CNXH từ 1917 đến nay", "scope": "Lớp 11 bổ trợ", "summary": ["Phân biệt Cách mạng tháng Hai 1917 và Cách mạng tháng Mười 1917 ở Nga.", "Nhớ mốc 12/1922 (Tuyên bố thành lập Liên Xô) và 1924 (Hiến pháp đầu tiên hoàn tất cơ sở pháp lí).", "Nắm nguyên nhân chủ quan và khách quan dẫn đến sự sụp đổ của CNXH ở Đông Âu và Liên Xô.", "Thuộc thành tựu cải cách, mở cửa của Trung Quốc: kinh tế, khoa học kĩ thuật, đối ngoại."], "timeline": [["2/1917", "Cách mạng tháng Hai lật đổ Nga hoàng."], ["10/1917", "Cách mạng tháng Mười đưa chính quyền Xô viết lên nắm quyền."], ["12/1922", "Thông qua Tuyên bố thành lập Liên bang Xô viết."], ["1924", "Hiến pháp đầu tiên của Liên Xô được thông qua."], ["1944–1949", "CNXH mở rộng sang Đông Âu."], ["25/12/1991", "Liên Xô tan rã."]], "traps": ["Hay nhầm 12/1922 với 1924.", "Hay chọn nguyên nhân khách quan thay vì nguyên nhân chủ quan quyết định.", "Hay nhầm nước Trung Quốc vượt để đứng thứ hai thế giới từ 2010 là Nhật Bản."]}, {"id": "B", "title": "Chiến tranh bảo vệ Tổ quốc trong lịch sử Việt Nam trước 1945", "scope": "Lớp 11 bổ trợ", "summary": ["Thuộc các cuộc kháng chiến thắng lợi tiêu biểu: 938, 981, 1075–1077, 3 lần Mông-Nguyên, Lam Sơn, Tây Sơn.", "Nhớ vị trí địa chiến lược của Việt Nam là cầu nối giữa Đông Nam Á lục địa và hải đảo.", "Nắm ý nghĩa các cuộc khởi nghĩa Hai Bà Trưng, Bà Triệu, Lý Bí, Phùng Hưng.", "Phân biệt nguyên nhân thắng lợi chung với nguyên nhân thất bại của nhà Hồ, nhà Nguyễn."], "timeline": [["40–43", "Khởi nghĩa Hai Bà Trưng."], ["938", "Ngô Quyền chiến thắng Bạch Đằng."], ["981", "Kháng chiến chống Tống lần thứ nhất."], ["1075–1077", "Kháng chiến chống Tống lần thứ hai."], ["1418–1427", "Khởi nghĩa Lam Sơn."], ["1789", "Ngọc Hồi – Đống Đa đánh bại quân Thanh."]], "traps": ["Hay nhầm Rạch Gầm – Xoài Mút là chống Thanh; thực ra chống Xiêm.", "Hay bỏ quên nguyên nhân thất bại do nhà Nguyễn chủ hòa, thiếu quyết đoán.", "Hay lẫn ‘khởi nghĩa đầu tiên’ với ‘cuộc đấu tranh vũ trang lớn đầu tiên’. Hai Bà Trưng là đáp án hay ra."]}, {"id": "C", "title": "Liên Hợp Quốc", "scope": "Lớp 12 trọng tâm", "summary": ["Nắm tiến trình thành lập từ Luân Đôn 1941 đến San Francisco 1945 và ngày chính thức 24/10/1945.", "Mục tiêu quan trọng nhất là duy trì hòa bình và an ninh quốc tế.", "Thuộc 6 nguyên tắc hoạt động, nhất là bình đẳng chủ quyền và giải quyết tranh chấp bằng biện pháp hòa bình.", "Nhớ Hội đồng Bảo an là cơ quan giữ vai trò trọng yếu về hòa bình, an ninh."], "timeline": [["12/6/1941", "Tuyên bố Luân Đôn."], ["1/1/1942", "Tuyên bố Liên hợp quốc."], ["2/1945", "Ianta thống nhất thành lập LHQ."], ["25/4–26/6/1945", "Hội nghị San Francisco thông qua Hiến chương."], ["24/10/1945", "Liên Hợp Quốc chính thức ra đời."], ["1977", "Việt Nam gia nhập Liên Hợp Quốc."]], "traps": ["Hay nhầm ngày thông qua Hiến chương với ngày chính thức thành lập.", "Hay nhầm Hội đồng Bảo an với Đại hội đồng.", "Hay chọn NATO, nhưng NATO không thuộc hệ thống Liên Hợp Quốc."]}, {"id": "D", "title": "ASEAN", "scope": "Lớp 12 trọng tâm", "summary": ["ASEAN thành lập ngày 8/8/1967 tại Băng Cốc với 5 nước sáng lập.", "Hiệp ước Bali 1976 là bước ngoặt xác lập nguyên tắc cơ bản trong quan hệ khu vực.", "Nhớ quá trình mở rộng: Brunei 1984, Việt Nam 1995, Lào và Myanmar 1997, Campuchia 1999.", "Cộng đồng ASEAN ra đời 31/12/2015 với 3 trụ cột."], "timeline": [["8/8/1967", "ASEAN ra đời tại Băng Cốc."], ["1976", "Hiệp ước Bali."], ["1984", "Brunei gia nhập."], ["28/7/1995", "Việt Nam gia nhập ASEAN."], ["1999", "ASEAN đủ 10 nước Đông Nam Á."], ["31/12/2015", "Cộng đồng ASEAN chính thức hình thành."]], "traps": ["Hay nhầm 1995 với 1997 khi hỏi Việt Nam gia nhập ASEAN.", "Hay nhầm Bali là văn kiện thành lập, trong khi văn kiện thành lập là Tuyên bố Băng Cốc.", "Hay quên Campuchia là thành viên thứ 10."]}, {"id": "E", "title": "Cách mạng tháng Tám và kháng chiến chống Pháp 1945–1954", "scope": "Lớp 12 trọng tâm", "summary": ["Chốt thời cơ trực tiếp của Cách mạng tháng Tám: Nhật đầu hàng Đồng minh vô điều kiện.", "Thuộc 4 tỉnh giành chính quyền sớm nhất ngày 18/8/1945.", "Nắm đường lối kháng chiến: toàn dân, toàn diện, trường kì, tự lực cánh sinh.", "Nhớ Việt Bắc 1947, Biên giới 1950, Điện Biên Phủ 1954, Hiệp định Giơ-ne-vơ 1954."], "timeline": [["13/8/1945", "Quân lệnh số 1 phát động Tổng khởi nghĩa."], ["15/8/1945", "Nhật đầu hàng Đồng minh."], ["19/8/1945", "Khởi nghĩa thắng lợi ở Hà Nội."], ["19/12/1946", "Toàn quốc kháng chiến."], ["1950", "Chiến dịch Biên giới."], ["7/5/1954", "Chiến thắng Điện Biên Phủ."], ["21/7/1954", "Hiệp định Giơ-ne-vơ."]], "traps": ["Hay nhầm vĩ tuyến 17 là biên giới quốc gia; thực ra chỉ là giới tuyến quân sự tạm thời.", "Hay nhớ chiến thắng Điện Biên Phủ nhưng gán sai ý nghĩa của Hiệp định Giơ-ne-vơ.", "Hay chọn yếu tố khách quan thay vì vai trò quyết định của Đảng và Hồ Chí Minh."]}, {"id": "F", "title": "Kháng chiến chống Mỹ 1954–1975", "scope": "Lớp 12 trọng tâm", "summary": ["Phân biệt ba chiến lược của Mỹ: chiến tranh đặc biệt, chiến tranh cục bộ, Việt Nam hóa chiến tranh.", "Nhớ Đồng khởi 1959–1960 chuyển cách mạng miền Nam sang thế tiến công.", "Tết Mậu Thân 1968 là bước ngoặt buộc Mỹ chấp nhận đàm phán ở Pa-ri.", "Thuộc mốc 12/1972, 27/1/1973 và thứ tự ba chiến dịch mùa Xuân 1975."], "timeline": [["1959–1960", "Phong trào Đồng khởi."], ["20/12/1960", "Thành lập Mặt trận Dân tộc Giải phóng miền Nam Việt Nam."], ["1965", "Mỹ tiến hành chiến tranh cục bộ."], ["1968", "Tổng tiến công và nổi dậy Tết Mậu Thân."], ["12/1972", "Điện Biên Phủ trên không."], ["27/1/1973", "Hiệp định Pa-ri."], ["30/4/1975", "Giải phóng Sài Gòn, thống nhất đất nước về mặt lãnh thổ."]], "traps": ["Hay nhầm Mậu Thân 1968 là kết thúc chiến tranh; thực ra là bước ngoặt.", "Hay nhầm xương sống của chiến tranh đặc biệt là ấp chiến lược.", "Hay đảo thứ tự Tây Nguyên, Huế–Đà Nẵng, Hồ Chí Minh."]}, {"id": "G", "title": "Bảo vệ Tổ quốc sau 1975", "scope": "Lớp 12 trọng tâm", "summary": ["Sau 1975, nhiệm vụ cấp bách hàng đầu là thống nhất đất nước về mặt nhà nước.", "Quốc hội khóa VI năm 1976 quyết định tên nước là Cộng hòa xã hội chủ nghĩa Việt Nam.", "Việt Nam vừa khắc phục hậu quả chiến tranh, vừa bảo vệ biên giới Tây Nam, biên giới phía Bắc và chủ quyền biển đảo.", "Phần này thường hỏi nhiệm vụ, ý nghĩa, bài học lịch sử hơn là diễn biến quân sự chi tiết."], "timeline": [["1975", "Đại thắng mùa Xuân."], ["1976", "Thống nhất đất nước về mặt nhà nước; tên nước CHXHCN Việt Nam."], ["1977", "Việt Nam gia nhập Liên Hợp Quốc."], ["1978–1979", "Bảo vệ biên giới Tây Nam."], ["1979", "Bảo vệ biên giới phía Bắc."], ["Từ sau 1975", "Kết hợp xây dựng và bảo vệ Tổ quốc."]], "traps": ["Hay nhầm thống nhất lãnh thổ 1975 với thống nhất nhà nước 1976.", "Hay sa vào học quá sâu diễn biến quân sự; đề thường chỉ hỏi nhiệm vụ và ý nghĩa.", "Hay quên chủ quyền biển đảo là một nội dung của bảo vệ Tổ quốc sau 1975."]}, {"id": "H", "title": "Công cuộc Đổi mới 1986 đến nay", "scope": "Lớp 12 trọng tâm", "summary": ["Đại hội VI năm 1986 mở đầu công cuộc Đổi mới.", "Trọng tâm là đổi mới kinh tế, từng bước đổi mới chính trị phù hợp.", "Nội dung cốt lõi: chuyển từ cơ chế kế hoạch hóa tập trung bao cấp sang kinh tế hàng hóa nhiều thành phần vận hành theo cơ chế thị trường có sự quản lí của Nhà nước.", "Thành tựu lớn: thoát khủng hoảng, cải thiện đời sống, nâng cao vị thế đất nước, mở rộng hội nhập."], "timeline": [["12/1986", "Đại hội VI."], ["1991", "Cương lĩnh xây dựng đất nước trong thời kì quá độ."], ["1996", "Đại hội VIII xác định đẩy mạnh công nghiệp hóa, hiện đại hóa."], ["2007", "Gia nhập WTO."], ["2011", "Bổ sung, phát triển Cương lĩnh."], ["2021", "Tiếp tục hoàn thiện đường lối phát triển."]], "traps": ["Hay nhầm Đổi mới là đổi mục tiêu; thực ra không thay đổi mục tiêu độc lập dân tộc gắn với CNXH.", "Hay chọn ‘đổi mới chỉ diễn ra trong kinh tế’; thực ra là toàn diện nhưng lấy kinh tế làm trọng tâm.", "Hay tuyệt đối hóa thành tựu, trong khi đề thường hỏi ‘nổi bật’, ‘cơ bản’ hoặc ‘trực tiếp’."]}, {"id": "I", "title": "Lịch sử đối ngoại Việt Nam thời cận – hiện đại", "scope": "Lớp 12 trọng tâm", "summary": ["Đầu thế kỉ XX, Phan Bội Châu, Phan Châu Trinh và Nguyễn Ái Quốc đều có hoạt động đối ngoại tiêu biểu.", "1945–1954: ngoại giao bảo vệ chính quyền non trẻ và kết thúc chiến tranh bằng Hiệp định Giơ-ne-vơ.", "1954–1975: đấu tranh ngoại giao gắn với chính trị và quân sự, đỉnh cao là Hiệp định Pa-ri 1973.", "Sau 1986: đường lối đối ngoại độc lập, tự chủ, hòa bình, hữu nghị, hợp tác và phát triển; đa phương hóa, đa dạng hóa."], "timeline": [["1905–1908", "Phan Bội Châu tổ chức phong trào Đông Du ở Nhật Bản."], ["1919–1920", "Nguyễn Ái Quốc gửi Yêu sách, dự Đại hội Tua."], ["6/3/1946", "Hiệp định Sơ bộ."], ["1954", "Hiệp định Giơ-ne-vơ."], ["27/1/1973", "Hiệp định Pa-ri."], ["1991", "Bình thường hóa quan hệ Việt Nam – Trung Quốc."], ["1995", "Gia nhập ASEAN và bình thường hóa quan hệ với Hoa Kì."], ["1998", "Gia nhập APEC."], ["2007", "Gia nhập WTO."]], "traps": ["Hay nhầm Nhật với Pháp khi hỏi hoạt động của Phan Châu Trinh hoặc Phan Bội Châu.", "Hay quên mục tiêu đối ngoại 1945–1946 là kéo dài hòa hoãn để củng cố lực lượng.", "Hay nhớ mốc hội nhập nhưng lẫn APEC 1998 với WTO 2007."]}, {"id": "J", "title": "Hồ Chí Minh trong lịch sử Việt Nam", "scope": "Lớp 12 trọng tâm", "summary": ["Hồ Chí Minh tìm ra con đường cứu nước đúng đắn: con đường cách mạng vô sản.", "Người có công lớn chuẩn bị về chính trị, tư tưởng, tổ chức cho sự ra đời của Đảng năm 1930.", "Hồ Chí Minh là lãnh tụ của Cách mạng tháng Tám, Chủ tịch nước Việt Nam Dân chủ Cộng hòa.", "Di sản lớn của Người còn ở tư tưởng, đạo đức, phong cách, văn hóa và tấm gương sống."], "timeline": [["5/6/1911", "Nguyễn Tất Thành ra đi tìm đường cứu nước."], ["12/1920", "Tán thành Quốc tế Cộng sản tại Đại hội Tua."], ["1925", "Thành lập Hội Việt Nam Cách mạng Thanh niên."], ["1941", "Về nước trực tiếp lãnh đạo cách mạng."], ["2/9/1945", "Đọc Tuyên ngôn Độc lập tại Ba Đình."], ["1969", "Chủ tịch Hồ Chí Minh qua đời."], ["1987", "UNESCO ra nghị quyết vinh danh Hồ Chí Minh."]], "traps": ["Hay học phần này như tiểu sử đơn thuần, trong khi đề thường hỏi cống hiến lịch sử.", "Hay nhầm 1911, 1920, 1925, 1930 thành một mạch không phân biệt vai trò từng mốc.", "Hay bỏ quên giá trị tư tưởng, đạo đức, văn hóa của Hồ Chí Minh."]}], "singleQuestions": [{"id": "A1", "module": "A", "type": "single", "level": "know", "tags": ["mốc thời gian", "Liên Xô"], "stem": "Cách mạng tháng Mười Nga năm 1917 thắng lợi đã trực tiếp dẫn tới sự ra đời của", "options": ["hệ thống xã hội chủ nghĩa trên thế giới", "Đảng Cộng sản Nga và Chính phủ Nga", "chính quyền Xô viết Nga", "Liên bang Xô viết"], "answer": 2, "explanation": "Thắng lợi của Cách mạng tháng Mười lập tức đưa chính quyền Xô viết lên nắm quyền. Liên Xô chỉ hoàn thành về mặt pháp lí sau này."}, {"id": "A2", "module": "A", "type": "single", "level": "understand", "tags": ["mốc thời gian", "Liên Xô"], "stem": "Sự kiện nào đánh dấu quá trình thành lập Nhà nước Liên bang Cộng hòa xã hội chủ nghĩa Xô viết hoàn thành về mặt pháp lí?", "options": ["Cách mạng tháng Mười 1917", "Đại hội I các Xô viết toàn Liên bang tháng 12/1922", "Hiến pháp đầu tiên của Liên Xô năm 1924", "Chính sách Kinh tế mới"], "answer": 2, "explanation": "Tháng 12/1922 mới thông qua Tuyên bố thành lập; đến Hiến pháp 1924 thì quá trình thành lập mới hoàn tất trên phương diện pháp lí."}, {"id": "A3", "module": "A", "type": "single", "level": "understand", "tags": ["nguyên nhân", "Đông Âu"], "stem": "Nguyên nhân chủ quan giữ vai trò quyết định dẫn đến sự sụp đổ của CNXH ở Đông Âu và Liên Xô là", "options": ["sự chống phá của các thế lực thù địch bên ngoài", "sai lầm của lãnh đạo trong đường lối cải tổ, quan liêu, vi phạm dân chủ", "hậu quả kéo dài của Chiến tranh thế giới thứ hai", "tác động tiêu cực của toàn cầu hóa"], "answer": 1, "explanation": "Yếu tố bên ngoài chỉ là khách quan; nguyên nhân quyết định nằm ở sai lầm từ bên trong mô hình và đường lối lãnh đạo."}, {"id": "A4", "module": "A", "type": "single", "level": "know", "tags": ["Trung Quốc", "thành tựu"], "stem": "Từ năm 2010, nền kinh tế Trung Quốc vượt qua nước nào để đứng vị trí thứ hai thế giới?", "options": ["Đức", "Pháp", "Anh", "Nhật Bản"], "answer": 3, "explanation": "Trung Quốc lần lượt vượt Anh, Pháp, Đức rồi đến Nhật Bản vào năm 2010 để đứng thứ hai thế giới."}, {"id": "A5", "module": "A", "type": "single", "level": "know", "tags": ["Trung Quốc", "đối ngoại"], "stem": "Sự kiện đối ngoại nào gắn với thành tựu cải cách, mở cửa của Trung Quốc?", "options": ["Thu hồi Hồng Kông năm 1997 và Ma Cao năm 1999", "Gia nhập ASEAN năm 1995", "Kí Hiệp định Pa-ri năm 1973", "Thành lập Liên Hợp Quốc năm 1945"], "answer": 0, "explanation": "Hai mốc thu hồi Hồng Kông và Ma Cao là thành tựu đối ngoại nổi bật của Trung Quốc trong thời kì cải cách, mở cửa."}, {"id": "A6", "module": "A", "type": "single", "level": "apply", "tags": ["sau 1991", "CNXH"], "stem": "Sau khi Liên Xô tan rã, công cuộc xây dựng chủ nghĩa xã hội vẫn tiếp tục được duy trì và đẩy mạnh ở nhóm nước nào sau đây?", "options": ["Trung Quốc, Việt Nam, Lào, Cu-ba", "Trung Quốc, Việt Nam, Lào, Cam-pu-chia", "Trung Quốc, Việt Nam, Mông Cổ, Ấn Độ", "Việt Nam, Nhật Bản, Lào, Cu-ba"], "answer": 0, "explanation": "Sau 1991, bốn nước thường được nhắc đến là Trung Quốc, Việt Nam, Lào và Cu-ba."}, {"id": "B1", "module": "B", "type": "single", "level": "know", "tags": ["địa chiến lược"], "stem": "Nội dung nào thể hiện đúng vị trí địa chiến lược của Việt Nam?", "options": ["Nằm giữa Thái Bình Dương và Đại Tây Dương", "Cầu nối giữa Đông Nam Á lục địa với Đông Nam Á hải đảo", "Cầu nối giữa Đông Á với Bắc Á", "Là cửa ngõ tiến vào Trung Quốc từ phía Đông"], "answer": 1, "explanation": "Việt Nam án ngữ Biển Đông và nằm ở vị trí cầu nối giữa Đông Nam Á lục địa với Đông Nam Á hải đảo."}, {"id": "B2", "module": "B", "type": "single", "level": "know", "tags": ["khởi nghĩa", "Bắc thuộc"], "stem": "Cuộc đấu tranh vũ trang lớn đầu tiên trong lịch sử Việt Nam thời Bắc thuộc là", "options": ["khởi nghĩa Lý Bí", "khởi nghĩa Hai Bà Trưng", "khởi nghĩa Bà Triệu", "khởi nghĩa Phùng Hưng"], "answer": 1, "explanation": "Khởi nghĩa Hai Bà Trưng năm 40 được xem là cuộc đấu tranh vũ trang lớn đầu tiên của người Việt trong thời Bắc thuộc."}, {"id": "B3", "module": "B", "type": "single", "level": "understand", "tags": ["Lam Sơn"], "stem": "Khởi nghĩa Lam Sơn kết thúc khi nào?", "options": ["Quân Minh bị đánh bại và rút về nước sau trận Chi Lăng – Xương Giang", "Lê Lợi lên ngôi, lập nhà Lê sơ", "Nghĩa quân xin hòa với nhà Minh", "Toàn bộ quân Minh bị tiêu diệt ngay tại Đông Quan"], "answer": 0, "explanation": "Sau thắng lợi Chi Lăng – Xương Giang, quân Minh chấp nhận nghị hòa và rút về nước, đánh dấu thắng lợi của khởi nghĩa Lam Sơn."}, {"id": "B4", "module": "B", "type": "single", "level": "know", "tags": ["Tây Sơn", "quân Thanh"], "stem": "Sự kiện nào đánh dấu thất bại của quân Thanh trước phong trào Tây Sơn?", "options": ["Rạch Gầm – Xoài Mút", "Tốt Động – Chúc Động", "Ngọc Hồi – Đống Đa", "Chi Lăng – Xương Giang"], "answer": 2, "explanation": "Ngọc Hồi – Đống Đa năm 1789 là chiến thắng quyết định đánh bại quân Thanh."}, {"id": "B5", "module": "B", "type": "single", "level": "understand", "tags": ["nhà Nguyễn", "chống Pháp"], "stem": "Nguyên nhân chính dẫn đến thất bại của nhà Nguyễn trong kháng chiến chống Pháp giai đoạn 1858–1884 là", "options": ["Pháp có vũ khí hiện đại hơn hoàn toàn", "Nhà Nguyễn thiếu quyết đoán, thiên về chủ hòa và không hợp lực với nhân dân", "Phong trào yêu nước của nhân dân chưa xuất hiện", "Các nước phương Tây khác trực tiếp đưa quân giúp Pháp"], "answer": 1, "explanation": "Đề thường nhấn mạnh nguyên nhân chủ yếu là sự bạc nhược, chủ hòa, thiếu đoàn kết với nhân dân của triều đình nhà Nguyễn."}, {"id": "B6", "module": "B", "type": "single", "level": "apply", "tags": ["chống Tống", "chiến lược"], "stem": "Nét đặc sắc của cuộc kháng chiến chống Tống (1075–1077) là", "options": ["ta chỉ xây phòng tuyến cố thủ từ đầu đến cuối", "ta chủ động tiến công sang đất Tống trước rồi rút về phòng ngự", "ta dựa hoàn toàn vào thủy chiến để giành thắng lợi", "ta cầu hòa ngay từ đầu để tránh chiến tranh"], "answer": 1, "explanation": "Nhà Lý chủ động tiến công để phá thế mạnh của địch, sau đó rút quân về xây dựng phòng tuyến lớn và kết thúc chiến tranh chủ động."}, {"id": "C1", "module": "C", "type": "single", "level": "know", "tags": ["mốc thời gian", "LHQ"], "stem": "Liên Hợp Quốc chính thức được thành lập vào ngày nào?", "options": ["25/4/1945", "26/6/1945", "24/10/1945", "1/1/1946"], "answer": 2, "explanation": "24/10/1945 là ngày Hiến chương có hiệu lực và được lấy làm ngày thành lập Liên Hợp Quốc."}, {"id": "C2", "module": "C", "type": "single", "level": "understand", "tags": ["mục tiêu", "LHQ"], "stem": "Mục tiêu quan trọng nhất của Liên Hợp Quốc là", "options": ["thúc đẩy thương mại tự do", "duy trì hòa bình và an ninh quốc tế", "thiết lập liên minh quân sự toàn cầu", "can thiệp vào công việc nội bộ các nước"], "answer": 1, "explanation": "Duy trì hòa bình và an ninh quốc tế là mục tiêu trọng yếu nhất, làm cơ sở để thực hiện các mục tiêu khác."}, {"id": "C3", "module": "C", "type": "single", "level": "know", "tags": ["Hiến chương"], "stem": "Hiến chương Liên Hợp Quốc được thông qua tại hội nghị nào?", "options": ["I-an-ta", "Tê-hê-ran", "Xan Phran-xi-xcô", "Pốt-xđam"], "answer": 2, "explanation": "Từ 25/4 đến 26/6/1945, đại diện 50 nước họp tại San Francisco và thông qua Hiến chương Liên Hợp Quốc."}, {"id": "C4", "module": "C", "type": "single", "level": "know", "tags": ["cơ quan"], "stem": "Cơ quan nào của Liên Hợp Quốc giữ vai trò trọng yếu trong việc duy trì hòa bình và an ninh thế giới?", "options": ["Tòa án Quốc tế", "Hội đồng Bảo an", "Đại hội đồng", "Ban Thư ký"], "answer": 1, "explanation": "Hội đồng Bảo an là cơ quan có trách nhiệm chính về hòa bình và an ninh quốc tế."}, {"id": "C5", "module": "C", "type": "single", "level": "apply", "tags": ["nguyên tắc", "Việt Nam"], "stem": "Việt Nam vận dụng nguyên tắc nào của Liên Hợp Quốc khi giải quyết tranh chấp ở Biển Đông?", "options": ["bình đẳng về chủ quyền", "giải quyết tranh chấp bằng biện pháp hòa bình", "can thiệp nhân đạo", "dùng vũ lực tự vệ phủ đầu"], "answer": 1, "explanation": "Đề thường gắn Biển Đông với nguyên tắc giải quyết tranh chấp bằng biện pháp hòa bình."}, {"id": "C6", "module": "C", "type": "single", "level": "know", "tags": ["tổ chức"], "stem": "Tổ chức nào sau đây không thuộc hệ thống Liên Hợp Quốc?", "options": ["UNICEF", "UNESCO", "WHO", "NATO"], "answer": 3, "explanation": "NATO là liên minh quân sự của phương Tây, không thuộc hệ thống Liên Hợp Quốc."}, {"id": "D1", "module": "D", "type": "single", "level": "know", "tags": ["mốc thời gian", "ASEAN"], "stem": "ASEAN được thành lập vào ngày nào?", "options": ["4/8/1967", "8/8/1967", "28/7/1995", "31/12/2015"], "answer": 1, "explanation": "ASEAN được thành lập ngày 8/8/1967 tại Băng Cốc, Thái Lan."}, {"id": "D2", "module": "D", "type": "single", "level": "understand", "tags": ["Bali"], "stem": "Sự kiện nào được xem là bước ngoặt quan trọng của ASEAN?", "options": ["Tuyên bố ZOPFAN 1971", "Hiệp ước Bali 1976", "Hiến chương ASEAN 2007", "Cộng đồng ASEAN 2015"], "answer": 1, "explanation": "Hiệp ước Bali 1976 đánh dấu bước phát triển về chất của ASEAN vì xác lập các nguyên tắc cơ bản trong quan hệ khu vực."}, {"id": "D3", "module": "D", "type": "single", "level": "know", "tags": ["trụ sở"], "stem": "Ban Thư ký ASEAN đặt tại đâu?", "options": ["Băng Cốc", "Kuala Lumpur", "Jakarta", "Singapore"], "answer": 2, "explanation": "Trụ sở Ban Thư ký ASEAN đặt tại Jakarta, Indonesia."}, {"id": "D4", "module": "D", "type": "single", "level": "know", "tags": ["Việt Nam", "hội nhập"], "stem": "Việt Nam gia nhập ASEAN vào năm nào?", "options": ["1991", "1995", "1998", "2007"], "answer": 1, "explanation": "Việt Nam gia nhập ASEAN ngày 28/7/1995, trở thành thành viên thứ 7."}, {"id": "D5", "module": "D", "type": "single", "level": "understand", "tags": ["Cộng đồng ASEAN"], "stem": "Cộng đồng ASEAN chính thức ra đời vào ngày 31/12/2015 gồm mấy trụ cột?", "options": ["2", "3", "4", "5"], "answer": 1, "explanation": "Ba trụ cột là Chính trị - An ninh, Kinh tế, Văn hóa - Xã hội."}, {"id": "D6", "module": "D", "type": "single", "level": "apply", "tags": ["mở rộng thành viên"], "stem": "Nước nào là thành viên thứ 10, cuối cùng gia nhập ASEAN?", "options": ["Lào", "Myanmar", "Campuchia", "Đông Timor"], "answer": 2, "explanation": "Campuchia gia nhập năm 1999, hoàn tất ASEAN 10."}, {"id": "E1", "module": "E", "type": "single", "level": "know", "tags": ["CMT8", "thời cơ"], "stem": "Sự kiện trực tiếp tạo ra thời cơ ngàn năm có một cho Cách mạng tháng Tám năm 1945 là", "options": ["Nhật đảo chính Pháp 9/3/1945", "Nhật Bản đầu hàng Đồng minh vô điều kiện", "Đại hội Quốc dân Tân Trào", "Quân Đồng minh vào Đông Dương"], "answer": 1, "explanation": "Thời cơ trực tiếp xuất hiện khi Nhật đầu hàng, bộ máy thống trị khủng hoảng còn quân Đồng minh chưa kịp vào Đông Dương."}, {"id": "E2", "module": "E", "type": "single", "level": "know", "tags": ["CMT8", "mốc thời gian"], "stem": "Tỉnh nào không nằm trong số bốn tỉnh giành chính quyền sớm nhất ngày 18/8/1945?", "options": ["Bắc Giang", "Hà Tĩnh", "Quảng Nam", "Hà Nội"], "answer": 3, "explanation": "Bốn tỉnh sớm nhất là Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam. Hà Nội giành chính quyền ngày 19/8/1945."}, {"id": "E3", "module": "E", "type": "single", "level": "understand", "tags": ["đường lối kháng chiến"], "stem": "Đường lối kháng chiến chống Pháp của Đảng được xác định gồm những nội dung cốt lõi nào?", "options": ["toàn dân, toàn diện, trường kì, tự lực cánh sinh", "đánh nhanh, thắng nhanh, tổng lực", "chủ yếu ngoại giao và cầu viện", "du kích nhỏ lẻ, tránh mọi chiến dịch lớn"], "answer": 0, "explanation": "Bộ bốn cụm từ phải nhớ là toàn dân, toàn diện, trường kì, tự lực cánh sinh."}, {"id": "E4", "module": "E", "type": "single", "level": "understand", "tags": ["Chiến dịch Biên giới"], "stem": "Mục đích quan trọng hàng đầu của Chiến dịch Biên giới thu – đông 1950 là", "options": ["bảo vệ căn cứ địa Việt Bắc", "khai thông biên giới Việt – Trung, giành thế chủ động", "đánh thẳng vào Sài Gòn", "buộc Mỹ rút quân khỏi Việt Nam"], "answer": 1, "explanation": "Chiến dịch Biên giới 1950 giúp ta khai thông biên giới với Trung Quốc và giành thế chủ động chiến lược."}, {"id": "E5", "module": "E", "type": "single", "level": "apply", "tags": ["Hiệp định Giơ-ne-vơ"], "stem": "Theo Hiệp định Giơ-ne-vơ năm 1954, vĩ tuyến 17 là", "options": ["biên giới quốc gia lâu dài giữa hai miền", "giới tuyến quân sự tạm thời, không phải biên giới quốc gia", "ranh giới kinh tế giữa hai miền", "đường phân chia do Liên Hợp Quốc quản lí"], "answer": 1, "explanation": "Từ khóa dễ gài bẫy là ‘không phải biên giới quốc gia’. Đây chỉ là giới tuyến quân sự tạm thời."}, {"id": "E6", "module": "E", "type": "single", "level": "apply", "tags": ["nguyên nhân thắng lợi", "CMT8"], "stem": "Nguyên nhân chủ yếu, mang tính quyết định đối với thắng lợi của Cách mạng tháng Tám năm 1945 là", "options": ["Nhật Bản quá suy yếu", "quân Đồng minh giúp nhân dân Việt Nam giành chính quyền", "sự lãnh đạo đúng đắn của Đảng và Hồ Chí Minh", "điều kiện quốc tế hoàn toàn thuận lợi"], "answer": 2, "explanation": "Đề thường yêu cầu phân biệt nguyên nhân khách quan thuận lợi với nguyên nhân chủ quan quyết định là sự lãnh đạo đúng đắn của Đảng."}, {"id": "F1", "module": "F", "type": "single", "level": "understand", "tags": ["sau Giơ-ne-vơ", "nhiệm vụ"], "stem": "Sau Hiệp định Giơ-ne-vơ năm 1954, cách mạng Việt Nam có hai nhiệm vụ chiến lược là", "options": ["miền Bắc xây dựng CNXH, miền Nam tiếp tục cách mạng dân tộc dân chủ nhân dân", "đưa cả nước tiến thẳng lên CNXH ngay lập tức", "thống nhất đất nước bằng thương lượng đơn thuần", "tập trung phát triển kinh tế ở cả hai miền"], "answer": 0, "explanation": "Điểm mấu chốt là hai nhiệm vụ khác nhau giữa hai miền nhưng cùng hướng tới thống nhất đất nước."}, {"id": "F2", "module": "F", "type": "single", "level": "understand", "tags": ["Đồng khởi"], "stem": "Ý nghĩa trực tiếp của phong trào Đồng khởi 1959–1960 là", "options": ["buộc Mỹ kí Hiệp định Pa-ri", "chuyển cách mạng miền Nam từ thế giữ gìn lực lượng sang thế tiến công", "giải phóng hoàn toàn miền Nam", "thống nhất đất nước về mặt nhà nước"], "answer": 1, "explanation": "Đồng khởi tạo bước chuyển về thế và lực, từ giữ gìn lực lượng sang thế tiến công."}, {"id": "F3", "module": "F", "type": "single", "level": "know", "tags": ["chiến tranh đặc biệt"], "stem": "Xương sống của chiến lược ‘Chiến tranh đặc biệt’ là", "options": ["thiết xa vận", "ấp chiến lược", "Việt Nam hóa chiến tranh", "hành lang Đông – Tây"], "answer": 1, "explanation": "Mỹ và chính quyền Sài Gòn xem ấp chiến lược là xương sống của ‘Chiến tranh đặc biệt’."}, {"id": "F4", "module": "F", "type": "single", "level": "apply", "tags": ["Mậu Thân 1968", "Pa-ri"], "stem": "Cuộc Tổng tiến công và nổi dậy Tết Mậu Thân năm 1968 đã buộc Mỹ phải", "options": ["rút ngay toàn bộ quân khỏi miền Nam", "chấp nhận đàm phán với ta tại Pa-ri", "công nhận miền Nam hoàn toàn giải phóng", "từ bỏ mọi chiến lược quân sự trên toàn cầu"], "answer": 1, "explanation": "Mậu Thân 1968 là bước ngoặt chiến lược, buộc Mỹ xuống thang chiến tranh và chấp nhận ngồi vào bàn đàm phán tại Pa-ri."}, {"id": "F5", "module": "F", "type": "single", "level": "know", "tags": ["Điện Biên Phủ trên không"], "stem": "Chiến thắng ‘Điện Biên Phủ trên không’ diễn ra vào thời gian nào?", "options": ["Tháng 5/1968", "Tháng 12/1972", "Tháng 1/1973", "Tháng 4/1975"], "answer": 1, "explanation": "Trận tập kích chiến lược bằng B-52 của Mỹ vào Hà Nội, Hải Phòng bị đánh bại trong 12 ngày đêm tháng 12/1972."}, {"id": "F6", "module": "F", "type": "single", "level": "apply", "tags": ["Xuân 1975"], "stem": "Cuộc Tổng tiến công và nổi dậy Xuân 1975 mở đầu bằng chiến dịch nào?", "options": ["Huế – Đà Nẵng", "Tây Nguyên", "Hồ Chí Minh", "Đường 14 – Phước Long"], "answer": 1, "explanation": "Chiến dịch Tây Nguyên mở màn cho cuộc Tổng tiến công mùa Xuân 1975; chiến thắng Buôn Ma Thuột tạo bước ngoặt chiến lược."}, {"id": "G1", "module": "G", "type": "single", "level": "know", "tags": ["sau 1975", "nhiệm vụ"], "stem": "Nhiệm vụ cấp bách hàng đầu của cả nước sau đại thắng mùa Xuân năm 1975 là", "options": ["tiến hành đổi mới toàn diện", "thống nhất đất nước về mặt nhà nước", "gia nhập ASEAN", "bình thường hóa quan hệ với Hoa Kì"], "answer": 1, "explanation": "Sau 1975, cả nước đã thống nhất lãnh thổ nhưng vẫn cần hoàn thành thống nhất về mặt nhà nước."}, {"id": "G2", "module": "G", "type": "single", "level": "know", "tags": ["1976", "tên nước"], "stem": "Kì họp thứ nhất Quốc hội khóa VI năm 1976 quyết định tên nước là", "options": ["Việt Nam Dân chủ Cộng hòa", "Cộng hòa Việt Nam", "Cộng hòa xã hội chủ nghĩa Việt Nam", "Liên bang Đông Dương"], "answer": 2, "explanation": "Năm 1976, Quốc hội khóa VI quyết định tên nước là Cộng hòa xã hội chủ nghĩa Việt Nam."}, {"id": "G3", "module": "G", "type": "single", "level": "know", "tags": ["Liên Hợp Quốc", "1977"], "stem": "Việt Nam trở thành thành viên Liên Hợp Quốc vào năm nào?", "options": ["1975", "1976", "1977", "1986"], "answer": 2, "explanation": "Việt Nam gia nhập Liên Hợp Quốc năm 1977."}, {"id": "G4", "module": "G", "type": "single", "level": "understand", "tags": ["bảo vệ Tổ quốc"], "stem": "Một nhiệm vụ lớn của Việt Nam sau 1975 ngoài khắc phục hậu quả chiến tranh là", "options": ["chỉ tập trung hội nhập kinh tế", "bảo vệ biên giới Tây Nam, biên giới phía Bắc và chủ quyền biển đảo", "giải thể toàn bộ quân đội thường trực", "trung lập hóa hoàn toàn khu vực biên giới"], "answer": 1, "explanation": "Phần này nhấn mạnh kết hợp xây dựng với bảo vệ Tổ quốc, nhất là biên giới và biển đảo."}, {"id": "G5", "module": "G", "type": "single", "level": "apply", "tags": ["bài học lịch sử"], "stem": "Khi ôn phần bảo vệ Tổ quốc sau 1975, dạng hỏi nào thường xuất hiện nhiều hơn trong đề thi?", "options": ["diễn biến tác chiến chi tiết từng ngày", "nhiệm vụ, ý nghĩa và bài học lịch sử", "số liệu khí tài quân sự cụ thể", "tên tất cả đơn vị tác chiến"], "answer": 1, "explanation": "Các tài liệu ôn đều lưu ý phần này chủ yếu hỏi nhiệm vụ, ý nghĩa và bài học, không yêu cầu quá sâu diễn biến quân sự."}, {"id": "G6", "module": "G", "type": "single", "level": "understand", "tags": ["1975-1979", "bối cảnh"], "stem": "Nhận định nào đúng về bối cảnh Việt Nam sau 1975?", "options": ["đất nước chỉ còn nhiệm vụ xây dựng kinh tế, không còn nhiệm vụ quốc phòng", "Việt Nam vừa xây dựng đất nước, vừa thực hiện nhiệm vụ bảo vệ Tổ quốc", "Việt Nam ngay lập tức bước vào công nghiệp hóa hoàn toàn", "mọi khó khăn về đối nội và đối ngoại đều được giải quyết ngay"], "answer": 1, "explanation": "Sau 1975, nhiệm vụ xây dựng luôn gắn chặt với nhiệm vụ bảo vệ Tổ quốc."}, {"id": "H1", "module": "H", "type": "single", "level": "understand", "tags": ["Đổi mới", "nguyên nhân"], "stem": "Nguyên nhân trực tiếp buộc Đảng phải đề ra đường lối Đổi mới năm 1986 là", "options": ["ảnh hưởng từ Perestroika của Liên Xô", "khủng hoảng kinh tế – xã hội kéo dài và nghiêm trọng", "yêu cầu gia nhập ASEAN", "sự phát triển quá nóng của kinh tế thị trường"], "answer": 1, "explanation": "Bối cảnh trực tiếp là khủng hoảng kinh tế – xã hội nghiêm trọng trước năm 1986."}, {"id": "H2", "module": "H", "type": "single", "level": "know", "tags": ["Đại hội VI"], "stem": "Đại hội nào của Đảng mở đầu công cuộc Đổi mới ở Việt Nam?", "options": ["Đại hội IV", "Đại hội V", "Đại hội VI", "Đại hội VII"], "answer": 2, "explanation": "Đại hội VI của Đảng năm 1986 mở đầu công cuộc Đổi mới."}, {"id": "H3", "module": "H", "type": "single", "level": "understand", "tags": ["trọng tâm"], "stem": "Trọng tâm của công cuộc Đổi mới ở Việt Nam là", "options": ["đổi mới văn hóa", "đổi mới giáo dục", "đổi mới kinh tế", "đổi mới quốc phòng"], "answer": 2, "explanation": "Đổi mới được triển khai toàn diện nhưng lấy đổi mới kinh tế làm trọng tâm."}, {"id": "H4", "module": "H", "type": "single", "level": "apply", "tags": ["kinh tế", "cơ chế"], "stem": "Điểm khác biệt cơ bản của nền kinh tế Việt Nam sau Đổi mới so với trước đó là", "options": ["xóa bỏ hoàn toàn kinh tế nhà nước", "chỉ phát triển kinh tế tư nhân", "vận hành theo cơ chế thị trường có sự quản lí của Nhà nước", "không hội nhập kinh tế quốc tế"], "answer": 2, "explanation": "Nội dung cốt lõi là chuyển sang nền kinh tế hàng hóa nhiều thành phần vận hành theo cơ chế thị trường có sự quản lí của Nhà nước."}, {"id": "H5", "module": "H", "type": "single", "level": "know", "tags": ["Đại hội VIII", "CNH-HĐH"], "stem": "Đại hội VIII của Đảng năm 1996 xác định Việt Nam chuyển sang thời kì", "options": ["thực hiện đổi mới toàn diện", "đẩy mạnh công nghiệp hóa, hiện đại hóa", "xây dựng kinh tế tri thức", "gia nhập WTO"], "answer": 1, "explanation": "Đại hội VIII xác định đất nước chuyển sang thời kì đẩy mạnh công nghiệp hóa, hiện đại hóa."}, {"id": "H6", "module": "H", "type": "single", "level": "apply", "tags": ["thành tựu", "ý nghĩa"], "stem": "Ý nghĩa nổi bật của thành tựu Đổi mới giai đoạn đầu là", "options": ["xóa bỏ hoàn toàn mọi khó khăn của đất nước", "đưa Việt Nam trở thành cường quốc kinh tế số một châu Á", "giúp đất nước thoát khỏi khủng hoảng, cải thiện đời sống và nâng cao vị thế quốc tế", "chấm dứt mọi thách thức từ hội nhập"], "answer": 2, "explanation": "Đề thường hỏi theo hướng ‘nổi bật’, không tuyệt đối hóa. Thành tựu lớn là thoát khỏi khủng hoảng, cải thiện đời sống và nâng cao vị thế."}, {"id": "I1", "module": "I", "type": "single", "level": "know", "tags": ["Phan Bội Châu", "đầu thế kỉ XX"], "stem": "Hoạt động đối ngoại tiêu biểu của Phan Bội Châu giai đoạn 1905–1908 gắn với địa bàn nào?", "options": ["Pháp", "Nhật Bản", "Liên Xô", "Hoa Kì"], "answer": 1, "explanation": "Phan Bội Châu sang Nhật Bản và phát động phong trào Đông Du."}, {"id": "I2", "module": "I", "type": "single", "level": "know", "tags": ["Nguyễn Ái Quốc", "1920"], "stem": "Năm 1920, Nguyễn Ái Quốc bỏ phiếu tán thành Quốc tế Cộng sản và tham gia sáng lập", "options": ["Đảng Cộng sản Việt Nam", "Hội Liên hiệp thuộc địa", "Đảng Cộng sản Pháp", "Mặt trận Việt Minh"], "answer": 2, "explanation": "Tại Đại hội Tua tháng 12/1920, Nguyễn Ái Quốc tán thành Quốc tế Cộng sản và tham gia sáng lập Đảng Cộng sản Pháp."}, {"id": "I3", "module": "I", "type": "single", "level": "understand", "tags": ["1946", "Hiệp định Sơ bộ"], "stem": "Mục tiêu chủ yếu của việc kí Hiệp định Sơ bộ 6/3/1946 với Pháp là", "options": ["thừa nhận quyền thống trị lâu dài của Pháp", "hòa hoãn với Pháp để đẩy quân Tưởng về nước, kéo dài thời gian chuẩn bị lực lượng", "chuẩn bị gia nhập ASEAN", "thiết lập liên minh quân sự với Pháp"], "answer": 1, "explanation": "Đây là sách lược ngoại giao mềm dẻo để tránh thế cùng lúc đối đầu với nhiều kẻ thù, tranh thủ thời gian củng cố lực lượng."}, {"id": "I4", "module": "I", "type": "single", "level": "know", "tags": ["Hiệp định Pa-ri"], "stem": "Hiệp định Pa-ri về chấm dứt chiến tranh, lập lại hòa bình ở Việt Nam được kí vào ngày nào?", "options": ["21/7/1954", "30/4/1975", "27/1/1973", "2/9/1945"], "answer": 2, "explanation": "Mốc phải thuộc: 27/1/1973 là ngày kí Hiệp định Pa-ri."}, {"id": "I5", "module": "I", "type": "single", "level": "apply", "tags": ["đối ngoại thời đổi mới"], "stem": "Nguyên tắc xuyên suốt của đường lối đối ngoại Việt Nam thời kì Đổi mới là", "options": ["liên minh quân sự với một cường quốc", "độc lập, tự chủ, hòa bình, hữu nghị, hợp tác và phát triển", "khép kín và tự cô lập", "đối đầu toàn diện với các nước lớn"], "answer": 1, "explanation": "Cụm từ cần nhớ là độc lập, tự chủ, hòa bình, hữu nghị, hợp tác và phát triển; gắn với đa phương hóa, đa dạng hóa."}, {"id": "I6", "module": "I", "type": "single", "level": "apply", "tags": ["hội nhập"], "stem": "Cặp mốc hội nhập nào sau đây là đúng?", "options": ["ASEAN 1998 – WTO 2007", "APEC 1995 – ASEAN 2007", "ASEAN 1995 – APEC 1998", "WTO 1998 – APEC 2007"], "answer": 2, "explanation": "Việt Nam gia nhập ASEAN năm 1995, APEC năm 1998 và WTO năm 2007."}, {"id": "J1", "module": "J", "type": "single", "level": "know", "tags": ["1911", "Nguyễn Tất Thành"], "stem": "Ngày 5/6/1911 gắn với sự kiện nào trong cuộc đời Nguyễn Tất Thành?", "options": ["đọc Tuyên ngôn Độc lập", "ra đi tìm đường cứu nước", "thành lập Hội Việt Nam Cách mạng Thanh niên", "chủ trì Hội nghị thành lập Đảng"], "answer": 1, "explanation": "Ngày 5/6/1911, Nguyễn Tất Thành ra đi tìm đường cứu nước từ bến Nhà Rồng."}, {"id": "J2", "module": "J", "type": "single", "level": "know", "tags": ["1925", "tổ chức"], "stem": "Năm 1925, Nguyễn Ái Quốc thành lập tổ chức nào ở Quảng Châu?", "options": ["Đảng Cộng sản Đông Dương", "Mặt trận Việt Minh", "Hội Việt Nam Cách mạng Thanh niên", "Hội Liên hiệp thuộc địa"], "answer": 2, "explanation": "Hội Việt Nam Cách mạng Thanh niên là tổ chức tiền thân quan trọng trong quá trình chuẩn bị cho sự ra đời của Đảng."}, {"id": "J3", "module": "J", "type": "single", "level": "understand", "tags": ["con đường cứu nước"], "stem": "Nội dung cơ bản trong con đường cứu nước mà Nguyễn Ái Quốc lựa chọn là", "options": ["dựa vào sự giúp đỡ hoàn toàn của các cường quốc", "độc lập dân tộc gắn liền với chủ nghĩa xã hội", "cải cách ôn hòa theo mô hình phương Tây", "khởi nghĩa quân sự tách rời quần chúng"], "answer": 1, "explanation": "Hạt nhân lớn trong tư tưởng Hồ Chí Minh là độc lập dân tộc gắn liền với chủ nghĩa xã hội."}, {"id": "J4", "module": "J", "type": "single", "level": "apply", "tags": ["cống hiến"], "stem": "Cống hiến lịch sử nổi bật nhất của Hồ Chí Minh đối với cách mạng Việt Nam là", "options": ["mở đầu công cuộc Đổi mới năm 1986", "tìm ra con đường cứu nước đúng đắn cho dân tộc", "thành lập ASEAN", "xây dựng xong chủ nghĩa xã hội ở Việt Nam"], "answer": 1, "explanation": "Khi hỏi ‘cống hiến nổi bật nhất’, đáp án thường là tìm ra con đường cứu nước đúng đắn cho dân tộc Việt Nam."}, {"id": "J5", "module": "J", "type": "single", "level": "understand", "tags": ["Đảng Cộng sản Việt Nam"], "stem": "Vai trò của Nguyễn Ái Quốc đối với sự ra đời của Đảng Cộng sản Việt Nam thể hiện rõ nhất ở việc", "options": ["trực tiếp viết mọi sách giáo khoa lịch sử", "chuẩn bị về chính trị, tư tưởng, tổ chức và chủ trì Hội nghị thành lập Đảng", "lãnh đạo toàn bộ phong trào Đông Du", "thành lập ASEAN để hỗ trợ cách mạng Việt Nam"], "answer": 1, "explanation": "Nguyễn Ái Quốc có công chuẩn bị về chính trị, tư tưởng, tổ chức cho Đảng và chủ trì Hội nghị thành lập Đảng đầu năm 1930."}, {"id": "J6", "module": "J", "type": "single", "level": "know", "tags": ["2/9/1945"], "stem": "Ngày 2/9/1945, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập tại", "options": ["Tân Trào", "Quảng trường Ba Đình", "Bến Nhà Rồng", "Nhà hát Lớn Hà Nội"], "answer": 1, "explanation": "Tuyên ngôn Độc lập được đọc tại Quảng trường Ba Đình, khai sinh nước Việt Nam Dân chủ Cộng hòa."}], "tfGroups": [{"id": "TF1", "module": "A", "type": "tf", "level": "understand", "tags": ["CNXH", "Liên Xô"], "stem": "Về chủ nghĩa xã hội từ năm 1917 đến nay, hãy xác định đúng hoặc sai:", "statements": [{"text": "Cách mạng tháng Mười Nga năm 1917 đã trực tiếp đưa chính quyền Xô viết lên nắm quyền.", "answer": true, "explanation": "Đây là kết quả trực tiếp của Cách mạng tháng Mười."}, {"text": "Hiến pháp đầu tiên của Liên Xô được thông qua năm 1922.", "answer": false, "explanation": "Hiến pháp đầu tiên được thông qua năm 1924; năm 1922 là Tuyên bố thành lập Liên Xô."}, {"text": "Sai lầm trong đường lối cải tổ và tình trạng quan liêu là nguyên nhân chủ quan của sự sụp đổ mô hình CNXH ở Đông Âu và Liên Xô.", "answer": true, "explanation": "Đây là nhóm nguyên nhân chủ quan thường được hỏi."}, {"text": "Từ năm 2010, Trung Quốc vượt Mỹ để đứng thứ hai thế giới về kinh tế.", "answer": false, "explanation": "Trung Quốc vượt Nhật Bản để đứng thứ hai thế giới, sau Mỹ."}]}, {"id": "TF2", "module": "B", "type": "tf", "level": "understand", "tags": ["kháng chiến trước 1945"], "stem": "Về chiến tranh bảo vệ Tổ quốc trong lịch sử Việt Nam trước 1945:", "statements": [{"text": "Việt Nam có vị trí cầu nối giữa Đông Nam Á lục địa với Đông Nam Á hải đảo.", "answer": true, "explanation": "Đây là nội dung chuẩn về vị trí địa chiến lược của Việt Nam."}, {"text": "Khởi nghĩa Hai Bà Trưng là cuộc đấu tranh vũ trang lớn đầu tiên trong lịch sử Việt Nam.", "answer": true, "explanation": "Đây là cách gọi thường gặp trong sách và tài liệu ôn tập."}, {"text": "Trận Rạch Gầm – Xoài Mút là trận đánh quyết định chống quân Thanh.", "answer": false, "explanation": "Rạch Gầm – Xoài Mút là trận đánh chống quân Xiêm."}, {"text": "Một nguyên nhân thất bại của nhà Nguyễn trong kháng chiến chống Pháp là thiên về chủ hòa, không hợp lực với nhân dân.", "answer": true, "explanation": "Đây là nguyên nhân chủ yếu thường được nhấn mạnh."}]}, {"id": "TF3", "module": "C", "type": "tf", "level": "understand", "tags": ["Liên Hợp Quốc"], "stem": "Về Liên Hợp Quốc:", "statements": [{"text": "Liên Hợp Quốc chính thức thành lập ngày 24/10/1945.", "answer": true, "explanation": "24/10/1945 là ngày Hiến chương có hiệu lực."}, {"text": "Mục tiêu quan trọng nhất của Liên Hợp Quốc là thúc đẩy thương mại thế giới.", "answer": false, "explanation": "Mục tiêu quan trọng nhất là duy trì hòa bình và an ninh quốc tế."}, {"text": "Hội đồng Bảo an là cơ quan giữ trách nhiệm chính về hòa bình và an ninh quốc tế.", "answer": true, "explanation": "Đây là cơ quan trọng yếu về an ninh quốc tế."}, {"text": "NATO là một cơ quan chuyên môn thuộc hệ thống Liên Hợp Quốc.", "answer": false, "explanation": "NATO là liên minh quân sự, không thuộc Liên Hợp Quốc."}]}, {"id": "TF4", "module": "D", "type": "tf", "level": "understand", "tags": ["ASEAN"], "stem": "Về ASEAN:", "statements": [{"text": "ASEAN được thành lập tại Băng Cốc năm 1967.", "answer": true, "explanation": "Tuyên bố Băng Cốc ngày 8/8/1967 khai sinh ASEAN."}, {"text": "Việt Nam là một trong năm nước sáng lập ASEAN.", "answer": false, "explanation": "Việt Nam gia nhập ASEAN năm 1995, là thành viên thứ bảy."}, {"text": "Hiệp ước Bali 1976 là dấu mốc quan trọng vì xác lập các nguyên tắc cơ bản trong quan hệ ASEAN.", "answer": true, "explanation": "Đây là ý nghĩa nổi bật của Hiệp ước Bali."}, {"text": "Cộng đồng ASEAN có ba trụ cột.", "answer": true, "explanation": "Ba trụ cột là Chính trị - An ninh, Kinh tế, Văn hóa - Xã hội."}]}, {"id": "TF5", "module": "E", "type": "tf", "level": "understand", "tags": ["CMT8"], "stem": "Về Cách mạng tháng Tám năm 1945:", "statements": [{"text": "Thời cơ trực tiếp của Tổng khởi nghĩa xuất hiện sau khi Nhật đầu hàng Đồng minh.", "answer": true, "explanation": "Đây là thời cơ trực tiếp, chín muồi."}, {"text": "Cách mạng tháng Tám thắng lợi hoàn toàn do yếu tố khách quan.", "answer": false, "explanation": "Khách quan thuận lợi nhưng nguyên nhân quyết định là sự lãnh đạo của Đảng."}, {"text": "Thắng lợi của Cách mạng tháng Tám đã lập nên nước Việt Nam Dân chủ Cộng hòa.", "answer": true, "explanation": "Ngày 2/9/1945, nước Việt Nam Dân chủ Cộng hòa ra đời."}, {"text": "Cách mạng tháng Tám không có ảnh hưởng gì tới phong trào giải phóng dân tộc trên thế giới.", "answer": false, "explanation": "Thắng lợi này có tác dụng cổ vũ phong trào giải phóng dân tộc trên thế giới."}]}, {"id": "TF6", "module": "E", "type": "tf", "level": "apply", "tags": ["kháng chiến chống Pháp", "Giơ-ne-vơ"], "stem": "Về kháng chiến chống Pháp 1945–1954 và Hiệp định Giơ-ne-vơ:", "statements": [{"text": "Đường lối kháng chiến của Đảng là toàn dân, toàn diện, trường kì, tự lực cánh sinh.", "answer": true, "explanation": "Đây là công thức chuẩn phải thuộc."}, {"text": "Chiến thắng Điện Biên Phủ buộc Pháp kí Hiệp định Pa-ri.", "answer": false, "explanation": "Điện Biên Phủ buộc Pháp kí Hiệp định Giơ-ne-vơ."}, {"text": "Chiến dịch Biên giới 1950 giúp khai thông biên giới Việt – Trung.", "answer": true, "explanation": "Đây là mục tiêu và kết quả nổi bật của chiến dịch."}, {"text": "Hiệp định Giơ-ne-vơ quy định vĩ tuyến 17 là biên giới quốc gia lâu dài.", "answer": false, "explanation": "Đó chỉ là giới tuyến quân sự tạm thời."}]}, {"id": "TF7", "module": "F", "type": "tf", "level": "apply", "tags": ["kháng chiến chống Mỹ"], "stem": "Về kháng chiến chống Mỹ cứu nước:", "statements": [{"text": "Phong trào Đồng khởi 1959–1960 chuyển cách mạng miền Nam từ thế giữ gìn lực lượng sang thế tiến công.", "answer": true, "explanation": "Đây là ý nghĩa trực tiếp của Đồng khởi."}, {"text": "Tết Mậu Thân 1968 kết thúc hoàn toàn cuộc chiến tranh ở miền Nam.", "answer": false, "explanation": "Mậu Thân là bước ngoặt buộc Mỹ đàm phán, không phải là kết thúc chiến tranh."}, {"text": "Trong chiến lược Việt Nam hóa chiến tranh, Mỹ dùng quân đội Sài Gòn là lực lượng chủ yếu.", "answer": true, "explanation": "Bản chất là ‘dùng người Việt đánh người Việt’."}, {"text": "Chiến dịch Hồ Chí Minh là chiến dịch quyết định trực tiếp giải phóng Sài Gòn – Gia Định.", "answer": true, "explanation": "Đây là đỉnh cao của Tổng tiến công mùa Xuân 1975."}]}, {"id": "TF8", "module": "G", "type": "tf", "level": "understand", "tags": ["sau 1975"], "stem": "Về Việt Nam sau năm 1975:", "statements": [{"text": "Sau 1975, nhiệm vụ cấp bách hàng đầu là thống nhất đất nước về mặt nhà nước.", "answer": true, "explanation": "Đây là nhiệm vụ cấp bách nhất của cả nước sau đại thắng."}, {"text": "Năm 1976, tên nước được quyết định là Cộng hòa xã hội chủ nghĩa Việt Nam.", "answer": true, "explanation": "Quốc hội khóa VI quyết định tên nước năm 1976."}, {"text": "Sau 1975, Việt Nam không còn phải thực hiện nhiệm vụ bảo vệ Tổ quốc.", "answer": false, "explanation": "Việt Nam vừa xây dựng đất nước vừa bảo vệ biên giới và chủ quyền biển đảo."}, {"text": "Phần bảo vệ Tổ quốc sau 1975 trong đề thi thường hỏi quá sâu về diễn biến quân sự chi tiết.", "answer": false, "explanation": "Đề thường hỏi nhiệm vụ, ý nghĩa, bài học lịch sử hơn."}]}, {"id": "TF9", "module": "H", "type": "tf", "level": "apply", "tags": ["Đổi mới"], "stem": "Về công cuộc Đổi mới ở Việt Nam:", "statements": [{"text": "Đổi mới bắt đầu từ Đại hội VI của Đảng năm 1986.", "answer": true, "explanation": "Đại hội VI mở đầu công cuộc Đổi mới."}, {"text": "Đổi mới chỉ diễn ra trong lĩnh vực kinh tế.", "answer": false, "explanation": "Đổi mới là toàn diện nhưng lấy kinh tế làm trọng tâm."}, {"text": "Thành tựu Đổi mới góp phần nâng cao vị thế quốc tế của Việt Nam.", "answer": true, "explanation": "Đây là một ý nghĩa nổi bật của công cuộc Đổi mới."}, {"text": "Đổi mới đồng nghĩa với thay đổi mục tiêu độc lập dân tộc gắn với chủ nghĩa xã hội.", "answer": false, "explanation": "Đổi mới không thay đổi mục tiêu chiến lược đó."}]}, {"id": "TF10", "module": "I", "type": "tf", "level": "apply", "tags": ["đối ngoại Việt Nam"], "stem": "Về hoạt động đối ngoại của Việt Nam thời cận – hiện đại:", "statements": [{"text": "Phan Bội Châu gắn với phong trào Đông Du ở Nhật Bản.", "answer": true, "explanation": "Đây là mốc hoạt động đối ngoại tiêu biểu đầu thế kỉ XX."}, {"text": "Hiệp định Sơ bộ 6/3/1946 thể hiện sách lược mềm dẻo để kéo dài thời gian hòa hoãn.", "answer": true, "explanation": "Mục tiêu là tranh thủ thời gian, tránh thế bất lợi cùng lúc."}, {"text": "Hiệp định Pa-ri được kí năm 1954.", "answer": false, "explanation": "Hiệp định Pa-ri được kí ngày 27/1/1973."}, {"text": "Gia nhập ASEAN và WTO là những dấu mốc hội nhập của thời kì Đổi mới.", "answer": true, "explanation": "ASEAN 1995, WTO 2007 là hai mốc hội nhập rất hay hỏi."}]}, {"id": "TF11", "module": "J", "type": "tf", "level": "understand", "tags": ["Hồ Chí Minh"], "stem": "Về Hồ Chí Minh trong lịch sử Việt Nam:", "statements": [{"text": "Hồ Chí Minh tìm ra con đường cứu nước đúng đắn cho dân tộc Việt Nam.", "answer": true, "explanation": "Đây là cống hiến lịch sử nổi bật nhất của Người."}, {"text": "Năm 1925, Nguyễn Ái Quốc thành lập Hội Việt Nam Cách mạng Thanh niên.", "answer": true, "explanation": "Đây là mốc chuẩn bị tổ chức cho sự ra đời của Đảng."}, {"text": "Ngày 2/9/1945, Hồ Chí Minh đọc Tuyên ngôn Độc lập tại Tân Trào.", "answer": false, "explanation": "Tuyên ngôn Độc lập được đọc tại Quảng trường Ba Đình."}, {"text": "Di sản của Hồ Chí Minh chỉ giới hạn ở lĩnh vực chính trị.", "answer": false, "explanation": "Người còn để lại di sản lớn về tư tưởng, đạo đức, văn hóa, phong cách."}]}, {"id": "TF12", "module": "H", "type": "tf", "level": "understand", "tags": ["thành tựu Đổi mới", "hội nhập"], "stem": "Về thành tựu và phương hướng của Đổi mới:", "statements": [{"text": "Việt Nam chuyển từ cơ chế bao cấp sang nền kinh tế hàng hóa nhiều thành phần vận hành theo cơ chế thị trường có sự quản lí của Nhà nước.", "answer": true, "explanation": "Đây là nội dung kinh tế cốt lõi của Đổi mới."}, {"text": "Đại hội VIII năm 1996 xác định đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước.", "answer": true, "explanation": "Mốc 1996 rất dễ hỏi trong phần Đổi mới."}, {"text": "Gia nhập WTO năm 2007 là một biểu hiện của hội nhập quốc tế trong thời kì Đổi mới.", "answer": true, "explanation": "Đây là một thành tựu hội nhập nổi bật."}, {"text": "Đổi mới đã hoàn thành toàn bộ mục tiêu công nghiệp hóa và xóa mọi khoảng cách phát triển.", "answer": false, "explanation": "Đề thường tránh các nhận định tuyệt đối hóa như ‘hoàn thành toàn bộ’ hoặc ‘xóa mọi khoảng cách’."}]}]};
+
+const STATE_KEY = "lichsu_2026_review_state_v2";
+const NAVS = [
+  {id:"dashboard", label:"Dashboard", sub:"Tổng quan và gợi ý học hôm nay"},
+  {id:"learn", label:"Learn mode", sub:"Học bài theo kiểu kênh tự học"},
+  {id:"modules", label:"Modules", sub:"10 module ôn tập có logic"},
+  {id:"practice", label:"Practice", sub:"Luyện từng module và xem giải thích"},
+  {id:"mock", label:"Mock test", sub:"24 câu + 4 đúng/sai + 50 phút"},
+  {id:"review", label:"Daily review", sub:"Ôn lại câu yếu và câu sai cũ"},
+  {id:"mistakes", label:"Mistake notebook", sub:"Sổ lỗi để tránh sai lặp lại"},
+  {id:"settings", label:"Nguồn & dữ liệu", sub:"Nguồn xây dựng, xuất/nhập tiến độ"},
+];
+
+const app = {
+  state: null,
+  currentView: "dashboard",
+  practice: { moduleId: null, queue: [], index: 0, finished: false },
+  exam: { active: false, startedAt: null, remaining: 3000, timer: null, payload: null },
+};
+
+function todayISO() {
+  const d = new Date();
+  const z = (n) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}`;
+}
+function addDays(iso, days) {
+  const d = new Date(iso + "T00:00:00");
+  d.setDate(d.getDate() + days);
+  return d.toISOString().slice(0,10);
+}
+function formatDateTime(ts) {
+  const d = new Date(ts);
+  return d.toLocaleString("vi-VN");
+}
+function letter(i) { return ["A","B","C","D"][i] || ""; }
+function escapeHTML(s) {
+  return String(s).replace(/[&<>"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[ch]));
+}
+function byId(arr) {
+  return Object.fromEntries(arr.map(x => [x.id, x]));
+}
+const moduleMap = byId(DATA.modules);
+const questionMap = byId(DATA.singleQuestions);
+const tfMap = byId(DATA.tfGroups);
+
+function baseState() {
+  return {
+    meta: { createdAt: Date.now(), updatedAt: Date.now() },
+    moduleStats: {},
+    tagStats: {},
+    questionStats: {},
+    review: {},
+    mistakes: [],
+    examHistory: [],
+    settings: {
+      repeatWeakQuestions: true,
+      showImmediateExplanation: true,
+      reminderMode: "daily",
+    },
+  };
+}
+
+function ensureModuleStats(moduleId) {
+  if (!app.state.moduleStats[moduleId]) {
+    app.state.moduleStats[moduleId] = { attempts:0, correct:0 };
+  }
+  return app.state.moduleStats[moduleId];
+}
+function ensureTagStats(tag) {
+  if (!app.state.tagStats[tag]) {
+    app.state.tagStats[tag] = { attempts:0, correct:0 };
+  }
+  return app.state.tagStats[tag];
+}
+function ensureQuestionStats(qid) {
+  if (!app.state.questionStats[qid]) {
+    app.state.questionStats[qid] = { attempts:0, correct:0, wrong:0, lastResult:null, lastSeen:null };
+  }
+  return app.state.questionStats[qid];
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STATE_KEY);
+    app.state = raw ? Object.assign(baseState(), JSON.parse(raw)) : baseState();
+  } catch (e) {
+    app.state = baseState();
+  }
+}
+function saveState() {
+  app.state.meta.updatedAt = Date.now();
+  localStorage.setItem(STATE_KEY, JSON.stringify(app.state));
+  updateSideReminder();
+}
+
+function recordSingleResult(question, correct, selectedIndex, context="practice") {
+  const ms = ensureModuleStats(question.module);
+  ms.attempts += 1;
+  if (correct) ms.correct += 1;
+
+  question.tags.forEach(tag => {
+    const ts = ensureTagStats(tag);
+    ts.attempts += 1;
+    if (correct) ts.correct += 1;
+  });
+
+  const qs = ensureQuestionStats(question.id);
+  qs.attempts += 1;
+  if (correct) qs.correct += 1;
+  else qs.wrong += 1;
+  qs.lastResult = correct ? "correct" : "wrong";
+  qs.lastSeen = Date.now();
+
+  const rv = app.state.review[question.id] || { interval:0, due:todayISO(), streak:0 };
+  if (correct) {
+    rv.streak = (rv.streak || 0) + 1;
+    const nextInterval = rv.streak === 1 ? 1 : rv.streak === 2 ? 3 : rv.streak === 3 ? 7 : 14;
+    rv.interval = nextInterval;
+    rv.due = addDays(todayISO(), nextInterval);
+  } else {
+    rv.streak = 0;
+    rv.interval = 0;
+    rv.due = todayISO();
+    app.state.mistakes.unshift({
+      id: "m_" + Date.now() + "_" + Math.random().toString(36).slice(2,7),
+      when: Date.now(),
+      module: question.module,
+      qid: question.id,
+      stem: question.stem,
+      selected: selectedIndex,
+      correct: question.answer,
+      explanation: question.explanation,
+      context
+    });
+    app.state.mistakes = app.state.mistakes.slice(0, 200);
+  }
+  app.state.review[question.id] = rv;
+  saveState();
+}
+
+function recordTFResult(group, userAnswers, context="mock") {
+  group.statements.forEach((st, i) => {
+    const correct = userAnswers[i] === st.answer;
+    const ms = ensureModuleStats(group.module);
+    ms.attempts += 1;
+    if (correct) ms.correct += 1;
+    group.tags.forEach(tag => {
+      const ts = ensureTagStats(tag);
+      ts.attempts += 1;
+      if (correct) ts.correct += 1;
+    });
+    const key = group.id + "_" + i;
+    const qs = ensureQuestionStats(key);
+    qs.attempts += 1;
+    if (correct) qs.correct += 1;
+    else {
+      qs.wrong += 1;
+      app.state.mistakes.unshift({
+        id: "m_" + Date.now() + "_" + Math.random().toString(36).slice(2,7),
+        when: Date.now(),
+        module: group.module,
+        qid: key,
+        stem: group.stem + " / " + st.text,
+        selected: userAnswers[i] === null ? "chưa chọn" : (userAnswers[i] ? "Đúng" : "Sai"),
+        correct: st.answer ? "Đúng" : "Sai",
+        explanation: st.explanation,
+        context
+      });
+    }
+    qs.lastResult = correct ? "correct" : "wrong";
+    qs.lastSeen = Date.now();
+  });
+  app.state.mistakes = app.state.mistakes.slice(0, 200);
+  saveState();
+}
+
+function accuracyOf(stat) {
+  if (!stat || !stat.attempts) return 0;
+  return Math.round((stat.correct / stat.attempts) * 100);
+}
+function moduleQuestionCount(moduleId) {
+  return DATA.singleQuestions.filter(q => q.module === moduleId).length;
+}
+function getQuestionIdsByModule(moduleId) {
+  return DATA.singleQuestions.filter(q => q.module === moduleId).map(q => q.id);
+}
+function dueReviewQuestions() {
+  const today = todayISO();
+  return Object.entries(app.state.review)
+    .filter(([qid, meta]) => questionMap[qid] && meta.due <= today)
+    .map(([qid]) => questionMap[qid]);
+}
+function weakModules(limit=3) {
+  return DATA.modules.map(m => {
+    const stat = app.state.moduleStats[m.id] || { attempts:0, correct:0 };
+    const acc = stat.attempts ? stat.correct / stat.attempts : 0;
+    return { ...m, acc, attempts: stat.attempts, correct: stat.correct };
+  })
+  .sort((a,b) => {
+    if (a.attempts === 0 && b.attempts === 0) return 0;
+    if (a.attempts === 0) return -1;
+    if (b.attempts === 0) return 1;
+    return a.acc - b.acc;
+  })
+  .slice(0, limit);
+}
+function strongModules(limit=3) {
+  return DATA.modules.map(m => {
+    const stat = app.state.moduleStats[m.id] || { attempts:0, correct:0 };
+    const acc = stat.attempts ? stat.correct / stat.attempts : 0;
+    return { ...m, acc, attempts: stat.attempts };
+  })
+  .sort((a,b) => b.acc - a.acc)
+  .filter(x => x.attempts > 0)
+  .slice(0, limit);
+}
+function topWeakTags(limit=6) {
+  return Object.entries(app.state.tagStats)
+   .map(([tag, stat]) => ({tag, attempts:stat.attempts, acc: stat.attempts ? stat.correct/stat.attempts : 0}))
+   .sort((a,b) => {
+     if (a.attempts === 0 && b.attempts === 0) return 0;
+     if (a.attempts === 0) return -1;
+     if (b.attempts === 0) return 1;
+     return a.acc - b.acc;
+   })
+   .slice(0, limit);
+}
+
+function weightedPick(pool, weightFn, count) {
+  const chosen = [];
+  const arr = [...pool];
+  while (arr.length && chosen.length < count) {
+    const weights = arr.map(weightFn);
+    const total = weights.reduce((a,b) => a+b, 0);
+    let r = Math.random() * total;
+    let idx = 0;
+    for (; idx < arr.length; idx++) {
+      r -= weights[idx];
+      if (r <= 0) break;
+    }
+    const picked = arr.splice(Math.min(idx, arr.length-1), 1)[0];
+    chosen.push(picked);
+  }
+  return chosen;
+}
+
+function questionWeight(q) {
+  const qstat = app.state.questionStats[q.id] || { attempts:0, wrong:0, correct:0 };
+  const mstat = app.state.moduleStats[q.module] || { attempts:0, correct:0 };
+  const moduleAcc = mstat.attempts ? (mstat.correct / mstat.attempts) : 0;
+  const weakBoost = 1 + (1 - moduleAcc) * 2.4;
+  const wrongBoost = 1 + (qstat.wrong * 0.55);
+  const unseenBoost = qstat.attempts === 0 ? 1.4 : 1;
+  return weakBoost * wrongBoost * unseenBoost;
+}
+
+function generateMock() {
+  const byLevel = {
+    know: DATA.singleQuestions.filter(q => q.level === "know"),
+    understand: DATA.singleQuestions.filter(q => q.level === "understand"),
+    apply: DATA.singleQuestions.filter(q => q.level === "apply"),
+  };
+  const selectedSingles = [
+    ...weightedPick(byLevel.know, questionWeight, 10),
+    ...weightedPick(byLevel.understand, questionWeight, 7),
+    ...weightedPick(byLevel.apply, questionWeight, 7),
+  ];
+
+  // diversify modules a little
+  selectedSingles.sort((a,b) => a.module.localeCompare(b.module) || a.id.localeCompare(b.id));
+  const groups = weightedPick(DATA.tfGroups, g => {
+    const mstat = app.state.moduleStats[g.module] || { attempts:0, correct:0 };
+    const acc = mstat.attempts ? mstat.correct / mstat.attempts : 0;
+    return 1 + (1 - acc) * 2;
+  }, 4);
+
+  return {
+    singles: selectedSingles,
+    tfGroups: groups
+  };
+}
+
+function tfGroupScore(correctCount) {
+  if (correctCount === 1) return 0.1;
+  if (correctCount === 2) return 0.25;
+  if (correctCount === 3) return 0.5;
+  if (correctCount === 4) return 1;
+  return 0;
+}
+
+function moduleAccuracy(moduleId) {
+  const stat = app.state.moduleStats[moduleId] || { attempts:0, correct:0 };
+  return accuracyOf(stat);
+}
+
+function setView(id) {
+  app.currentView = id;
+  ["dashboard","learn","modules","practice","mock","review","mistakes","settings"].forEach(v => {
+    document.getElementById("view-"+v).classList.toggle("hidden", v !== id);
+  });
+  document.querySelectorAll(".nav button").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.view === id);
+  });
+  if (id === "dashboard") renderDashboard();
+  if (id === "learn") renderLearn();
+  if (id === "modules") renderModules();
+  if (id === "practice") renderPractice();
+  if (id === "mock") renderMockHome();
+  if (id === "review") renderReview();
+  if (id === "mistakes") renderMistakes();
+  if (id === "settings") renderSettings();
+}
+
+function renderNav() {
+  const el = document.getElementById("nav");
+  el.innerHTML = NAVS.map(item => `
+    <button data-view="${item.id}" class="${item.id===app.currentView?"active":""}">
+      ${item.label}
+      <small>${item.sub}</small>
+    </button>
+  `).join("");
+  el.querySelectorAll("button").forEach(btn => btn.onclick = () => setView(btn.dataset.view));
+}
+
+function updateSideReminder() {
+  const due = dueReviewQuestions().length;
+  const weak = weakModules(1)[0];
+  const text = due > 0
+    ? `Hôm nay có ${due} câu đến hạn ôn lại. Ưu tiên phần ${weak ? weak.title : "điểm yếu hiện tại"} trước.`
+    : weak
+      ? `Phần đang yếu nhất: ${weak.title}. Hãy làm lại 1 lượt practice rồi vào mock test.`
+      : "Bạn chưa có dữ liệu học. Hãy mở Modules hoặc Mock test để bắt đầu.";
+  const el = document.getElementById("sideReminder");
+  if (el) el.textContent = text;
+}
+
+
+const TEACHING = {"A": {"intro": "Module A cần được học như một bài về sự hình thành, phát triển, khủng hoảng và biến đổi của mô hình xã hội chủ nghĩa trong thế kỉ XX. Điểm quan trọng không phải là nhớ rời rạc vài mốc năm, mà là hiểu mối liên hệ giữa Cách mạng Nga, sự ra đời của Liên Xô, sự mở rộng của hệ thống xã hội chủ nghĩa, sự sụp đổ của mô hình ở Đông Âu và Liên Xô, rồi sự tiếp tục cải cách ở một số nước như Trung Quốc, Việt Nam, Lào, Cuba.", "lesson": "Theo tài liệu ôn cập nhật 19/04/2026, phần này được xếp vào nền lớp 11 để chống hổng kiến thức, nhưng vẫn rất hữu ích cho các câu nhận diện bối cảnh và liên hệ thế giới trong đề thi. Các tài liệu bạn tải lên cũng nhấn mạnh mốc 1917, 1922, 1924, 1991 và các thành tựu cải cách mở cửa của Trung Quốc như những ý đặc biệt dễ hỏi. fileciteturn11file0 fileciteturn11file1", "articleSections": [{"title": "Phần 1. Hai cuộc cách mạng Nga năm 1917: phải tách đúng bản chất", "paras": ["Muốn học chắc phần này, em phải tách được hai sự kiện xảy ra trong cùng năm 1917. Cách mạng tháng Hai lật đổ chế độ Nga hoàng. Sau thắng lợi đó, ở Nga tồn tại cục diện phức tạp với các Xô viết đại diện cho quần chúng cách mạng và Chính phủ lâm thời của giai cấp tư sản. Như vậy, tháng Hai chưa tạo ra nhà nước xã hội chủ nghĩa hoàn chỉnh, mà mới mở ra một thời kì quá độ đầy mâu thuẫn.", "Cách mạng tháng Mười mới là bước ngoặt quyết định. Dưới sự lãnh đạo của Lê-nin và Đảng Bôn-sê-vích, các Xô viết lật đổ Chính phủ lâm thời và đưa chính quyền Xô viết lên nắm quyền. Vì vậy, nếu câu hỏi dùng từ trực tiếp như dẫn đến sự ra đời của gì, đáp án chuẩn thường là chính quyền Xô viết chứ chưa thể nhảy quá xa tới cả hệ thống xã hội chủ nghĩa thế giới.", "Tài liệu ôn sử bạn tải lên còn diễn đạt rất rõ logic này: tháng 2-1917 lật đổ Nga hoàng và xuất hiện Chính phủ lâm thời, còn tháng 10-1917 thành lập Chính phủ Xô viết do Lê-nin đứng đầu. Đây là cái khung gốc để em không bị lẫn khi làm trắc nghiệm. fileciteturn11file1"]}, {"title": "Phần 2. Từ nước Nga Xô viết đến Liên bang Xô viết: 1922 và 1924 khác nhau ở đâu", "paras": ["Một trong những bẫy lớn nhất của phần này là nhầm 12/1922 với 1924. Tháng 12/1922, Đại hội lần thứ nhất các Xô viết toàn Liên bang thông qua Tuyên bố thành lập Liên bang Cộng hòa xã hội chủ nghĩa Xô viết. Đó là mốc khai sinh về mặt tổ chức chính trị liên bang.", "Năm 1924, Hiến pháp đầu tiên của Liên Xô được thông qua, hoàn thành quá trình thành lập Nhà nước Liên bang Cộng hòa xã hội chủ nghĩa Xô viết về mặt pháp lí. Vì thế, nếu đề hỏi sự kiện nào đánh dấu hoàn thành quá trình thành lập Nhà nước Liên Xô, đáp án đúng là 1924.", "Các tài liệu bạn tải lên đều nhấn mạnh cách phân biệt này. Một tài liệu module ghi 12/1922 là Tuyên bố thành lập Liên Xô, còn 1924 là Hiến pháp đầu tiên; tài liệu ôn sử giải thích rõ hơn rằng mốc 1924 mới hoàn tất quá trình thành lập nhà nước liên bang. fileciteturn10file12 fileciteturn11file1"]}, {"title": "Phần 3. Sự phát triển rồi khủng hoảng của hệ thống xã hội chủ nghĩa", "paras": ["Sau Chiến tranh thế giới thứ hai, chủ nghĩa xã hội không còn giới hạn trong phạm vi Liên Xô. Tài liệu ôn sử nêu rõ sự mở rộng sang Đông Âu, rồi châu Á và khu vực Mĩ La-tinh với các trường hợp tiêu biểu như Trung Quốc, Triều Tiên, Việt Nam, Lào, Cuba. Chính điều này giúp em hiểu vì sao sách thường dùng cụm hệ thống xã hội chủ nghĩa thế giới.", "Tuy nhiên, đến cuối thập niên 1980 và đầu thập niên 1990, mô hình xã hội chủ nghĩa ở Đông Âu và Liên Xô sụp đổ. Ở đây phải học theo cặp nguyên nhân chủ quan và khách quan. Chủ quan gồm sai lầm trong đường lối cải tổ, những hạn chế của mô hình kinh tế xã hội không được sửa chữa, quan liêu, vi phạm dân chủ, xu hướng dân tộc li khai. Khách quan là sự chống phá của các thế lực thù địch từ bên ngoài.", "Nếu đề dùng từ nguyên nhân chủ quan hoặc nguyên nhân quyết định, em phải ưu tiên nhóm nguyên nhân bên trong. Đây là cách ra đề rất quen thuộc trong phần lịch sử thế giới hiện đại. fileciteturn11file1"]}, {"title": "Phần 4. Sau năm 1991, vì sao Trung Quốc vẫn là ý rất hay ra", "paras": ["Sau khi Liên Xô tan rã, chủ nghĩa xã hội không còn là một hệ thống thế giới, nhưng một số nước vẫn tiếp tục cải cách và xây dựng đất nước theo định hướng xã hội chủ nghĩa. Tài liệu ôn sử nhắc rõ Trung Quốc, Việt Nam, Lào, Cuba là những trường hợp cần chú ý.", "Trong số đó, Trung Quốc là ví dụ hay gặp nhất trong đề thi. Về chính trị, Trung Quốc xây dựng hệ thống lí luận về chủ nghĩa xã hội đặc sắc Trung Quốc. Về kinh tế, nước này tăng trưởng cao liên tục, vượt Anh, Pháp, Đức, rồi vượt Nhật Bản để giữ vị trí thứ hai thế giới từ năm 2010. Về khoa học kĩ thuật, có chương trình thám hiểm không gian từ năm 1992 và đưa người vào vũ trụ năm 2003. Về đối ngoại, Trung Quốc đa dạng hóa, đa phương hóa quan hệ và thu hồi Hồng Kông năm 1997, Ma Cao năm 1999.", "Ý nghĩa của cải cách mở cửa Trung Quốc thường được chốt ở hai tầng: đối với Trung Quốc là nâng cao vị thế quốc tế; đối với thế giới là chứng tỏ sức sống của chủ nghĩa xã hội và để lại bài học cho các nước khác. Đây chính là lí do phần này xuất hiện đều trong các bộ câu hỏi luyện tập. fileciteturn11file1"]}, {"title": "Phần 5. Cách nhớ để không rối", "paras": ["Em có thể nhớ module A theo một đường dây rất gọn: 1917 tạo ra chính quyền Xô viết, 1922 khai sinh liên bang, 1924 hoàn tất pháp lí, sau 1945 hệ thống mở rộng, 1991 mô hình ở Liên Xô và Đông Âu sụp đổ, sau đó một số nước tiếp tục cải cách.", "Nếu học theo đường dây này, em sẽ không còn học phần chủ nghĩa xã hội như một đống mốc tản mạn. Em đang học một câu chuyện có mở đầu, phát triển, khủng hoảng và chuyển hướng. Đó chính là logic giúp phần learn mode dễ hiểu và dễ nhớ hơn."]}], "howToThink": ["Thấy mốc 1917, phải hỏi ngay đề đang nói tới tháng Hai hay tháng Mười.", "Thấy 12/1922 và 1924, tách rõ khai sinh liên bang với hoàn tất cơ sở pháp lí.", "Thấy câu về sự sụp đổ, kiểm tra xem đề muốn nguyên nhân chủ quan, khách quan hay nguyên nhân quyết định.", "Thấy Trung Quốc, chia câu hỏi thành bốn ô: chính trị, kinh tế, khoa học kĩ thuật, đối ngoại.", "Luôn nối mốc với bản chất sự kiện, không học năm trống."], "memoryTitle": "Khung nhớ logic của module A", "memoryFrames": ["1917 có hai cuộc cách mạng nhưng chỉ tháng Mười mới lập chính quyền Xô viết.", "12/1922 là thành lập Liên Xô; 1924 là hoàn tất nhà nước liên bang về mặt pháp lí.", "Sụp đổ của Đông Âu và Liên Xô phải ưu tiên nhìn từ sai lầm bên trong nếu đề hỏi nguyên nhân chủ quan.", "Trung Quốc là ví dụ tiêu biểu về cải cách, mở cửa và tăng trưởng mạnh sau 1991.", "Học phần này như một đường dây lịch sử, không học theo từng mảnh rời."], "compareTitle": "Bảng phân biệt bắt buộc phải chắc", "compare": [["Tháng Hai 1917", "Lật đổ Nga hoàng, Chính phủ lâm thời ra đời", "Chưa phải chính quyền Xô viết"], ["Tháng Mười 1917", "Lật đổ Chính phủ lâm thời, lập chính quyền Xô viết", "Đáp án trực tiếp rất hay ra"], ["12/1922", "Thông qua Tuyên bố thành lập Liên bang Xô viết", "Mốc khai sinh"], ["1924", "Hiến pháp đầu tiên của Liên Xô", "Mốc hoàn tất pháp lí"], ["2010", "Trung Quốc vượt Nhật Bản", "Đứng thứ hai thế giới"]], "examMoves": ["Thấy từ trực tiếp trong câu hỏi về 1917 thì thường đáp án là chính quyền Xô viết.", "Thấy từ hoàn thành quá trình thành lập Nhà nước Liên Xô thì chọn 1924.", "Thấy nguyên nhân chủ quan quyết định thì đi vào sai lầm lãnh đạo, quan liêu, vi phạm dân chủ.", "Thấy mốc 1997 và 1999, nhớ Hồng Kông và Ma Cao."], "recap": ["Phải nắm logic 1917 → 1922 → 1924 → sau 1945 → 1991 → cải cách sau 1991.", "Điểm kéo điểm của phần này là phân biệt đúng bản chất từng mốc."]}, "B": {"intro": "Module B không nên học như một danh sách dài các trận đánh cổ trung đại. Muốn nhớ bền, em phải nhìn thấy một cấu trúc rõ ràng: thứ nhất là vì sao Việt Nam thường trở thành mục tiêu xâm lược; thứ hai là những yếu tố làm nên thắng lợi của các cuộc kháng chiến; thứ ba là các khởi nghĩa và bài học từ những cuộc kháng chiến không thành công.", "lesson": "Tài liệu ôn sử bạn tải lên triển khai phần này rất sát với cách học theo hệ thống: vị trí địa chiến lược, vai trò và ý nghĩa của chiến tranh bảo vệ Tổ quốc, các chiến thắng tiêu biểu, nguyên nhân thắng lợi, rồi mới đến các khởi nghĩa và các trường hợp thất bại như nhà Hồ, nhà Nguyễn. Vì vậy learn mode sẽ dạy theo đúng mạch đó. fileciteturn11file1", "articleSections": [{"title": "Phần 1. Vì sao Việt Nam luôn ở vị trí chiến lược", "paras": ["Việt Nam nằm ở Đông Nam Á, án ngữ Biển Đông, gần Trung Quốc và là cầu nối giữa Đông Nam Á lục địa với Đông Nam Á hải đảo. Chính vị trí ấy khiến nước ta vừa có điều kiện giao lưu, vừa thường xuyên phải đối mặt với nguy cơ ngoại xâm. Đây là ý nền, vì nếu hiểu được vị trí địa chiến lược thì em sẽ không thấy các cuộc kháng chiến trong lịch sử là những sự kiện rời nhau.", "Tài liệu ôn sử giải thích rất rõ rằng vị trí địa lí này tác động lớn đến sự tồn vong của quốc gia, tới quá trình hình thành dân tộc và cả công cuộc xây dựng đất nước. Vì vậy khi đề hỏi vị trí địa chiến lược của Việt Nam, em nên nghĩ ngay tới cụm cầu nối giữa Đông Nam Á lục địa với Đông Nam Á hải đảo, không sa vào các đáp án mô tả quá rộng hoặc sai khu vực. fileciteturn11file1"]}, {"title": "Phần 2. Công thức thắng lợi chung của các cuộc kháng chiến", "paras": ["Các cuộc kháng chiến thắng lợi tiêu biểu như chống Nam Hán năm 938, chống Tống năm 981 và 1075–1077, ba lần chống Mông – Nguyên, khởi nghĩa Lam Sơn, phong trào Tây Sơn đều không chỉ thắng nhờ dũng cảm. Điểm chung là tính chính nghĩa của cuộc chiến bảo vệ độc lập dân tộc, tinh thần yêu nước, sự đoàn kết toàn dân, đường lối chiến lược và chiến thuật phù hợp, cùng tài thao lược của các lãnh đạo và tướng lĩnh.", "Đây chính là nhóm đáp án hay được dùng trong câu hỏi nguyên nhân thắng lợi chung. Nếu chỉ nhìn vào yếu tố quân số hay vũ khí, em sẽ dễ bị rơi vào bẫy. Truyền thống chiến tranh nhân dân, biết tận dụng địa hình, biết lấy yếu thắng mạnh mới là bản sắc nổi bật của nghệ thuật quân sự Việt Nam. fileciteturn11file1"]}, {"title": "Phần 3. Các cuộc khởi nghĩa tiêu biểu trong thời Bắc thuộc", "paras": ["Hai Bà Trưng gắn với năm 40–43 và ý nghĩa nổi bật là cuộc đấu tranh vũ trang lớn đầu tiên, mở đầu quá trình đấu tranh giành lại độc lập tự chủ lâu dài của người Việt. Bà Triệu gắn với năm 248 và biểu tượng cho tinh thần kiên cường, bất khuất trước ách đô hộ phương Bắc. Lý Bí gắn với việc lập nước Vạn Xuân, cho thấy khả năng giành thắng lợi và xây dựng nhà nước độc lập. Phùng Hưng tiếp tục nuôi dưỡng ý chí tự chủ và tạo cơ sở tinh thần cho thắng lợi hoàn toàn đầu thế kỉ X.", "Học phần này nên ghép theo công thức người lãnh đạo – năm – ý nghĩa nổi bật. Chỉ cần nhớ được một ý nghĩa cốt lõi của mỗi cuộc khởi nghĩa là em đã xử lí được phần lớn câu trắc nghiệm ở mức biết và hiểu. fileciteturn11file1"]}, {"title": "Phần 4. Những thắng lợi và thất bại phải phân biệt cho đúng", "paras": ["Các chiến thắng lớn thường bị lẫn nhất là Rạch Gầm – Xoài Mút và Ngọc Hồi – Đống Đa. Rạch Gầm – Xoài Mút là chiến thắng chống quân Xiêm. Ngọc Hồi – Đống Đa là chiến thắng chống quân Thanh, gắn với Quang Trung năm 1789. Khởi nghĩa Lam Sơn kết thúc khi quân Minh bị đánh bại sau trận Chi Lăng – Xương Giang và chấp nhận rút về nước.", "Ngược lại, các cuộc kháng chiến không thành công cũng phải học bằng nguyên nhân chủ yếu. Nhà Hồ thất bại vì thiếu đường lối kháng chiến đúng, quá dựa vào thành lũy, nặng về phòng ngự bị động. Nhà Nguyễn chống Pháp thất bại chủ yếu vì thiếu quyết đoán, thiên về chủ hòa, không hợp lực với nhân dân, bên cạnh sự lạc hậu về trang bị và kĩ thuật. Đây là kiểu câu hỏi rất hay ra để kiểm tra khả năng phân biệt nguyên nhân chủ yếu với nguyên nhân phụ. fileciteturn11file1"]}, {"title": "Phần 5. Bài học lịch sử còn giá trị hiện nay", "paras": ["Từ chuỗi khởi nghĩa và kháng chiến trước 1945, điều cần nhớ không chỉ là thắng trận nào, năm nào. Điều sâu hơn là dân tộc Việt Nam đã hình thành truyền thống yêu nước, ý chí kiên cường, lòng tự hào dân tộc và tinh thần đại đoàn kết trong đấu tranh giữ nước.", "Khi học theo bài viết, em sẽ thấy module này thực ra rất có logic. Vị trí chiến lược tạo ra thách thức. Sức mạnh đoàn kết và chiến lược đúng tạo ra thắng lợi. Sai lầm trong đường lối và tổ chức dẫn đến thất bại. Nắm được ba mắt xích ấy là em có thể tự tin xử lí phần lịch sử Việt Nam trước 1945."]}], "howToThink": ["Gặp tên trận, ghép đúng với đúng đối tượng xâm lược trước khi nghĩ tới ý nghĩa.", "Gặp câu về vị trí địa chiến lược, nghĩ tới Biển Đông và vai trò cầu nối.", "Gặp câu về nguyên nhân thắng lợi, ưu tiên tính chính nghĩa, đoàn kết toàn dân, chiến lược đúng, lãnh đạo giỏi.", "Gặp câu về thất bại của nhà Hồ hoặc nhà Nguyễn, tìm nguyên nhân chủ yếu ở đường lối và cách tổ chức kháng chiến.", "Học khởi nghĩa theo công thức người – năm – ý nghĩa."], "memoryTitle": "Khung nhớ logic của module B", "memoryFrames": ["Việt Nam có vị trí chiến lược vì là cầu nối giữa Đông Nam Á lục địa và hải đảo.", "Thắng lợi chung của kháng chiến đến từ chính nghĩa, đoàn kết, chiến lược đúng, lãnh đạo giỏi.", "Hai Bà Trưng là cuộc đấu tranh vũ trang lớn đầu tiên rất hay ra trong đề.", "Rạch Gầm – Xoài Mút chống Xiêm; Ngọc Hồi – Đống Đa chống Thanh.", "Nhà Hồ và nhà Nguyễn thất bại chủ yếu vì đường lối kháng chiến không phù hợp."], "compareTitle": "Bảng phân biệt rất dễ nhầm", "compare": [["Hai Bà Trưng", "Cuộc đấu tranh vũ trang lớn đầu tiên", "Không nhầm với Bà Triệu"], ["Rạch Gầm – Xoài Mút", "Chống quân Xiêm", "Không phải chống Thanh"], ["Ngọc Hồi – Đống Đa", "Chống quân Thanh", "Gắn với Quang Trung 1789"], ["Lam Sơn", "Chi Lăng – Xương Giang, quân Minh rút", "Không phải tiêu diệt hoàn toàn trên đất Việt"], ["Nhà Nguyễn chống Pháp", "Thiếu quyết đoán, chủ hòa, không hợp lực với dân", "Nguyên nhân chủ yếu"]], "examMoves": ["Thấy đáp án nêu đúng tên trận nhưng sai đối tượng xâm lược thì loại ngay.", "Thấy từ chủ yếu trong phần thất bại cuối thế kỉ XIX, ưu tiên nguyên nhân đường lối và thái độ của triều đình.", "Đề hay thích hỏi vị trí chiến lược dưới dạng cầu nối, không gian Biển Đông.", "Đừng cố học hết diễn biến chi tiết; học hạt nhân của từng cuộc chiến sẽ hiệu quả hơn."], "recap": ["Học module B theo trục: vị trí chiến lược → công thức thắng lợi → khởi nghĩa tiêu biểu → nguyên nhân thất bại.", "Muốn chắc điểm, hãy ghép đúng trận đánh với đúng kẻ thù trước."]}, "C": {"intro": "Module C về Liên Hợp Quốc có ít mốc hơn nhiều phần khác, nhưng lại dễ mất điểm vì học sinh học lẫn mục tiêu, nguyên tắc, cơ quan và tiến trình thành lập. Learn mode của phần này sẽ đi theo cách giải thích vì sao tổ chức này ra đời, nó hoạt động theo logic nào, và vì sao Việt Nam cũng thường được hỏi trong phần này.", "lesson": "Theo bộ ôn cập nhật 19/04/2026, các câu hỏi hay gặp nhất xoay quanh mục đích, nguyên tắc hoạt động, cơ quan chính của Liên Hợp Quốc và bối cảnh thế giới sau Chiến tranh lạnh. Vì vậy phần học phải vừa chốt mốc thành lập, vừa giải thích bản chất đối đầu Đông – Tây và xu thế hòa bình, hợp tác, phát triển sau Chiến tranh lạnh. fileciteturn11file0", "articleSections": [{"title": "Phần 1. Liên Hợp Quốc không xuất hiện trong một ngày", "paras": ["Nhiều bạn chỉ nhớ 24/10/1945 rồi dừng lại. Cách học ấy dễ dẫn đến nhầm lẫn. Liên Hợp Quốc là kết quả của cả một quá trình hình thành trong bối cảnh thế giới vừa trải qua thảm họa chiến tranh. Từ Tuyên bố Luân Đôn năm 1941, Tuyên bố Liên hợp quốc năm 1942, Hội nghị Tê-hê-ran năm 1943 đến Hội nghị Ianta tháng 2/1945, các cường quốc Đồng minh dần thống nhất việc xây dựng một cơ chế quốc tế mới để duy trì hòa bình.", "Bước quyết định là Hội nghị Xan Phran-xi-xcô từ 25/4 đến 26/6/1945, nơi đại diện 50 nước thông qua Hiến chương. Chỉ sau khi Hiến chương được các nước thành viên phê chuẩn, Liên Hợp Quốc mới chính thức thành lập ngày 24/10/1945. Đó là lí do đề rất hay gài giữa hội nghị thông qua Hiến chương và ngày thành lập chính thức. fileciteturn10file12"]}, {"title": "Phần 2. Mục tiêu và nguyên tắc: phải tách hai tầng kiến thức", "paras": ["Mục tiêu quan trọng nhất của Liên Hợp Quốc là duy trì hòa bình và an ninh quốc tế. Từ hạt nhân đó, tổ chức này mới thúc đẩy quan hệ hữu nghị giữa các dân tộc, hợp tác về kinh tế, xã hội, văn hóa, nhân đạo và điều hòa hoạt động của các quốc gia.", "Nguyên tắc hoạt động lại là tầng khác. Em cần nhớ những nguyên tắc lớn như bình đẳng chủ quyền, tôn trọng toàn vẹn lãnh thổ và độc lập chính trị, giải quyết tranh chấp bằng biện pháp hòa bình, không đe dọa dùng vũ lực, không can thiệp vào công việc nội bộ và tôn trọng luật pháp quốc tế. Nếu câu hỏi hỏi mục tiêu mà em trả lời bằng nguyên tắc, hoặc ngược lại, em sẽ mất điểm dù vẫn nhớ kiến thức. fileciteturn9file0"]}, {"title": "Phần 3. Cơ quan nào quan trọng nhất trong hòa bình và an ninh", "paras": ["Trong hệ thống Liên Hợp Quốc, Hội đồng Bảo an là cơ quan giữ trách nhiệm chính về duy trì hòa bình và an ninh quốc tế. Đây là nội dung rất hay bị lẫn với Đại hội đồng, Ban Thư kí hoặc Tòa án Quốc tế. Cách nhớ tốt nhất là gắn Hội đồng Bảo an với từ khóa an ninh và thực thi.", "Ngược lại, NATO không phải là cơ quan thuộc hệ thống Liên Hợp Quốc. Đây là một bẫy cực phổ biến vì nhiều học sinh thấy NATO quen thuộc trong phần Chiến tranh lạnh nên chọn nhầm. Hãy nhớ rõ: NATO là liên minh quân sự của phương Tây, còn Liên Hợp Quốc là tổ chức quốc tế toàn cầu. fileciteturn10file16"]}, {"title": "Phần 4. Liên Hợp Quốc trong bối cảnh thế giới sau Chiến tranh lạnh", "paras": ["Phần Liên Hợp Quốc trong đề 2026 thường liên hệ với chủ đề thế giới trong và sau Chiến tranh lạnh. Bộ ôn cập nhật chỉ rõ rằng sau Chiến tranh lạnh, xu thế chung của thế giới là hòa bình, hợp tác và phát triển, nhưng cạnh tranh chiến lược, xung đột cục bộ và các thách thức an ninh phi truyền thống vẫn tồn tại.", "Điều này giúp em hiểu vai trò của Liên Hợp Quốc không chỉ nằm ở việc tổ chức này ra đời năm 1945, mà còn ở chỗ nó là cơ chế điều hòa hoạt động giữa các quốc gia trong một thế giới nhiều biến động. Việt Nam gia nhập Liên Hợp Quốc năm 1977, cho thấy quá trình hội nhập của đất nước vào đời sống quốc tế sau chiến tranh. fileciteturn10file12"]}, {"title": "Phần 5. Cách học để không nhầm", "paras": ["Hãy học phần này theo công thức ba tầng. Tầng một là tiến trình thành lập. Tầng hai là mục tiêu và nguyên tắc. Tầng ba là cơ quan và vai trò thực tiễn. Nếu em tách được ba tầng này, hầu như các câu trắc nghiệm về Liên Hợp Quốc sẽ trở nên rất gọn.", "Đây là module không cần học quá nhiều chi tiết lẻ. Cái quan trọng là em hiểu vì sao Liên Hợp Quốc ra đời và nắm chắc những từ khóa chuẩn của sách giáo khoa."]}], "howToThink": ["Gặp câu hỏi về ngày thành lập, kiểm tra xem đề hỏi ngày thông qua Hiến chương hay ngày chính thức thành lập.", "Gặp câu về mục tiêu, nhớ mục tiêu số một là duy trì hòa bình và an ninh quốc tế.", "Gặp câu về cơ quan chịu trách nhiệm chính về hòa bình và an ninh, chọn Hội đồng Bảo an.", "Gặp NATO trong câu về Liên Hợp Quốc, phải cảnh giác vì đó thường là đáp án sai.", "Nối Liên Hợp Quốc với bối cảnh thế giới sau 1945 và sau Chiến tranh lạnh."], "memoryTitle": "Khung nhớ logic của module C", "memoryFrames": ["1941–1945 là quá trình chuẩn bị và hình thành Liên Hợp Quốc.", "24/10/1945 là ngày Liên Hợp Quốc chính thức ra đời.", "Mục tiêu số một là hòa bình và an ninh quốc tế.", "Hội đồng Bảo an là cơ quan trọng yếu về an ninh.", "NATO không thuộc hệ thống Liên Hợp Quốc."], "compareTitle": "Bảng phân biệt mục tiêu – nguyên tắc – cơ quan", "compare": [["Mục tiêu số một", "Duy trì hòa bình và an ninh quốc tế", "Không nhầm với nguyên tắc"], ["Nguyên tắc", "Giải quyết tranh chấp bằng biện pháp hòa bình", "Không nhầm với mục tiêu"], ["Hội đồng Bảo an", "Trách nhiệm chính về hòa bình, an ninh", "Không nhầm với Đại hội đồng"], ["24/10/1945", "Ngày LHQ chính thức thành lập", "Không nhầm với 26/6/1945"]], "examMoves": ["Thấy 26/6/1945 thì nghĩ tới thông qua Hiến chương, chưa phải ngày thành lập.", "Thấy mục tiêu quan trọng nhất thì gần như chắc chắn là hòa bình và an ninh quốc tế.", "Thấy đáp án là NATO trong hệ thống LHQ thì loại ngay.", "Phần này thích kiểm tra khả năng phân loại kiến thức, không phải trí nhớ máy móc."], "recap": ["Chốt ba tầng: tiến trình thành lập, mục tiêu – nguyên tắc, cơ quan – vai trò.", "Module C dễ ăn điểm nếu em không học lẫn các nhóm khái niệm."]}, "D": {"intro": "ASEAN là phần rất dễ học nhưng cũng rất dễ mất điểm oan do lẫn mốc năm, lẫn văn kiện thành lập với văn kiện bước ngoặt, hoặc quên trình tự kết nạp thành viên. Learn mode sẽ biến phần này thành một bài đọc logic: ra đời trong bối cảnh nào, phát triển qua những chặng nào, và Việt Nam đứng ở đâu trong quá trình ấy.", "lesson": "Bộ ôn cập nhật 19/04/2026 xác định đây là một trong các chủ đề trọng tâm lớp 12, tập trung vào ngày thành lập, Hiệp ước Bali, quá trình mở rộng thành viên, Cộng đồng ASEAN 2015 và ý nghĩa Việt Nam gia nhập ASEAN. Vì vậy phần học sẽ ưu tiên mạch phát triển thay vì chỉ liệt kê mốc. fileciteturn11file0", "articleSections": [{"title": "Phần 1. ASEAN ra đời trong bối cảnh nào", "paras": ["ASEAN được thành lập ngày 8/8/1967 tại Băng Cốc, Thái Lan, với 5 nước sáng lập là Indonesia, Malaysia, Philippines, Singapore và Thái Lan. Mục tiêu ban đầu là thúc đẩy hợp tác khu vực, góp phần ổn định chính trị và tạo điều kiện phát triển kinh tế, văn hóa, xã hội trong bối cảnh Đông Nam Á còn nhiều biến động.", "Nếu muốn học chắc, em nên nhớ ASEAN không phải xuất hiện như một liên minh quân sự. Nó là tổ chức hợp tác khu vực. Đây là điểm giúp em loại được các đáp án sai thường cố tình đẩy ASEAN sang màu sắc quân sự hoặc đối đầu. fileciteturn10file12"]}, {"title": "Phần 2. Bước ngoặt phát triển của ASEAN", "paras": ["Sau khi ra đời, ASEAN không dừng ở mức một diễn đàn lỏng lẻo. Mốc quan trọng cần nhớ là Hiệp ước Bali năm 1976. Đây là văn kiện xác lập các nguyên tắc cơ bản trong quan hệ giữa các nước Đông Nam Á và thường được xem là bước ngoặt trong tiến trình trưởng thành của ASEAN.", "Đề rất hay gài chỗ này. Tuyên bố Băng Cốc năm 1967 là văn kiện thành lập ASEAN. Hiệp ước Bali năm 1976 là văn kiện bước ngoặt, không phải văn kiện thành lập. Chỉ cần tách đúng hai mốc này, em đã tránh được một lỗi rất phổ biến. fileciteturn10file12"]}, {"title": "Phần 3. Mở rộng thành viên và sự tham gia của Việt Nam", "paras": ["Quá trình mở rộng ASEAN cần học theo chuỗi rõ ràng. Sau 5 nước sáng lập, Brunei gia nhập năm 1984. Việt Nam gia nhập ngày 28/7/1995 với tư cách thành viên thứ bảy. Lào và Myanmar gia nhập năm 1997. Campuchia gia nhập năm 1999, giúp ASEAN đủ 10 nước Đông Nam Á.", "Mốc Việt Nam 1995 rất quan trọng vì nó gắn với ý nghĩa phá thế bị bao vây, cô lập, mở rộng quan hệ khu vực và đánh dấu bước tiến mới trong đường lối đối ngoại, hội nhập. Trong đề, 1995 còn hay đi cùng mốc bình thường hóa quan hệ với Hoa Kì nên em phải tách đúng sự kiện khu vực với sự kiện song phương. fileciteturn10file12"]}, {"title": "Phần 4. Từ ASEAN đến Cộng đồng ASEAN", "paras": ["Quá trình liên kết khu vực được nâng lên một bước khi Hiến chương ASEAN được thông qua năm 2007 và đặc biệt là khi Cộng đồng ASEAN chính thức ra đời ngày 31/12/2015. Cộng đồng này được xây dựng trên ba trụ cột: Chính trị – An ninh, Kinh tế, Văn hóa – Xã hội.", "Đây là chỗ đề rất thích hỏi dưới dạng số lượng trụ cột, thời điểm ra đời hoặc tên trụ cột. Cách nhớ tốt nhất là xem 2015 là mốc trưởng thành của ASEAN, còn ba trụ cột là ba mặt liên kết toàn diện của tổ chức. fileciteturn10file12"]}, {"title": "Phần 5. Cách nhớ không nhầm", "paras": ["Module ASEAN sẽ trở nên rất dễ nếu em biến nó thành một hàng thẳng thời gian: 1967 thành lập, 1976 bước ngoặt Bali, 1984 Brunei, 1995 Việt Nam, 1999 đủ 10 nước, 2015 Cộng đồng ASEAN. Khi đó các câu hỏi nhận diện sẽ gần như tự mở đáp án.", "Hãy nhớ thêm một nguyên tắc: khi đề hỏi văn kiện thành lập, nghĩ tới Băng Cốc. Khi đề hỏi bước ngoặt, nghĩ tới Bali. Khi đề hỏi cộng đồng, nghĩ tới 2015 và ba trụ cột."]}], "howToThink": ["Gặp câu về ASEAN, xác định đề đang hỏi mốc ra đời, bước ngoặt hay giai đoạn trưởng thành.", "Gặp năm 1995, tách sự kiện Việt Nam gia nhập ASEAN khỏi bình thường hóa với Hoa Kì.", "Gặp câu hỏi về Cộng đồng ASEAN, nhớ ngay ba trụ cột.", "Gặp Bali 1976, nghĩ tới nguyên tắc và bước ngoặt, không nghĩ tới thành lập.", "Dùng một timeline duy nhất để học cả module."], "memoryTitle": "Khung nhớ logic của module D", "memoryFrames": ["1967 là thành lập ASEAN tại Băng Cốc với 5 nước sáng lập.", "1976 là Bali, bước ngoặt phát triển của ASEAN.", "1995 Việt Nam gia nhập ASEAN, thành viên thứ bảy.", "1999 ASEAN đủ 10 nước Đông Nam Á.", "2015 Cộng đồng ASEAN chính thức ra đời với 3 trụ cột."], "compareTitle": "Bảng phân biệt mốc và văn kiện", "compare": [["Tuyên bố Băng Cốc", "Văn kiện thành lập ASEAN", "Năm 1967"], ["Hiệp ước Bali", "Bước ngoặt xác lập nguyên tắc quan hệ", "Năm 1976"], ["1995", "Việt Nam gia nhập ASEAN", "Thành viên thứ 7"], ["2015", "Cộng đồng ASEAN ra đời", "Ba trụ cột"]], "examMoves": ["Thấy đáp án 1997 cho Việt Nam gia nhập ASEAN thì loại.", "Thấy câu hỏi bước ngoặt của ASEAN thì nghĩ đến Bali 1976.", "Thấy câu hỏi số trụ cột của Cộng đồng ASEAN thì chọn 3.", "Đọc thật chậm các phương án vì phần này hay gài bằng sai lệch 1–2 năm."], "recap": ["Học ASEAN bằng timeline 1967 → 1976 → 1984 → 1995 → 1999 → 2015.", "Điểm mấu chốt là không nhầm Băng Cốc với Bali."]}, "E": {"intro": "Module E là một trong những phần trọng tâm nhất của đề thi. Học sinh thường nhớ được vài mốc rất nổi như 19/8/1945 hay 7/5/1954 nhưng lại chưa nhìn ra logic của cả chặng từ thời cơ cách mạng, giành chính quyền, bảo vệ chính quyền đến kháng chiến toàn quốc và kết thúc bằng Hiệp định Giơ-ne-vơ. Learn mode sẽ nối lại toàn bộ hành trình ấy thành một bài học có đầu có cuối.", "lesson": "Các tài liệu bạn tải lên đều thống nhất rằng Cách mạng tháng Tám và kháng chiến chống Pháp 1945–1954 là lõi kiến thức lớp 12. Phần học cần chốt thời cơ trực tiếp của Tổng khởi nghĩa, ý nghĩa Cách mạng tháng Tám, đường lối kháng chiến, các chiến dịch then chốt, Điện Biên Phủ và bản chất của giới tuyến quân sự tạm thời ở vĩ tuyến 17. fileciteturn10file14 fileciteturn11file0", "articleSections": [{"title": "Phần 1. Vì sao tháng Tám 1945 là thời cơ chín muồi", "paras": ["Muốn hiểu Cách mạng tháng Tám, trước hết phải hiểu khái niệm thời cơ. Thời cơ trực tiếp xuất hiện khi Nhật Bản đầu hàng Đồng minh vô điều kiện ngày 15/8/1945. Khi đó kẻ thù chính ở Đông Dương rệu rã, bộ máy cai trị khủng hoảng, trong khi lực lượng cách mạng đã chuẩn bị được nền tảng chính trị và tổ chức rộng khắp.", "Vì thế, nếu đề hỏi sự kiện nào tạo ra thời cơ ngàn năm có một, em phải chọn Nhật đầu hàng Đồng minh, không chọn quân Đồng minh vào Đông Dương hay một hội nghị nội bộ của ta. Đây là một câu rất hay ra và rất dễ mắc nếu học sinh không phân biệt điều kiện chuẩn bị với thời cơ bùng nổ. fileciteturn10file15"]}, {"title": "Phần 2. Mạch giành chính quyền trong Cách mạng tháng Tám", "paras": ["Cuộc Tổng khởi nghĩa không diễn ra ngẫu nhiên. Ngày 13/8/1945, Ủy ban khởi nghĩa toàn quốc ra Quân lệnh số 1. Tiếp đó là Hội nghị toàn quốc của Đảng ở Tân Trào, Đại hội Quốc dân Tân Trào, rồi làn sóng khởi nghĩa giành chính quyền lan rộng. Bốn tỉnh giành chính quyền sớm nhất ngày 18/8 là Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam; Hà Nội thắng lợi ngày 19/8; Huế ngày 23/8; Sài Gòn ngày 25/8.", "Ngày 2/9/1945, tại Quảng trường Ba Đình, Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa. Khi học phần này, đừng chỉ thuộc năm 1945. Hãy gắn mỗi mốc với ý nghĩa riêng của nó trong tiến trình giành chính quyền. fileciteturn10file14"]}, {"title": "Phần 3. Ý nghĩa Cách mạng tháng Tám và nhân tố quyết định thắng lợi", "paras": ["Cách mạng tháng Tám đã đập tan ách thống trị của thực dân Pháp và phát xít Nhật, lật đổ chế độ quân chủ phong kiến, mở ra kỉ nguyên độc lập, tự do cho dân tộc Việt Nam. Về tầm quốc tế, thắng lợi này còn cổ vũ phong trào giải phóng dân tộc trên thế giới.", "Trong các nguyên nhân thắng lợi, nhân tố chủ quan quyết định là sự lãnh đạo đúng đắn, sáng suốt và kịp thời của Đảng và Hồ Chí Minh. Đề thường gài bằng cách cho nhiều đáp án khách quan đúng một phần, nhưng nếu câu hỏi hỏi nguyên nhân quyết định hay chủ yếu thì em phải trở về vai trò lãnh đạo của Đảng. fileciteturn10file6"]}, {"title": "Phần 4. Từ giữ chính quyền đến kháng chiến toàn quốc", "paras": ["Sau khi giành độc lập, nước Việt Nam Dân chủ Cộng hòa đứng trước nhiều khó khăn. Trong số đó, nhiệm vụ hàng đầu là giữ vững chính quyền cách mạng. Chính phủ cách mạng đã áp dụng nhiều sách lược mềm dẻo để kéo dài thời gian hòa hoãn, trong đó có Hiệp định Sơ bộ 6/3/1946 và Tạm ước 14/9/1946.", "Đến ngày 19/12/1946, khi không còn khả năng hòa hoãn, cuộc kháng chiến toàn quốc bùng nổ. Đường lối kháng chiến được chốt bằng công thức rất nổi tiếng: toàn dân, toàn diện, trường kì, tự lực cánh sinh, tranh thủ sự ủng hộ quốc tế. Đây là câu học thuộc lòng nhưng phải hiểu: toàn dân là lực lượng, toàn diện là phạm vi, trường kì là phương châm thời gian, tự lực cánh sinh là tinh thần chủ đạo. fileciteturn10file18"]}, {"title": "Phần 5. Ba mốc lớn của kháng chiến chống Pháp và ý nghĩa của Giơ-ne-vơ", "paras": ["Chiến dịch Việt Bắc thu – đông 1947 đánh bại chiến lược đánh nhanh thắng nhanh của Pháp. Chiến dịch Biên giới thu – đông 1950 khai thông biên giới Việt – Trung và đưa cuộc kháng chiến chuyển sang thế chủ động chiến lược. Đỉnh cao là Chiến dịch Điện Biên Phủ từ 13/3 đến 7/5/1954, giáng đòn quyết định vào ý chí xâm lược của Pháp.", "Hiệp định Giơ-ne-vơ được kí ngày 21/7/1954, chấm dứt chiến tranh, lập lại hòa bình ở Đông Dương. Điểm phải nhớ thật chắc là vĩ tuyến 17 chỉ là giới tuyến quân sự tạm thời, không phải biên giới quốc gia. Đây là bẫy nổi tiếng nhất của module E và gần như năm nào học sinh cũng dễ sai. fileciteturn10file14"]}, {"title": "Phần 6. Cách học để kéo điểm phần này", "paras": ["Đừng học module E thành hai mảng cắt rời. Hãy coi đây là một dòng lịch sử liên tục: chớp thời cơ để giành chính quyền, xây dựng và bảo vệ chính quyền non trẻ, rồi bước vào kháng chiến trường kì để kết thúc bằng thắng lợi quyết chiến chiến lược và thắng lợi ngoại giao.", "Nếu em học theo mạch ấy, các mốc 15/8, 19/8, 19/12, 1950, 7/5/1954, 21/7/1954 sẽ không còn rời nhau nữa. Chúng là từng nấc của một cuộc cách mạng và một cuộc kháng chiến thống nhất về logic."]}], "howToThink": ["Gặp câu hỏi về thời cơ, phân biệt rõ giữa điều kiện chuẩn bị và thời cơ trực tiếp.", "Gặp câu về Cách mạng tháng Tám, nhớ nguyên nhân quyết định là Đảng lãnh đạo đúng.", "Gặp câu về kháng chiến chống Pháp, dùng công thức toàn dân – toàn diện – trường kì – tự lực cánh sinh.", "Gặp 1950, nhớ khai thông biên giới và chủ động chiến lược.", "Gặp Giơ-ne-vơ, kiểm tra ngay xem đề có gài vĩ tuyến 17 là biên giới quốc gia hay không."], "memoryTitle": "Khung nhớ logic của module E", "memoryFrames": ["15/8/1945 là thời cơ trực tiếp vì Nhật đầu hàng Đồng minh.", "19/8 Hà Nội, 2/9 Ba Đình là hai mốc phải tuyệt đối chắc.", "Kháng chiến chống Pháp học bằng 4 chữ: toàn dân, toàn diện, trường kì, tự lực.", "1947 Việt Bắc, 1950 Biên giới, 1954 Điện Biên Phủ là ba mốc chiến dịch lớn.", "Giơ-ne-vơ 1954: vĩ tuyến 17 chỉ là giới tuyến quân sự tạm thời."], "compareTitle": "Bảng phân biệt dễ sai nhất của module E", "compare": [["Thời cơ trực tiếp", "Nhật đầu hàng Đồng minh", "Không phải quân Đồng minh vào Đông Dương"], ["4 tỉnh sớm nhất", "Bắc Giang, Hải Dương, Hà Tĩnh, Quảng Nam", "Không có Hà Nội"], ["1950", "Biên giới, khai thông biên giới Việt – Trung", "Mở ra thế chủ động"], ["Giơ-ne-vơ", "Giới tuyến quân sự tạm thời", "Không phải biên giới quốc gia"]], "examMoves": ["Thấy từ quyết định, chọn vai trò lãnh đạo của Đảng.", "Thấy từ trực tiếp, đọc cực kĩ vì đây là nơi đề thích gài.", "Thấy vĩ tuyến 17 mà đáp án ghi biên giới quốc gia thì loại ngay.", "Học module này tốt sẽ kéo điểm rất mạnh trong đề."], "recap": ["Coi module E là một dòng sự kiện liền mạch từ thời cơ cách mạng đến thắng lợi kháng chiến.", "Điểm mấu chốt là bản chất sự kiện, không chỉ là năm tháng."]}, "F": {"intro": "Module F là phần có dung lượng lớn và dễ gây rối nhất vì bao gồm cả ba chiến lược chiến tranh của Mĩ, các mốc chính trị – quân sự – ngoại giao, và toàn bộ cuộc Tổng tiến công mùa Xuân 1975. Vì vậy learn mode sẽ không dạy bằng cách ném hàng loạt sự kiện, mà dạy theo cấu trúc chiến lược của Mĩ và phản ứng chiến lược của cách mạng Việt Nam.", "lesson": "Bộ ôn cập nhật và bộ 100 câu mốc hay ra đều thống nhất rằng phần chống Mĩ phải đặc biệt chắc ba chiến lược chiến tranh, ý nghĩa trực tiếp của Đồng khởi, bước ngoặt Mậu Thân, Hiệp định Pa-ri và thứ tự ba chiến dịch 1975. Đây là những hạt nhân dễ ra nhất. fileciteturn10file10 fileciteturn10file18", "articleSections": [{"title": "Phần 1. Sau 1954, cách mạng Việt Nam đứng trong tình thế nào", "paras": ["Sau Hiệp định Giơ-ne-vơ năm 1954, cách mạng Việt Nam có hai nhiệm vụ chiến lược song song: miền Bắc tiến hành cách mạng xã hội chủ nghĩa, miền Nam tiếp tục cách mạng dân tộc dân chủ nhân dân. Đây là cái nền phải hiểu trước khi đi vào kháng chiến chống Mĩ, vì toàn bộ đường lối đấu tranh sau đó đều xuất phát từ tình thế lịch sử này.", "Đề thi thường không hỏi quá sâu lí luận, nhưng rất hay hỏi câu nhận diện kiểu sau 1954, cách mạng Việt Nam có hai nhiệm vụ chiến lược gì. Nếu em không nắm nền này, các sự kiện sau sẽ bị đứt mạch. fileciteturn10file18"]}, {"title": "Phần 2. Ba chiến lược chiến tranh của Mĩ: phải phân biệt bằng lực lượng chủ yếu", "paras": ["Chiến tranh đặc biệt giai đoạn 1961–1965 dùng quân đội Sài Gòn là lực lượng chủ yếu, có cố vấn Mĩ hỗ trợ. Xương sống của chiến lược này là ấp chiến lược. Chiến thắng Ấp Bắc năm 1963 mở đầu khả năng đánh bại chiến lược đó.", "Chiến tranh cục bộ giai đoạn 1965–1968 là mức leo thang mới, khi quân viễn chinh Mĩ và quân đồng minh trực tiếp tham chiến. Chiến thắng Vạn Tường mở đầu cao trào tìm Mĩ mà đánh. Việt Nam hóa chiến tranh giai đoạn 1969–1973 lại quay về dùng quân đội Sài Gòn là lực lượng chủ yếu nhưng với sự yểm trợ mạnh của Mĩ. Cách nhớ tốt nhất là nhìn vào ai là lực lượng chủ yếu trên chiến trường. fileciteturn10file18"]}, {"title": "Phần 3. Đồng khởi và Mậu Thân: hai bước ngoặt khác nhau", "paras": ["Phong trào Đồng khởi 1959–1960 có ý nghĩa trực tiếp là chuyển cách mạng miền Nam từ thế giữ gìn lực lượng sang thế tiến công. Đây là ý dễ hỏi nhưng cũng dễ nhầm với những kết quả lớn hơn diễn ra sau này. Đồng khởi không phải là sự kiện buộc Mĩ rút quân, càng không phải là giải phóng hoàn toàn miền Nam.", "Tổng tiến công và nổi dậy Tết Mậu Thân 1968 là bước ngoặt chiến lược của cuộc kháng chiến chống Mĩ. Nó buộc Mĩ phải chấp nhận đàm phán với ta tại Pa-ri. Từ khóa bước ngoặt gắn với Mậu Thân, còn từ khóa chuyển thế tiến công gắn với Đồng khởi. Học sinh rất hay lẫn hai tầng ý nghĩa này. fileciteturn10file18"]}, {"title": "Phần 4. Từ Điện Biên Phủ trên không đến Hiệp định Pa-ri", "paras": ["Cuối năm 1972, quân dân miền Bắc đánh bại cuộc tập kích chiến lược bằng B52 của Mĩ ở Hà Nội và Hải Phòng, làm nên chiến thắng Điện Biên Phủ trên không. Chiến thắng này cùng với thế và lực tích lũy trước đó đã góp phần buộc Mĩ kí Hiệp định Pa-ri ngày 27/1/1973.", "Điểm cơ bản nhất của Hiệp định Pa-ri là Mĩ và các nước đồng minh phải rút hết quân về nước. Sau Hiệp định Pa-ri, tương quan lực lượng ở miền Nam thay đổi theo hướng có lợi cho cách mạng. Đây là tiền đề trực tiếp để chuyển sang giải phóng hoàn toàn miền Nam. fileciteturn10file18"]}, {"title": "Phần 5. Xuân 1975: phải nhớ đúng thứ tự chiến dịch", "paras": ["Cuộc Tổng tiến công và nổi dậy Xuân 1975 mở đầu bằng Chiến dịch Tây Nguyên. Thắng lợi ở Buôn Ma Thuột tạo ra bước ngoặt chiến lược. Sau đó là Chiến dịch Huế – Đà Nẵng. Đỉnh cao cuối cùng là Chiến dịch Hồ Chí Minh, chiến dịch quyết định trực tiếp giải phóng Sài Gòn – Gia Định.", "Ngày 30/4/1975 đánh dấu giải phóng hoàn toàn miền Nam, thống nhất đất nước về mặt lãnh thổ và hoàn thành cách mạng dân tộc dân chủ nhân dân trên phạm vi cả nước. Tuy nhiên, thống nhất về mặt nhà nước là bước diễn ra sau đó. Đây là một phân biệt cực kì quan trọng với module G. fileciteturn10file18"]}, {"title": "Phần 6. Cách học gọn mà chắc", "paras": ["Em nên học module F theo công thức ba lớp: lớp một là ba chiến lược chiến tranh của Mĩ; lớp hai là các bước ngoặt lớn của ta gồm Đồng khởi, Mậu Thân, Pa-ri; lớp ba là ba chiến dịch của mùa Xuân 1975.", "Nếu em chia như vậy, cả một phần dài sẽ trở thành ba cụm nhớ rất rõ. Đó cũng là cách giúp em không sa vào việc học thuộc dày đặc nhưng thiếu logic."]}], "howToThink": ["Gặp câu hỏi về chiến lược của Mĩ, xác định lực lượng chủ yếu trước tiên.", "Gặp Đồng khởi, nhớ chuyển cách mạng miền Nam sang thế tiến công.", "Gặp Mậu Thân, nhớ bước ngoặt buộc Mĩ đàm phán.", "Gặp Pa-ri, nhớ Mĩ rút quân và thế có lợi cho cách mạng.", "Gặp Xuân 1975, đọc lại thứ tự Tây Nguyên → Huế – Đà Nẵng → Hồ Chí Minh."], "memoryTitle": "Khung nhớ logic của module F", "memoryFrames": ["Chiến tranh đặc biệt: quân đội Sài Gòn là chủ yếu, xương sống là ấp chiến lược.", "Chiến tranh cục bộ: quân Mĩ và đồng minh trực tiếp tham chiến.", "Việt Nam hóa chiến tranh: dùng người Việt đánh người Việt.", "Đồng khởi đổi thế, Mậu Thân đổi cục diện, Pa-ri đổi tương quan lực lượng.", "Ba chiến dịch 1975 phải thuộc đúng thứ tự."], "compareTitle": "Bảng phân biệt dễ nhầm trong phần chống Mĩ", "compare": [["Đồng khởi", "Chuyển từ giữ gìn lực lượng sang thế tiến công", "Không phải kết thúc chiến tranh"], ["Mậu Thân 1968", "Bước ngoặt, buộc Mĩ đàm phán", "Không phải giải phóng miền Nam"], ["Điện Biên Phủ trên không", "12/1972, Hà Nội – Hải Phòng", "Không phải chiến dịch 1954"], ["30/4/1975", "Thống nhất lãnh thổ", "Không phải thống nhất nhà nước"]], "examMoves": ["Đề rất thích gài ba chiến lược chiến tranh của Mĩ bằng cách đổi lực lượng chủ yếu.", "Thấy cụm xương sống thì nghĩ ấp chiến lược.", "Thấy bước ngoặt chiến lược thì nghĩ Mậu Thân hoặc Buôn Ma Thuột tùy ngữ cảnh.", "Phần này muốn chắc điểm thì phải học bằng sơ đồ, không học tuyến tính dài dòng."], "recap": ["Module F = ba chiến lược của Mĩ + ba bước ngoặt của ta + ba chiến dịch 1975.", "Phân biệt đúng ý nghĩa từng mốc là chìa khóa ăn điểm."]}, "G": {"intro": "Module G về bảo vệ Tổ quốc sau 1975 thường bị học sinh xem nhẹ vì tưởng đề sẽ không hỏi nhiều. Thực tế phần này tuy không quá dài nhưng lại quan trọng ở chỗ nó nối chiến thắng 1975 với nhiệm vụ xây dựng và bảo vệ đất nước trong hoàn cảnh mới. Learn mode sẽ giải thích rõ tại sao sau đại thắng, nhiệm vụ lịch sử vẫn chưa dừng lại.", "lesson": "Các tài liệu bạn tải lên đều cho thấy phần sau 1975 thường không hỏi quá sâu diễn biến quân sự mà chủ yếu hỏi nhiệm vụ cấp bách, ý nghĩa, bài học và các mốc như 1976, 1977. Điều đó có nghĩa phần học phải giúp em nhìn ra bản chất lịch sử, không sa vào chi tiết vụn. fileciteturn10file10 fileciteturn11file0", "articleSections": [{"title": "Phần 1. Sau đại thắng 1975, việc gì là cấp bách nhất", "paras": ["Đại thắng mùa Xuân 1975 giải phóng hoàn toàn miền Nam, thống nhất đất nước về mặt lãnh thổ. Tuy nhiên, về mặt nhà nước, đất nước vẫn cần hoàn thành bước thống nhất thể chế. Vì thế nhiệm vụ cấp bách hàng đầu của cả nước sau 1975 là thống nhất đất nước về mặt nhà nước.", "Đây là điểm đề rất thích gài. Nếu em thấy năm 1975, đáp án thường nghiêng về giải phóng miền Nam và thống nhất lãnh thổ. Nếu thấy sau đó và gắn với nhiệm vụ cấp bách của cả nước, đáp án phải là thống nhất về mặt nhà nước. fileciteturn10file18"]}, {"title": "Phần 2. Năm 1976: mốc của nhà nước thống nhất", "paras": ["Kì họp thứ nhất Quốc hội khóa VI năm 1976 có ý nghĩa rất lớn. Quốc hội quyết định tên nước là Cộng hòa xã hội chủ nghĩa Việt Nam, xác lập bộ máy nhà nước thống nhất cho cả nước. Đây là mốc giúp hoàn tất quá trình thống nhất trên phương diện nhà nước.", "Vì vậy, giữa 1975 và 1976 phải tách rõ: 1975 là thắng lợi quân sự – chính trị kết thúc chiến tranh, còn 1976 là bước hợp nhất nhà nước trên cả nước. Đây là một cặp mốc rất hay xuất hiện trong trắc nghiệm. fileciteturn10file18"]}, {"title": "Phần 3. Xây dựng đất nước đi đôi với bảo vệ Tổ quốc", "paras": ["Sau 1975, Việt Nam không bước vào một thời kì chỉ có hòa bình tuyệt đối để phát triển. Đất nước vừa phải khắc phục hậu quả chiến tranh, khôi phục kinh tế, tổ chức lại đời sống xã hội, vừa phải bảo vệ biên giới Tây Nam, biên giới phía Bắc và chủ quyền biển đảo.", "Chính vì thế, bài học lớn của giai đoạn này là xây dựng và bảo vệ Tổ quốc luôn gắn bó với nhau. Đề thường hỏi theo hướng nhận diện nhiệm vụ, ý nghĩa, bài học lịch sử chứ không đi quá sâu vào các chi tiết quân sự của từng cuộc chiến bảo vệ biên giới. fileciteturn10file10"]}, {"title": "Phần 4. Hội nhập quốc tế bước đầu của Việt Nam sau chiến tranh", "paras": ["Năm 1977, Việt Nam trở thành thành viên của Liên Hợp Quốc. Đây là một mốc đối ngoại quan trọng, cho thấy vị thế quốc tế của nước Việt Nam thống nhất được nâng lên và đất nước bắt đầu tham gia sâu hơn vào đời sống quốc tế trong hoàn cảnh mới.", "Mốc này còn liên kết module G với module C và module I. Khi học liên thông như vậy, em sẽ nhớ lâu hơn thay vì tách từng chương thành từng hộp kín."]}, {"title": "Phần 5. Cách học ngắn mà chắc", "paras": ["Module G rất hợp để học bằng câu hỏi trung tâm. Sau 1975, thắng lợi nào đã đạt được. Việc gì còn phải làm. Nhà nước thống nhất vào năm nào. Tổ quốc phải bảo vệ trên những hướng nào. Mỗi câu hỏi ấy sẽ kéo ra một mảng kiến thức rõ ràng.", "Khi học theo bài viết, em sẽ thấy phần này không hề khó. Nó chỉ yêu cầu em nhìn 1975 như điểm bắt đầu của một thời kì mới chứ không phải là dấu chấm hết của lịch sử hiện đại Việt Nam."]}], "howToThink": ["Gặp 1975, nghĩ trước về giải phóng miền Nam và thống nhất lãnh thổ.", "Gặp sau 1975 và nhiệm vụ cấp bách, nghĩ tới thống nhất nhà nước.", "Gặp 1976, nhớ Quốc hội khóa VI và tên nước CHXHCN Việt Nam.", "Gặp phần này trong đề, ưu tiên nhiệm vụ, ý nghĩa, bài học hơn là diễn biến quân sự.", "Nối module G với modules C, I và H để nhớ mốc tốt hơn."], "memoryTitle": "Khung nhớ logic của module G", "memoryFrames": ["1975 thống nhất lãnh thổ, 1976 thống nhất nhà nước.", "Tên nước từ 1976 là Cộng hòa xã hội chủ nghĩa Việt Nam.", "Sau 1975 đất nước vừa xây dựng vừa bảo vệ biên giới và chủ quyền biển đảo.", "1977 Việt Nam gia nhập Liên Hợp Quốc.", "Đề thường hỏi nhiệm vụ và bài học hơn là diễn biến chi tiết."], "compareTitle": "Bảng phân biệt 1975 và 1976", "compare": [["1975", "Giải phóng hoàn toàn miền Nam, thống nhất lãnh thổ", "Thắng lợi chiến tranh"], ["Sau 1975", "Nhiệm vụ cấp bách là thống nhất nhà nước", "Câu hỏi rất hay ra"], ["1976", "Quốc hội khóa VI, tên nước CHXHCN Việt Nam", "Mốc nhà nước"], ["1977", "Gia nhập Liên Hợp Quốc", "Mốc đối ngoại"]], "examMoves": ["Thấy thống nhất đất nước phải kiểm tra đề hỏi về lãnh thổ hay về nhà nước.", "Thấy phần sau 1975 không cần sa vào học sâu diễn biến biên giới; ưu tiên nhiệm vụ và ý nghĩa.", "Đừng bỏ qua module này vì đây là nơi đề hay lấy câu gỡ điểm.", "Nhìn mốc 1976 và 1977 như hai bước tiếp nối sau 1975."], "recap": ["Module G ngắn nhưng rất dễ ăn điểm nếu phân biệt rõ 1975 với 1976.", "Chìa khóa là hiểu giai đoạn sau 1975 vừa xây dựng vừa bảo vệ Tổ quốc."]}, "H": {"intro": "Module H về công cuộc Đổi mới là phần có ý nghĩa hiện đại nhất và rất hay xuất hiện trong đề với nhiều mức độ từ biết đến vận dụng. Tuy nhiên, nhiều học sinh vẫn học phần này theo kiểu ghi nhớ khẩu hiệu mà chưa hiểu vì sao Đổi mới ra đời, đổi mới cái gì, và kết quả nổi bật nằm ở đâu. Learn mode sẽ giải thích theo đúng mạch của một bài học hoàn chỉnh.", "lesson": "Theo bộ ôn cập nhật 19/04/2026, phần này bám chủ yếu vào SGK Lịch sử 12 hiện hành, nhấn mạnh Đại hội VI năm 1986, trọng tâm đổi mới kinh tế, nội dung cốt lõi của cơ chế mới và thành tựu gắn với hội nhập, nâng cao vị thế đất nước. Một đoạn trong tài liệu ôn sử còn nêu rõ các bài học kinh nghiệm như kiên trì mục tiêu độc lập dân tộc và chủ nghĩa xã hội, đổi mới toàn diện đồng bộ, vì lợi ích của nhân dân, kết hợp nội lực với ngoại lực. fileciteturn11file0 fileciteturn10file2", "articleSections": [{"title": "Phần 1. Vì sao Đảng phải tiến hành Đổi mới", "paras": ["Trước năm 1986, đất nước rơi vào khủng hoảng kinh tế – xã hội kéo dài. Cơ chế kế hoạch hóa tập trung quan liêu bao cấp bộc lộ nhiều hạn chế, sản xuất trì trệ, đời sống nhân dân khó khăn, trong khi bối cảnh thế giới cũng biến đổi mạnh. Đó là nền tảng thực tiễn buộc Đảng phải tìm ra một đường phát triển mới phù hợp hơn.", "Hiểu điểm xuất phát này rất quan trọng. Nếu không, em sẽ chỉ nhớ 1986 như một cái mốc mở đầu, mà không hiểu tại sao Đổi mới lại trở thành lựa chọn lịch sử bắt buộc. Trong đề, nguyên nhân phải đổi mới và mục tiêu của đổi mới là hai loại câu hỏi khác nhau. fileciteturn10file18"]}, {"title": "Phần 2. Đại hội VI năm 1986 và nội dung cốt lõi của Đổi mới", "paras": ["Đại hội VI của Đảng năm 1986 là mốc mở đầu công cuộc Đổi mới. Đổi mới được xác định là toàn diện, nhưng trọng tâm là đổi mới kinh tế. Đây là công thức phải nhớ thật chắc vì đề rất thích hỏi từ khóa trọng tâm của công cuộc Đổi mới là gì.", "Nội dung cốt lõi về kinh tế là chuyển từ cơ chế kế hoạch hóa tập trung quan liêu bao cấp sang nền kinh tế hàng hóa nhiều thành phần vận hành theo cơ chế thị trường có sự quản lí của Nhà nước. Đây chính là chỗ làm nên sự khác biệt cơ bản giữa nền kinh tế Việt Nam sau Đổi mới với giai đoạn trước đó. fileciteturn11file0"]}, {"title": "Phần 3. Đổi mới không phải là đổi mục tiêu", "paras": ["Một bẫy rất phổ biến là hiểu Đổi mới như thay đổi mục tiêu độc lập dân tộc gắn với chủ nghĩa xã hội. Cách hiểu ấy là sai. Tài liệu ôn sử nhấn mạnh bài học thứ nhất của công cuộc Đổi mới là kiên trì mục tiêu độc lập dân tộc và chủ nghĩa xã hội trên nền tảng chủ nghĩa Mác – Lê-nin và tư tưởng Hồ Chí Minh.", "Nói cách khác, Đổi mới là đổi về con đường, cách làm, cơ chế vận hành và phương pháp tổ chức phát triển đất nước, chứ không phải từ bỏ mục tiêu chiến lược. Hiểu được điều này, em sẽ làm chắc các câu đúng sai và các câu hỏi mức hiểu. fileciteturn10file2"]}, {"title": "Phần 4. Thành tựu của Đổi mới nhìn từ đời sống, vị thế và hội nhập", "paras": ["Thành tựu của Đổi mới không chỉ là tăng trưởng kinh tế đơn thuần. Bộ ôn cập nhật chốt rất rõ rằng Việt Nam đã thoát khỏi khủng hoảng kinh tế – xã hội, đời sống nhân dân được cải thiện, tăng trưởng và hội nhập quốc tế mạnh hơn, vị thế đất nước được nâng lên.", "Các mốc hội nhập như gia nhập ASEAN năm 1995, APEC năm 1998, WTO năm 2007 chính là biểu hiện cụ thể của quá trình đổi mới gắn với mở cửa và hội nhập. Vì vậy phần Đổi mới luôn liên thông với module I về đối ngoại. fileciteturn11file0 fileciteturn10file18"]}, {"title": "Phần 5. Bài học kinh nghiệm của công cuộc Đổi mới", "paras": ["Một đoạn trong tài liệu ôn sử nêu rõ các bài học kinh nghiệm: kiên trì mục tiêu độc lập dân tộc và chủ nghĩa xã hội; đổi mới toàn diện, đồng bộ, có bước đi phù hợp; đổi mới vì lợi ích của nhân dân và phát huy vai trò chủ động, sáng tạo của nhân dân; kết hợp sức mạnh nội lực và ngoại lực, sức mạnh dân tộc với sức mạnh thời đại. Đây là những ý rất có giá trị khi gặp câu hỏi vận dụng hoặc câu hỏi bài học lịch sử.", "Cách học bài học kinh nghiệm là gắn mỗi bài học với một câu hỏi: mục tiêu là gì, cách làm là gì, ai là chủ thể, và nguồn lực phát triển đến từ đâu. Khi biến kiến thức thành câu hỏi như vậy, em sẽ nhớ tự nhiên hơn nhiều."]}, {"title": "Phần 6. Cách học phần Đổi mới để không khô", "paras": ["Em nên học module H theo 4 câu: vì sao phải đổi mới, đổi mới cái gì, thành tựu gì nổi bật, bài học gì rút ra. Chỉ với 4 câu ấy, em có thể bao trọn gần như mọi kiểu hỏi của đề thi.", "Đây là module rất hợp để kéo điểm vì tính logic cao, ngôn ngữ quen thuộc và mối liên hệ chặt chẽ với đời sống Việt Nam hiện đại."]}], "howToThink": ["Gặp câu hỏi về Đổi mới, tách ngay nguyên nhân phải đổi mới với mục tiêu của đổi mới.", "Gặp từ trọng tâm, nghĩ tới đổi mới kinh tế.", "Gặp câu về điểm mới kinh tế sau 1986, nhớ cơ chế thị trường có sự quản lí của Nhà nước.", "Gặp câu về bài học, quay về 4 từ khóa: mục tiêu, đồng bộ, nhân dân, kết hợp nội lực – ngoại lực.", "Gặp câu thành tựu, tránh các đáp án tuyệt đối hóa."], "memoryTitle": "Khung nhớ logic của module H", "memoryFrames": ["1986 là mở đầu Đổi mới tại Đại hội VI.", "Đổi mới là toàn diện nhưng kinh tế là trọng tâm.", "Không đổi mục tiêu độc lập dân tộc gắn với chủ nghĩa xã hội.", "Thành tựu lớn là thoát khủng hoảng, cải thiện đời sống, nâng vị thế, mở rộng hội nhập.", "Bài học lớn gắn với nhân dân và kết hợp sức mạnh dân tộc với sức mạnh thời đại."], "compareTitle": "Bảng phân biệt cốt lõi của phần Đổi mới", "compare": [["Nguyên nhân", "Khủng hoảng kinh tế – xã hội, cơ chế cũ bộc lộ hạn chế", "Vì sao phải đổi mới"], ["Mục tiêu", "Đưa đất nước thoát khủng hoảng, phát triển", "Muốn đạt tới gì"], ["Toàn diện", "Đổi mới nhiều lĩnh vực", "Không chỉ riêng kinh tế"], ["Trọng tâm", "Đổi mới kinh tế", "Từ khóa hay ra nhất"], ["Bài học", "Nhân dân, đồng bộ, nội lực – ngoại lực", "Hay hỏi vận dụng"]], "examMoves": ["Thấy đáp án nói đổi mới thay đổi mục tiêu độc lập dân tộc và CNXH thì loại.", "Thấy cụm khác biệt cơ bản của nền kinh tế sau Đổi mới thì chọn cơ chế thị trường có sự quản lí của Nhà nước.", "Thấy từ trọng tâm thì gần như chắc chắn là kinh tế.", "Phần này thích gài bằng các từ hoàn toàn, triệt để, duy nhất."], "recap": ["Module H học tốt nhất bằng 4 câu: vì sao, đổi cái gì, được gì, rút gì.", "Đây là phần rất mạnh để kéo điểm nếu em nắm được logic thay vì học khẩu hiệu."]}, "I": {"intro": "Module I về lịch sử đối ngoại Việt Nam rất quan trọng vì nó nối các chặng lớn của lịch sử hiện đại Việt Nam lại với nhau. Nếu học đúng cách, em sẽ thấy đối ngoại không phải là danh sách hiệp định và mốc hội nhập khô cứng, mà là sự phản ánh mục tiêu sống còn của dân tộc ở từng giai đoạn.", "lesson": "Bộ ôn cập nhật 19/04/2026 xác định rõ: đầu thế kỉ XX, đối ngoại phục vụ tìm đường cứu nước; 1945–1954, đối ngoại phục vụ bảo vệ chính quyền cách mạng và kết thúc chiến tranh; 1954–1975, ngoại giao gắn với đấu tranh chính trị và quân sự; sau 1986, đường lối đối ngoại là độc lập, tự chủ, hòa bình, hữu nghị, hợp tác và phát triển, đa phương hóa, đa dạng hóa quan hệ quốc tế. Learn mode sẽ triển khai đúng theo trục này. fileciteturn11file0", "articleSections": [{"title": "Phần 1. Đầu thế kỉ XX: đi ra ngoài để tìm đường cứu nước", "paras": ["Ở đầu thế kỉ XX, nhiều nhà yêu nước Việt Nam đã hướng ra bên ngoài để tìm con đường cứu nước. Phan Bội Châu gắn với Nhật Bản và phong trào Đông Du. Phan Châu Trinh lại gắn với hoạt động tại Pháp nhằm thức tỉnh dư luận và thúc đẩy cải cách. Nguyễn Ái Quốc từ 1919 đã đưa vấn đề dân tộc Việt Nam ra trường quốc tế bằng Bản Yêu sách của nhân dân An Nam.", "Điểm quan trọng khi học phần này là không trộn lẫn nhân vật, địa bàn hoạt động và mục tiêu hoạt động. Đề thường gài bằng cách lấy đúng nhân vật nhưng gắn sang sai quốc gia hoặc sai loại hoạt động. fileciteturn10file4"]}, {"title": "Phần 2. 1945–1954: ngoại giao để giữ chính quyền và kết thúc chiến tranh", "paras": ["Sau Cách mạng tháng Tám, chính quyền cách mạng còn non trẻ, phải cùng lúc đối mặt với nhiều lực lượng đe dọa. Vì vậy hoạt động đối ngoại của Việt Nam giai đoạn đầu mang tính sách lược rất rõ: hòa hoãn để tránh thế bất lợi, kéo dài thời gian chuẩn bị lực lượng và bảo vệ chính quyền cách mạng.", "Hiệp định Sơ bộ 6/3/1946 và Tạm ước 14/9/1946 phải được hiểu trong logic ấy. Đến năm 1954, thắng lợi ngoại giao lớn là Hiệp định Giơ-ne-vơ, chấm dứt chiến tranh, lập lại hòa bình ở Đông Dương. Khi học theo mục tiêu từng giai đoạn như thế, em sẽ không còn coi đối ngoại là phần riêng tách khỏi lịch sử chiến tranh cách mạng."]}, {"title": "Phần 3. 1954–1975: ngoại giao gắn với chính trị và quân sự", "paras": ["Trong kháng chiến chống Mĩ, ngoại giao không đi một mình. Nó gắn chặt với đấu tranh chính trị và quân sự. Mỗi thắng lợi trên chiến trường đều tạo thêm thế cho mặt trận ngoại giao, và ngược lại, mỗi bước tiến trên bàn đàm phán cũng hỗ trợ cho chiến lược chung của cách mạng Việt Nam.", "Đỉnh cao của chặng này là Hiệp định Pa-ri ngày 27/1/1973. Đây là thắng lợi lớn của mặt trận ngoại giao, nhưng không thể tách rời những thắng lợi quân sự, đặc biệt là chiến thắng Điện Biên Phủ trên không cuối năm 1972. Đây là kiểu quan hệ đề rất hay hỏi ở mức hiểu và vận dụng."]}, {"title": "Phần 4. Sau 1986: đối ngoại của hòa bình, hợp tác và hội nhập", "paras": ["Thời kì Đổi mới mở ra một đường lối đối ngoại mới: độc lập, tự chủ, hòa bình, hữu nghị, hợp tác và phát triển; đa phương hóa, đa dạng hóa quan hệ quốc tế. Đây là công thức phải nhớ thật chắc vì đề thường dùng từ khóa nguyên tắc xuyên suốt hoặc nội dung nhấn mạnh của đối ngoại Việt Nam hiện nay.", "Các mốc tiêu biểu của hội nhập gồm bình thường hóa quan hệ với Trung Quốc năm 1991, gia nhập ASEAN năm 1995, bình thường hóa quan hệ với Hoa Kì năm 1995, gia nhập APEC năm 1998 và WTO năm 2007. Học theo chuỗi mốc này sẽ giúp em làm chắc các câu nhận diện hội nhập quốc tế. fileciteturn10file18"]}, {"title": "Phần 5. Vì sao phải học module này theo mục tiêu dân tộc", "paras": ["Điểm cốt lõi của module I là ở mỗi thời kì, đối ngoại phục vụ một mục tiêu dân tộc khác nhau: đầu thế kỉ XX là tìm đường cứu nước; 1945–1954 là bảo vệ chính quyền và kết thúc chiến tranh; 1954–1975 là hỗ trợ giải phóng miền Nam; sau 1986 là tạo môi trường hòa bình, thuận lợi để xây dựng và bảo vệ Tổ quốc.", "Nếu em luôn hỏi đối ngoại đang phục vụ việc gì, em sẽ học phần này rất sáng. Còn nếu chỉ học hiệp định và năm tháng, em sẽ nhanh quên và dễ lẫn."]}], "howToThink": ["Gặp câu đầu thế kỉ XX, ghép đúng nhân vật với đúng nước và đúng mục tiêu.", "Gặp 1945–1946, nghĩ tới sách lược hòa hoãn để bảo vệ chính quyền non trẻ.", "Gặp 1954–1975, luôn nhớ ngoại giao gắn với chính trị và quân sự.", "Gặp thời Đổi mới, nhớ nguyên tắc độc lập tự chủ, hòa bình, hợp tác, đa phương hóa, đa dạng hóa.", "Học phần này bằng câu hỏi: đối ngoại đang phục vụ mục tiêu dân tộc nào."], "memoryTitle": "Khung nhớ logic của module I", "memoryFrames": ["Đầu thế kỉ XX: đối ngoại để tìm đường cứu nước.", "1945–1954: đối ngoại để bảo vệ chính quyền và kết thúc chiến tranh bằng Giơ-ne-vơ.", "1954–1975: đỉnh cao ngoại giao là Pa-ri 1973.", "Sau 1986: đối ngoại gắn với hòa bình, hợp tác, phát triển và hội nhập.", "Chuỗi hội nhập phải thuộc: 1991 – 1995 – 1998 – 2007."], "compareTitle": "Bảng ghép đúng người – đúng nơi – đúng mục tiêu", "compare": [["Phan Bội Châu", "Nhật Bản, Đông Du", "Tìm lực lượng hỗ trợ chống Pháp"], ["Phan Châu Trinh", "Pháp", "Hoạt động cải cách, thức tỉnh dư luận"], ["Nguyễn Ái Quốc 1919–1920", "Pháp", "Đưa vấn đề dân tộc Việt Nam ra quốc tế"], ["Giơ-ne-vơ 1954", "Kết thúc chiến tranh chống Pháp", "Thắng lợi ngoại giao"], ["Pa-ri 1973", "Mĩ rút quân, tạo thế có lợi cho cách mạng", "Đỉnh cao ngoại giao chống Mĩ"]], "examMoves": ["Đề rất hay trộn hoạt động của Phan Bội Châu, Phan Châu Trinh và Nguyễn Ái Quốc.", "Thấy cụm xuyên suốt trong đối ngoại thời Đổi mới thì nghĩ ngay độc lập, tự chủ, hòa bình, hợp tác và phát triển.", "Thấy mốc hội nhập, kiểm tra thật kĩ APEC 1998 và WTO 2007.", "Học module này tốt sẽ hỗ trợ cả module H và module J."], "recap": ["Đối ngoại không phải mốc rời, mà là công cụ thực hiện mục tiêu dân tộc ở từng giai đoạn.", "Muốn nhớ lâu, hãy học bằng câu hỏi đối ngoại đang phục vụ điều gì."]}, "J": {"intro": "Module J về Hồ Chí Minh cần được học như một bài về vai trò lịch sử, chứ không chỉ là tiểu sử. Nếu chỉ học năm sinh, quê quán, năm mất và vài mốc hoạt động, em sẽ rất dễ làm sai các câu hỏi ở mức hiểu và vận dụng. Learn mode của phần này sẽ giúp em nhìn thấy cả hành trình cách mạng của Người và bản chất cống hiến lịch sử của Người đối với Việt Nam và thế giới.", "lesson": "Bộ ôn cập nhật 19/04/2026 khuyên học phần Hồ Chí Minh theo bốn chặng: tìm đường cứu nước, chuẩn bị cho Đảng, lãnh đạo cách mạng giải phóng dân tộc, xây dựng nhà nước mới và kháng chiến kiến quốc. Tài liệu ôn sử bạn tải lên còn trích nhiều đoạn từ SGK Lịch sử 12 các bộ sách về vai trò, di sản, sự vinh danh của UNESCO đối với Chủ tịch Hồ Chí Minh. Đây sẽ là nền để xây lại Learn mode cho đầy đủ hơn. fileciteturn11file0 fileciteturn10file0", "articleSections": [{"title": "Phần 1. Từ người thanh niên yêu nước đến người tìm ra con đường cứu nước", "paras": ["Mốc 5/6/1911 không nên chỉ học như ngày Nguyễn Tất Thành rời Bến Nhà Rồng. Đây là điểm mở đầu của một hành trình lịch sử đi tìm con đường giải phóng dân tộc mới. Sau nhiều năm bôn ba, đến năm 1919 Nguyễn Ái Quốc gửi Bản Yêu sách của nhân dân An Nam tới Hội nghị Véc-xai, đưa vấn đề dân tộc Việt Nam ra diễn đàn quốc tế.", "Đến tháng 7/1920, khi đọc Sơ thảo lần thứ nhất Luận cương về vấn đề dân tộc và vấn đề thuộc địa của Lê-nin, Nguyễn Ái Quốc tìm thấy con đường cứu nước đúng đắn. Tháng 12/1920, Người tán thành Quốc tế Cộng sản và tham gia thành lập Đảng Cộng sản Pháp, trở thành người cộng sản đầu tiên của Việt Nam. Cống hiến nổi bật nhất của Hồ Chí Minh được đề hỏi rất thường xuyên chính là ở điểm này: tìm ra con đường cứu nước đúng đắn cho dân tộc Việt Nam. fileciteturn10file4"]}, {"title": "Phần 2. Chuẩn bị cho sự ra đời của Đảng Cộng sản Việt Nam", "paras": ["Vai trò của Hồ Chí Minh không dừng ở việc tìm ra con đường đi. Người còn chuẩn bị về chính trị, tư tưởng và tổ chức cho sự ra đời của Đảng. Mốc 1925 với việc thành lập Hội Việt Nam Cách mạng Thanh niên tại Quảng Châu là cực kì quan trọng. Đây là cầu nối tổ chức giữa tư tưởng cách mạng vô sản và phong trào yêu nước trong nước.", "Đến ngày 3/2/1930, Nguyễn Ái Quốc chủ trì hội nghị hợp nhất các tổ chức cộng sản, thành lập Đảng Cộng sản Việt Nam tại Hương Cảng. Trong đề thi, mốc 1925 và 1930 thường xuất hiện cùng nhau để kiểm tra xem em có hiểu vai trò chuẩn bị của Hồ Chí Minh hay không. fileciteturn10file10"]}, {"title": "Phần 3. Trực tiếp lãnh đạo cách mạng giải phóng dân tộc và xây dựng nhà nước mới", "paras": ["Năm 1941, Hồ Chí Minh trở về nước sau hơn 30 năm xa Tổ quốc, trực tiếp cùng Trung ương lãnh đạo cách mạng. Hội nghị Trung ương 8 năm 1941 dưới sự chủ trì của Người xác định giải phóng dân tộc là nhiệm vụ hàng đầu và dẫn tới sự ra đời của Mặt trận Việt Minh.", "Ngày 2/9/1945, tại Quảng trường Ba Đình, Hồ Chí Minh đọc Tuyên ngôn Độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa. Sau đó, Người tiếp tục lãnh đạo sự nghiệp kháng chiến chống Pháp, chống Mĩ và xây dựng nền tảng cho nhà nước cách mạng Việt Nam. Khi học phần này, phải phân biệt Ba Đình với Tân Trào vì đây là bẫy nổi tiếng của đề. fileciteturn10file10"]}, {"title": "Phần 4. Di sản lịch sử, tư tưởng và văn hóa của Hồ Chí Minh", "paras": ["Tài liệu ôn sử trích SGK Lịch sử 12 cho thấy Hồ Chí Minh không chỉ có đóng góp trong lĩnh vực chính trị. Người còn để lại di sản lớn về tư tưởng, đạo đức, phong cách, văn hóa, giáo dục và lối sống. Chính vì vậy, khi đề hỏi di sản của Hồ Chí Minh, em không nên chọn các đáp án thu hẹp Người vào một lĩnh vực duy nhất. fileciteturn10file0", "UNESCO đã ghi nhận Hồ Chí Minh là nhân vật có cống hiến lớn cho sự nghiệp giải phóng dân tộc và cho văn hóa nhân loại. Điều đó cho thấy tầm vóc của Người không chỉ giới hạn trong lịch sử Việt Nam mà còn vượt ra ngoài phạm vi quốc gia. Trong đề, đây thường là lớp kiến thức cao hơn, dùng để phân biệt học sinh hiểu bản chất với học sinh chỉ nhớ tiểu sử. fileciteturn9file3"]}, {"title": "Phần 5. Cách học phần Hồ Chí Minh để dễ nhớ", "paras": ["Cách tốt nhất là chia phần này thành bốn chặng: tìm đường cứu nước; chuẩn bị cho Đảng; trực tiếp lãnh đạo cách mạng; để lại di sản tư tưởng và văn hóa. Mỗi chặng gắn với vài mốc chốt và một cống hiến lớn. Khi học theo chặng đường như thế, em sẽ nhớ theo logic phát triển của một nhân vật lịch sử lớn.", "Phần này rất dễ lấy điểm nếu em ưu tiên bản chất cống hiến lịch sử thay vì sa vào những chi tiết tiểu sử đơn lẻ."]}], "howToThink": ["Gặp câu về Hồ Chí Minh, tự hỏi đề đang hỏi cống hiến nổi bật, mốc hoạt động hay di sản.", "Gặp 1911, nhớ khởi đầu hành trình tìm đường cứu nước.", "Gặp 1925, nhớ Hội Việt Nam Cách mạng Thanh niên và vai trò chuẩn bị cho Đảng.", "Gặp 2/9/1945, nhớ Ba Đình, không phải Tân Trào.", "Gặp câu về di sản, nghĩ tới tư tưởng, đạo đức, phong cách, văn hóa, không chỉ riêng chính trị."], "memoryTitle": "Khung nhớ logic của module J", "memoryFrames": ["Cống hiến nổi bật nhất là tìm ra con đường cứu nước đúng đắn.", "1925 là mốc tổ chức lớn với Hội Việt Nam Cách mạng Thanh niên.", "1941 về nước lãnh đạo cách mạng; 2/9/1945 khai sinh nước Việt Nam Dân chủ Cộng hòa.", "Di sản của Hồ Chí Minh rất rộng: tư tưởng, đạo đức, phong cách, văn hóa.", "Học Hồ Chí Minh theo chặng đường sẽ nhớ bền hơn học theo mốc rời."], "compareTitle": "Bảng phân biệt cần chắc của phần Hồ Chí Minh", "compare": [["5/6/1911", "Ra đi tìm đường cứu nước", "Mở đầu hành trình"], ["7/1920", "Đọc Luận cương của Lê-nin", "Tìm ra con đường cứu nước đúng đắn"], ["1925", "Hội Việt Nam Cách mạng Thanh niên", "Chuẩn bị cho Đảng"], ["2/9/1945", "Ba Đình, Tuyên ngôn Độc lập", "Không phải Tân Trào"], ["Di sản", "Tư tưởng, đạo đức, phong cách, văn hóa", "Không chỉ riêng chính trị"]], "examMoves": ["Nếu câu hỏi khái quát, đừng chọn đáp án quá hẹp như chỉ một hành động đơn lẻ.", "Đề hay gài Ba Đình với Tân Trào, và 1925 với 1930.", "Phần này rất hợp để học theo timeline 1911 – 1920 – 1925 – 1930 – 1941 – 1945.", "Muốn điểm cao, hãy phân biệt đóng góp đối với dân tộc Việt Nam và đối với thế giới."], "recap": ["Học Hồ Chí Minh bằng bốn chặng lớn thay vì tiểu sử rời rạc.", "Ưu tiên bản chất cống hiến lịch sử sẽ giúp làm chắc mọi dạng câu hỏi."]}};
+
+function renderLearn() {
+  const target = document.getElementById("view-learn");
+  const mod = moduleMap[openedLearnModuleId];
+  const teach = TEACHING[mod.id];
+  target.innerHTML = `
+    <div class="section-title"><h3>Learn mode · Học như một bài journal / article</h3></div>
+
+    <div class="module-grid">
+      ${DATA.modules.map(m => `
+        <div class="card module-card" data-learn-mid="${m.id}">
+          <div class="module-id">${m.id}</div>
+          <h3>${m.title}</h3>
+          <div class="muted tiny">${m.scope}</div>
+          <div style="height:10px"></div>
+          <div class="progress"><span style="width:${moduleAccuracy(m.id)}%"></span></div>
+          <div class="tiny muted" style="margin-top:8px">Độ chính xác hiện tại: ${moduleAccuracy(m.id)}%</div>
+        </div>
+      `).join("")}
+    </div>
+
+    <div style="height:18px"></div>
+
+    <div class="card">
+      <div class="header" style="display:flex; justify-content:space-between; gap:16px; align-items:flex-start;">
+        <div>
+          <div class="pill">Module ${mod.id}</div>
+          <h3 style="margin-top:12px">${mod.title}</h3>
+          <div class="muted">Học theo luồng: mở vấn đề → đọc bài hệ thống → chốt khung nhớ → phân biệt bẫy → checkpoint.</div>
+        </div>
+        <div class="btns">
+          <button class="primary" id="lessonCheckpointBtn">Checkpoint mini</button>
+          <button class="secondary" id="lessonPracticeBtn">Luyện module này</button>
+        </div>
+      </div>
+
+      <div class="card" style="box-shadow:none; background:#fafcff; margin-top:18px;">
+        <h4>1. Dẫn nhập</h4>
+        <p class="muted" style="line-height:1.8; margin:0 0 12px">${teach.intro}</p>
+        <p style="line-height:1.8; margin:0">${teach.lesson}</p>
+      </div>
+
+      <div class="card" style="box-shadow:none; margin-top:16px;">
+        <h4>2. Bài viết hệ thống hóa kiến thức</h4>
+        <div style="display:grid; gap:14px;">
+          ${teach.articleSections.map((sec, idx) => `
+            <div style="padding:16px; border:1px solid var(--line); border-radius:16px; background:${idx % 2 === 0 ? '#fff' : '#fafcff'};">
+              <div class="pill" style="margin-bottom:10px;">Phần ${idx + 1}</div>
+              <h4 style="margin:0 0 10px">${sec.title}</h4>
+              ${sec.paras.map(p => `<p style="line-height:1.9; margin:0 0 10px; text-align:justify;">${p}</p>`).join("")}
+            </div>
+          `).join("")}
+        </div>
+      </div>
+
+      <div class="row grid-2" style="margin-top:16px;">
+        <div class="card" style="box-shadow:none; background:#fafcff;">
+          <h4>3. Thầy giảng theo bước</h4>
+          <ol class="list-clean">
+            ${teach.howToThink.map(x => `<li>${x}</li>`).join("")}
+          </ol>
+        </div>
+        <div class="card" style="box-shadow:none; background:#fafcff;">
+          <h4>4. ${teach.memoryTitle}</h4>
+          <ul class="list-clean">
+            ${teach.memoryFrames.map(x => `<li>${x}</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="box-shadow:none; margin-top:16px;">
+        <h4>5. ${teach.compareTitle}</h4>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Từ khóa</th><th>Chốt kiến thức</th><th>Nhắc nhớ</th></tr>
+            </thead>
+            <tbody>
+              ${teach.compare.map(row => `<tr><td><b>${row[0]}</b></td><td>${row[1]}</td><td>${row[2]}</td></tr>`).join("")}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row grid-2" style="margin-top:16px;">
+        <div class="card" style="box-shadow:none;">
+          <h4>6. Mẹo vào phòng thi</h4>
+          <ul class="list-clean">
+            ${teach.examMoves.map(x => `<li>${x}</li>`).join("")}
+          </ul>
+        </div>
+        <div class="card" style="box-shadow:none;">
+          <h4>7. Nhớ nhanh trước khi chuyển sang luyện tập</h4>
+          <div class="taglist" style="margin-bottom:10px;">
+            ${mod.timeline.slice(0,8).map(item => `<span class="tag">${item[0]} · ${item[1]}</span>`).join("")}
+          </div>
+          <ul class="list-clean">
+            ${teach.recap.map(x => `<li>${x}</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="alert" style="margin-top:16px; line-height:1.8;">
+        <b>Nguồn hệ thống hóa:</b> phần Learn mode đã được viết lại theo hướng bài giảng dài, dựa trên các tài liệu bạn tải lên trong cuộc trò chuyện này, đặc biệt là bộ ôn cập nhật 19/04/2026, bộ tài liệu module, bộ 100 câu mốc hay ra và tài liệu ôn sử có trích dẫn nội dung từ SGK Lịch sử 12. Vì vậy phần học đã được mở rộng theo đúng logic bài học, không còn chỉ là note ngắn.
+      </div>
+    </div>
+  `;
+  target.querySelectorAll('[data-learn-mid]').forEach(el => el.onclick = () => openLearnModule(el.dataset.learnMid));
+  document.getElementById('lessonCheckpointBtn').onclick = () => startPractice(mod.id, quickLessonQueue(mod.id));
+  document.getElementById('lessonPracticeBtn').onclick = () => startPractice(mod.id);
+}
+
+function renderDashboard() {
+  const target = document.getElementById("view-dashboard");
+  const totalAttempts = Object.values(app.state.questionStats).reduce((s,x)=>s+(x.attempts||0),0);
+  const totalCorrect = Object.values(app.state.questionStats).reduce((s,x)=>s+(x.correct||0),0);
+  const overallAcc = totalAttempts ? Math.round(totalCorrect / totalAttempts * 100) : 0;
+  const due = dueReviewQuestions();
+  const mocks = app.state.examHistory;
+  const lastMock = mocks[0];
+  const weak = weakModules(3);
+  const strong = strongModules(3);
+  const weakTags = topWeakTags(6);
+
+  target.innerHTML = `
+    <div class="row grid-4">
+      <div class="card kpi"><div class="num">${overallAcc}%</div><div class="muted">Độ chính xác tổng</div></div>
+      <div class="card kpi"><div class="num">${totalAttempts}</div><div class="muted">Lượt trả lời đã lưu</div></div>
+      <div class="card kpi"><div class="num">${due.length}</div><div class="muted">Câu đến hạn ôn lại</div></div>
+      <div class="card kpi"><div class="num">${lastMock ? lastMock.score.toFixed(2) : "—"}</div><div class="muted">Điểm mock test gần nhất</div></div>
+    </div>
+
+    <div class="section-title"><h3>Gợi ý học hôm nay</h3></div>
+    <div class="alert">
+      <b>Kế hoạch nhanh:</b>
+      ${due.length ? `Ôn lại <b>${due.length}</b> câu sai cũ trước.` : `Bạn chưa có câu đến hạn ôn lại.`}
+      ${weak[0] ? ` Sau đó ưu tiên module <b>${weak[0].id} – ${weak[0].title}</b>.` : ""}
+      ${lastMock ? ` Điểm mock gần nhất là <b>${lastMock.score.toFixed(2)}</b>; hãy tập trung vào phần giải thích của các câu sai.` : ` Hãy làm một mock test đầu tiên để hệ thống bắt đầu tracking điểm yếu.`}
+    </div>
+
+    <div class="section-title"><h3>Tiến độ theo module</h3></div>
+    <div class="module-grid">
+      ${DATA.modules.map(m => {
+        const stat = app.state.moduleStats[m.id] || {attempts:0, correct:0};
+        const acc = accuracyOf(stat);
+        const learned = Math.min(100, Math.round((stat.attempts / Math.max(1, moduleQuestionCount(m.id)*2)) * 100));
+        return `
+          <div class="card module-card" data-open-module="${m.id}">
+            <div class="module-id">${m.id}</div>
+            <h3>${m.title}</h3>
+            <div class="muted tiny">${m.scope}</div>
+            <div style="height:10px"></div>
+            <div class="muted tiny">Độ chính xác</div>
+            <div class="progress"><span style="width:${acc}%"></span></div>
+            <div style="display:flex;justify-content:space-between;margin-top:8px" class="tiny">
+              <span>${acc}%</span><span>${stat.correct||0} / ${stat.attempts||0}</span>
+            </div>
+            <div style="height:10px"></div>
+            <div class="muted tiny">Mức độ làm quen</div>
+            <div class="progress"><span style="width:${learned}%"></span></div>
+          </div>
+        `;
+      }).join("")}
+    </div>
+
+    <div class="row grid-2" style="margin-top:18px;">
+      <div class="card">
+        <h3>Phần đang yếu nhất</h3>
+        ${weak.length ? `
+          <div class="bar-list">
+            ${weak.map(m => `
+              <div class="bar-row">
+                <div><b>${m.id}</b> – ${m.title}</div>
+                <div class="bar"><span style="width:${Math.round(m.acc*100)}%"></span></div>
+                <div>${Math.round(m.acc*100)}%</div>
+              </div>
+            `).join("")}
+          </div>` : `<div class="empty">Chưa có đủ dữ liệu. Làm vài câu practice hoặc một mock test để hệ thống bắt đầu phân tích.</div>`}
+      </div>
+
+      <div class="card">
+        <h3>Tag dễ sai</h3>
+        ${weakTags.length ? `
+          <div class="taglist">
+            ${weakTags.map(t => `<span class="tag">${t.tag} · ${Math.round(t.acc*100)}%</span>`).join("")}
+          </div>
+          <p class="muted tiny" style="margin-top:12px;">Mẹo: ưu tiên luyện lại các tag điểm thấp trước khi làm đề mới.</p>
+        ` : `<div class="empty">Chưa có dữ liệu lỗi theo tag.</div>`}
+      </div>
+    </div>
+
+    <div class="row grid-2" style="margin-top:18px;">
+      <div class="card">
+        <h3>Phần bạn đang mạnh hơn</h3>
+        ${strong.length ? strong.map(m => `<div class="chip">${m.id} – ${m.title} · ${Math.round(m.acc*100)}%</div>`).join("") : `<div class="empty">Chưa có module nào đủ dữ liệu để kết luận là điểm mạnh.</div>`}
+      </div>
+
+      <div class="card">
+        <h3>Lịch sử mock test gần đây</h3>
+        ${mocks.length ? `
+          <div class="bar-list">
+            ${mocks.slice(0,6).reverse().map((m, idx) => `
+              <div class="bar-row">
+                <div>Lần ${mocks.length - Math.max(0, 5-idx)}</div>
+                <div class="bar"><span style="width:${m.score*10}%"></span></div>
+                <div>${m.score.toFixed(2)}</div>
+              </div>
+            `).join("")}
+          </div>` : `<div class="empty">Chưa có mock test nào được nộp.</div>`}
+      </div>
+    </div>
+
+    <div class="footer-note">
+      Gợi ý dùng hiệu quả: vào Learn mode để học bài → làm checkpoint hoặc Practice → làm mock test → xem sổ lỗi → quay lại Daily review.
+    </div>
+  `;
+  target.querySelectorAll("[data-open-module]").forEach(el => {
+    el.onclick = () => {
+      openModuleDetail(el.dataset.openModule);
+      setView("modules");
+    };
+  });
+}
+
+let openedModuleId = DATA.modules[0].id;
+function openModuleDetail(moduleId) {
+  openedModuleId = moduleId;
+  renderModules();
+}
+
+
+function renderModules() {
+  const target = document.getElementById("view-modules");
+  const mod = moduleMap[openedModuleId];
+  const stat = app.state.moduleStats[mod.id] || { attempts:0, correct:0 };
+  const acc = accuracyOf(stat);
+  const teach = TEACHING[mod.id];
+  target.innerHTML = `
+    <div class="section-title"><h3>Chọn module để ôn</h3></div>
+    <div class="module-grid">
+      ${DATA.modules.map(m => `
+        <div class="card module-card" data-mid="${m.id}">
+          <div class="module-id">${m.id}</div>
+          <h3>${m.title}</h3>
+          <div class="muted tiny">${m.scope}</div>
+          <div style="height:10px"></div>
+          <div class="progress"><span style="width:${moduleAccuracy(m.id)}%"></span></div>
+          <div class="tiny muted" style="margin-top:8px">Độ chính xác: ${moduleAccuracy(m.id)}%</div>
+        </div>
+      `).join("")}
+    </div>
+
+    <div style="height:18px"></div>
+
+    <div class="card module-detail">
+      <div class="header">
+        <div>
+          <div class="pill">Module ${mod.id}</div>
+          <h3 style="margin-top:12px">${mod.title}</h3>
+          <div class="muted">${mod.scope} · Độ chính xác hiện tại: <b>${acc}%</b> · ${stat.correct||0} / ${stat.attempts||0} câu đúng</div>
+        </div>
+        <div class="btns">
+          <button class="primary" id="openLearnFromModule">Học module này</button>
+          <button class="secondary" id="startModulePractice">Luyện module này</button>
+          <button class="secondary" id="goMockFromModule">Làm mock test</button>
+        </div>
+      </div>
+
+      <div class="row grid-2" style="margin-top:18px;">
+        <div class="card" style="box-shadow:none;">
+          <h4>Kiến thức cốt lõi</h4>
+          <ul class="list-clean">
+            ${mod.summary.map(x => `<li>${x}</li>`).join("")}
+          </ul>
+        </div>
+        <div class="card" style="box-shadow:none;">
+          <h4>Bẫy hay dính</h4>
+          <ul class="list-clean">
+            ${mod.traps.map(x => `<li>${x}</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="box-shadow:none; margin-top:16px;">
+        <h4>Timeline tối thiểu phải nhớ</h4>
+        <div class="timeline">
+          ${mod.timeline.map(item => `
+            <div class="timeline-item">
+              <div class="tdate">${item[0]}</div>
+              <div>${item[1]}</div>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+
+      <div class="card" style="box-shadow:none; background:#fafcff; margin-top:16px;">
+        <h4>Preview bài học theo dạng article</h4>
+        <p class="muted" style="line-height:1.8; margin:0 0 12px">${teach.intro}</p>
+        ${teach.articleSections.slice(0,2).map(sec => `
+          <div style="padding:14px; border:1px solid var(--line); border-radius:14px; background:#fff; margin-top:12px;">
+            <h4 style="margin:0 0 8px">${sec.title}</h4>
+            ${sec.paras.slice(0,1).map(p => `<p style="line-height:1.85; margin:0; text-align:justify;">${p}</p>`).join("")}
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="row grid-2" style="margin-top:16px;">
+        <div class="card" style="box-shadow:none; background:#fafcff;">
+          <h4>${teach.memoryTitle}</h4>
+          <ul class="list-clean">
+            ${teach.memoryFrames.map(x => `<li>${x}</li>`).join("")}
+          </ul>
+        </div>
+        <div class="card" style="box-shadow:none; background:#fafcff;">
+          <h4>Phân biệt dễ nhầm</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Từ khóa</th><th>Chốt</th><th>Nhắc nhớ</th></tr></thead>
+              <tbody>
+                ${teach.compare.map(row => `<tr><td><b>${row[0]}</b></td><td>${row[1]}</td><td>${row[2]}</td></tr>`).join("")}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="box-shadow:none; margin-top:16px;">
+        <h4>Bộ câu practice có trong module này</h4>
+        <div class="taglist">
+          ${DATA.singleQuestions.filter(q => q.module===mod.id).map(q => `<span class="tag">${q.id} · ${q.level}</span>`).join("")}
+        </div>
+      </div>
+    </div>
+  `;
+  target.querySelectorAll("[data-mid]").forEach(el => el.onclick = () => openModuleDetail(el.dataset.mid));
+  document.getElementById("openLearnFromModule").onclick = () => { openLearnModule(mod.id); setView("learn"); };
+  document.getElementById("startModulePractice").onclick = () => startPractice(mod.id);
+  document.getElementById("goMockFromModule").onclick = () => setView("mock");
+}
+
+function startPractice(moduleId, customQueue=null) {
+  app.practice.moduleId = moduleId;
+  app.practice.queue = customQueue || shuffle(DATA.singleQuestions.filter(q => q.module === moduleId));
+  app.practice.index = 0;
+  app.practice.finished = false;
+  setView("practice");
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i=a.length-1; i>0; i--) {
+    const j = Math.floor(Math.random() * (i+1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function renderPractice() {
+  const target = document.getElementById("view-practice");
+  if (!app.practice.queue.length) {
+    const fallback = weakModules(1)[0]?.id || DATA.modules[0].id;
+    app.practice.moduleId = fallback;
+    app.practice.queue = shuffle(DATA.singleQuestions.filter(q => q.module === fallback));
+    app.practice.index = 0;
+    app.practice.finished = false;
+
+  }
+  const mod = moduleMap[app.practice.moduleId];
+  const total = app.practice.queue.length;
+  const q = app.practice.queue[app.practice.index];
+  if (!q) {
+    target.innerHTML = `
+      <div class="card center">
+        <div class="pill">Practice hoàn thành</div>
+        <h3 style="margin-top:14px;">Bạn đã luyện xong module ${mod.id} – ${mod.title}</h3>
+        <p class="muted">Tiếp theo nên vào Daily review hoặc làm một mock test để kiểm tra độ nhớ.</p>
+        <div class="btns" style="justify-content:center; margin-top:14px;">
+          <button class="primary" onclick="setView('review')">Ôn lại câu sai cũ</button>
+          <button class="secondary" onclick="setView('mock')">Làm mock test</button>
+          <button class="secondary" onclick="openModuleDetail('${mod.id}'); setView('modules');">Về module</button>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  target.innerHTML = `
+    <div class="section-title">
+      <h3>Practice · Module ${mod.id} – ${mod.title}</h3>
+      <div class="pill">Câu ${app.practice.index + 1} / ${total}</div>
+    </div>
+
+    <div class="card">
+      <div class="question-head">
+        <div>
+          <div class="taglist">
+            <span class="tag">Mức: ${q.level}</span>
+            ${q.tags.map(t => `<span class="tag">${t}</span>`).join("")}
+          </div>
+        </div>
+        <div class="muted tiny">Làm như học thật: chọn đáp án, xem giải thích, rồi rút ra từ khóa phải nhớ</div>
+      </div>
+
+      <div class="card" style="box-shadow:none; background:#fafcff; margin-bottom:14px;">
+        <h4>Nhắc nhanh trước khi làm câu này</h4>
+        <ul class="list-clean">
+          <li>Đọc thật chậm từ khóa gài bẫy như <b>chủ yếu</b>, <b>trực tiếp</b>, <b>quyết định</b>, <b>không</b>.</li>
+          <li>Đừng chọn theo cảm giác nhớ mốc; hãy tự nói bản chất sự kiện trong đầu trước.</li>
+          <li>Nếu phân vân giữa hai phương án, thường một phương án sẽ bị sai vì quá tuyệt đối hoặc đánh tráo khái niệm.</li>
+        </ul>
+      </div>
+
+      <div class="question-card">
+        <div style="font-size:1.05rem; font-weight:800; line-height:1.5;">${q.stem}</div>
+        <div class="options">
+          ${q.options.map((opt, i) => `
+            <label class="option">
+              <input type="radio" name="practice-option" value="${i}" />
+              <div><b>${letter(i)}.</b> ${opt}</div>
+            </label>
+          `).join("")}
+        </div>
+        <div class="btns" style="margin-top:16px;">
+          <button class="primary" id="submitPracticeAnswer">Chốt đáp án</button>
+          <button class="secondary" id="skipPractice">Bỏ qua</button>
+        </div>
+        <div id="practiceFeedback"></div>
+      </div>
+    </div>
+  `;
+  document.getElementById("skipPractice").onclick = () => {
+    app.practice.index += 1;
+    renderPractice();
+  };
+  document.getElementById("submitPracticeAnswer").onclick = () => {
+    const picked = document.querySelector('input[name="practice-option"]:checked');
+    if (!picked) {
+      document.getElementById("practiceFeedback").innerHTML = `<div class="feedback bad">Bạn chưa chọn đáp án.</div>`;
+      return;
+    }
+    const selected = Number(picked.value);
+    const correct = selected === q.answer;
+    recordSingleResult(q, correct, selected, "practice");
+    document.getElementById("practiceFeedback").innerHTML = `
+      <div class="feedback ${correct ? "good" : "bad"}">
+        <div style="font-weight:800; margin-bottom:6px;">${correct ? "Đúng rồi." : "Chưa đúng."}</div>
+        <div><b>Đáp án đúng:</b> ${letter(q.answer)}. ${q.options[q.answer]}</div>
+        <div style="margin-top:8px;"><b>Giải thích:</b> ${q.explanation}</div>
+        <div style="margin-top:12px;">
+          <button class="primary" id="nextPracticeBtn">Câu tiếp theo</button>
+        </div>
+      </div>
+    `;
+    document.getElementById("submitPracticeAnswer").disabled = true;
+    document.querySelectorAll('input[name="practice-option"]').forEach(i => i.disabled = true);
+    document.getElementById("skipPractice").disabled = true;
+    document.getElementById("nextPracticeBtn").onclick = () => {
+      app.practice.index += 1;
+      renderPractice();
+    };
+  };
+}
+
+function renderMockHome() {
+  const target = document.getElementById("view-mock");
+  if (app.exam.active && app.exam.payload) {
+    renderMockExam();
+    return;
+  }
+  const last = app.state.examHistory[0];
+  target.innerHTML = `
+    <div class="card">
+      <h3>Mock test sát form ôn 2026</h3>
+      <p class="muted">
+        Mỗi đề được tạo ngẫu nhiên từ ngân hàng câu hỏi, có ưu tiên lặp lại câu sai và module yếu để bạn nhớ sâu hơn.
+        Cấu trúc đang dùng: 24 câu trắc nghiệm nhiều lựa chọn + 4 câu đúng/sai, thời gian 50 phút.
+      </p>
+
+      <div class="mock-legend" style="margin:14px 0 18px;">
+        <span class="tag">Mức tư duy mục tiêu: 4 : 3 : 3</span>
+        <span class="tag">6.0 điểm cho phần trắc nghiệm</span>
+        <span class="tag">4.0 điểm cho phần đúng/sai</span>
+        <span class="tag">Có lưu lịch sử điểm</span>
+      </div>
+
+      <div class="btns">
+        <button class="primary" id="startMockBtn">Tạo đề và bắt đầu 50 phút</button>
+        <button class="secondary" id="reviewWeakBeforeMock">Ôn nhanh phần yếu trước</button>
+      </div>
+
+      <div style="height:18px"></div>
+
+      <div class="row grid-2">
+        <div class="card" style="box-shadow:none;">
+          <h4>Đề sẽ ưu tiên gì?</h4>
+          <ul class="list-clean">
+            <li>Giữ form ôn an toàn 24 + 4.</li>
+            <li>Trộn câu từ nhiều module để phủ rộng kiến thức.</li>
+            <li>Ưu tiên lặp lại câu bạn từng sai hoặc làm yếu.</li>
+            <li>Giữ nhịp độ đúng với kiểu đề cần luyện thực chiến.</li>
+          </ul>
+        </div>
+        <div class="card" style="box-shadow:none;">
+          <h4>Lần mock gần nhất</h4>
+          ${last ? `
+            <div class="score-big">${last.score.toFixed(2)}</div>
+            <div class="muted tiny">Làm lúc ${formatDateTime(last.when)}</div>
+            <div style="margin-top:10px;">Đúng ${last.mcqCorrect}/24 câu trắc nghiệm · ${last.tfCorrectStatements}/16 ý đúng/sai</div>
+          ` : `<div class="empty">Bạn chưa làm mock test nào.</div>`}
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById("startMockBtn").onclick = startMock;
+  document.getElementById("reviewWeakBeforeMock").onclick = () => {
+    const weak = weakModules(1)[0]?.id || DATA.modules[0].id;
+    startPractice(weak);
+  };
+}
+
+function startMock() {
+  app.exam.active = true;
+  app.exam.payload = generateMock();
+  app.exam.remaining = 3000;
+  app.exam.startedAt = Date.now();
+  if (app.exam.timer) clearInterval(app.exam.timer);
+  app.exam.timer = setInterval(() => {
+    app.exam.remaining -= 1;
+    if (app.exam.remaining <= 0) {
+      clearInterval(app.exam.timer);
+      submitMock(true);
+    } else {
+      const timerEl = document.getElementById("examTimer");
+      if (timerEl) timerEl.textContent = formatSeconds(app.exam.remaining);
+    }
+  }, 1000);
+  renderMockExam();
+}
+
+function formatSeconds(seconds) {
+  const mm = String(Math.floor(seconds / 60)).padStart(2, "0");
+  const ss = String(seconds % 60).padStart(2, "0");
+  return `${mm}:${ss}`;
+}
+
+function renderMockExam() {
+  const target = document.getElementById("view-mock");
+  const payload = app.exam.payload;
+  target.innerHTML = `
+    <div class="exam-top">
+      <div class="pill">Mock test đang chạy</div>
+      <div class="timer" id="examTimer">${formatSeconds(app.exam.remaining)}</div>
+      <div class="btns">
+        <button class="secondary" id="autoSaveInfo">Tiến độ được lưu trong phiên này</button>
+        <button class="danger" id="submitMockBtn">Nộp bài</button>
+      </div>
+    </div>
+
+    <div class="mock-shell">
+      <div class="card">
+        <h3>Phần I · 24 câu trắc nghiệm nhiều lựa chọn</h3>
+        <p class="muted tiny">Mỗi câu chọn 1 đáp án đúng nhất.</p>
+      </div>
+
+      ${payload.singles.map((q, idx) => `
+        <div class="question-card" id="q_${q.id}">
+          <div class="question-head">
+            <div style="display:flex; gap:12px; align-items:flex-start;">
+              <div class="q-number">${idx+1}</div>
+              <div>
+                <div style="font-weight:800; line-height:1.5;">${q.stem}</div>
+                <div class="taglist" style="margin-top:8px;">
+                  <span class="tag">Module ${q.module}</span>
+                  <span class="tag">Mức ${q.level}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="options">
+            ${q.options.map((opt, i) => `
+              <label class="option">
+                <input type="radio" name="exam_${q.id}" value="${i}" />
+                <div><b>${letter(i)}.</b> ${opt}</div>
+              </label>
+            `).join("")}
+          </div>
+        </div>
+      `).join("")}
+
+      <div class="card">
+        <h3>Phần II · 4 câu đúng/sai</h3>
+        <p class="muted tiny">Mỗi câu có 4 ý a, b, c, d. Chấm theo số ý đúng trong từng câu.</p>
+      </div>
+
+      ${payload.tfGroups.map((g, idx) => `
+        <div class="question-card" id="tf_${g.id}">
+          <div class="question-head">
+            <div style="display:flex; gap:12px; align-items:flex-start;">
+              <div class="q-number">${24 + idx + 1}</div>
+              <div>
+                <div style="font-weight:800; line-height:1.5;">${g.stem}</div>
+                <div class="taglist" style="margin-top:8px;">
+                  <span class="tag">Module ${g.module}</span>
+                  <span class="tag">Mức ${g.level}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tf-grid">
+            ${g.statements.map((st, sidx) => `
+              <div class="tf-statement">
+                <div><b>${String.fromCharCode(97+sidx)})</b> ${st.text}</div>
+                <label class="option" style="margin:0; padding:8px 10px;">
+                  <input type="radio" name="tf_${g.id}_${sidx}" value="true" />
+                  <div>Đúng</div>
+                </label>
+                <label class="option" style="margin:0; padding:8px 10px;">
+                  <input type="radio" name="tf_${g.id}_${sidx}" value="false" />
+                  <div>Sai</div>
+                </label>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+      `).join("")}
+
+      <div class="btns" style="justify-content:center; margin-bottom:24px;">
+        <button class="primary" id="submitMockBottom">Nộp bài</button>
+      </div>
+    </div>
+  `;
+  document.getElementById("submitMockBtn").onclick = () => submitMock(false);
+  document.getElementById("submitMockBottom").onclick = () => submitMock(false);
+}
+
+function submitMock(auto=false) {
+  if (!app.exam.active || !app.exam.payload) return;
+  if (app.exam.timer) clearInterval(app.exam.timer);
+  const payload = app.exam.payload;
+
+  let mcqCorrect = 0;
+  const missed = [];
+  payload.singles.forEach(q => {
+    const picked = document.querySelector(`input[name="exam_${q.id}"]:checked`);
+    const selected = picked ? Number(picked.value) : null;
+    const correct = selected === q.answer;
+    if (correct) mcqCorrect += 1;
+    else missed.push({ type:"single", q, selected });
+    recordSingleResult(q, correct, selected, "mock");
+  });
+
+  let tfScore = 0;
+  let tfCorrectStatements = 0;
+  const tfMissed = [];
+  payload.tfGroups.forEach(g => {
+    const answers = g.statements.map((_, i) => {
+      const picked = document.querySelector(`input[name="tf_${g.id}_${i}"]:checked`);
+      return picked ? (picked.value === "true") : null;
+    });
+    let correctCount = 0;
+    g.statements.forEach((st, i) => {
+      if (answers[i] === st.answer) correctCount += 1;
+      else tfMissed.push({ type:"tf", g, index:i, user:answers[i] });
+    });
+    tfCorrectStatements += correctCount;
+    tfScore += tfGroupScore(correctCount);
+    recordTFResult(g, answers, "mock");
+  });
+
+  const totalScore = mcqCorrect * 0.25 + tfScore;
+  app.state.examHistory.unshift({
+    when: Date.now(),
+    score: totalScore,
+    mcqCorrect,
+    tfCorrectStatements,
+    autoSubmitted: auto
+  });
+  app.state.examHistory = app.state.examHistory.slice(0, 30);
+  saveState();
+
+  app.exam.active = false;
+  app.exam.payload = null;
+
+  const target = document.getElementById("view-mock");
+  target.innerHTML = `
+    <div class="card">
+      <div class="pill">${auto ? "Hết giờ · hệ thống tự nộp bài" : "Đã nộp bài"}</div>
+      <h3 style="margin-top:12px;">Kết quả mock test</h3>
+      <div class="score-big">${totalScore.toFixed(2)} / 10</div>
+      <div class="muted">Phần trắc nghiệm: ${mcqCorrect} / 24 câu đúng · Phần đúng/sai: ${tfCorrectStatements} / 16 ý đúng</div>
+
+      <div class="row grid-3" style="margin-top:16px;">
+        <div class="card" style="box-shadow:none;">
+          <h4>Trắc nghiệm</h4>
+          <div class="num" style="font-size:1.8rem; font-weight:900;">${(mcqCorrect*0.25).toFixed(2)}</div>
+          <div class="muted tiny">${mcqCorrect} câu đúng</div>
+        </div>
+        <div class="card" style="box-shadow:none;">
+          <h4>Đúng/Sai</h4>
+          <div class="num" style="font-size:1.8rem; font-weight:900;">${tfScore.toFixed(2)}</div>
+          <div class="muted tiny">${tfCorrectStatements} ý đúng</div>
+        </div>
+        <div class="card" style="box-shadow:none;">
+          <h4>Gợi ý tiếp theo</h4>
+          <div class="muted tiny">Vào sổ lỗi để xem phần sai, rồi ôn Daily review ngay trong hôm nay.</div>
+        </div>
+      </div>
+
+      <div style="height:18px"></div>
+
+      <h4>Câu sai và giải thích</h4>
+      ${missed.length || tfMissed.length ? `
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Loại</th><th>Module</th><th>Nội dung</th><th>Đúng</th><th>Giải thích</th></tr>
+            </thead>
+            <tbody>
+              ${missed.map(m => `
+                <tr>
+                  <td>MCQ</td>
+                  <td>${m.q.module}</td>
+                  <td>${m.q.stem}</td>
+                  <td>${letter(m.q.answer)}. ${m.q.options[m.q.answer]}</td>
+                  <td>${m.q.explanation}</td>
+                </tr>
+              `).join("")}
+              ${tfMissed.map(m => `
+                <tr>
+                  <td>Đ/S</td>
+                  <td>${m.g.module}</td>
+                  <td>${m.g.stem} / <b>${String.fromCharCode(97+m.index)})</b> ${m.g.statements[m.index].text}</td>
+                  <td>${m.g.statements[m.index].answer ? "Đúng" : "Sai"}</td>
+                  <td>${m.g.statements[m.index].explanation}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : `<div class="empty">Quá đẹp. Bạn không sai câu nào trong lượt này.</div>`}
+
+      <div class="btns" style="margin-top:18px;">
+        <button class="primary" onclick="renderMockHome()">Tạo đề mới</button>
+        <button class="secondary" onclick="setView('mistakes')">Mở sổ lỗi</button>
+        <button class="secondary" onclick="setView('review')">Ôn Daily review</button>
+      </div>
+    </div>
+  `;
+}
+
+function renderReview() {
+  const target = document.getElementById("view-review");
+  const due = dueReviewQuestions();
+  if (!due.length) {
+    target.innerHTML = `
+      <div class="card">
+        <h3>Daily review</h3>
+        <div class="empty">
+          Hôm nay chưa có câu nào đến hạn ôn lại.<br/>
+          Bạn có thể làm mock test mới hoặc luyện một module yếu để tạo dữ liệu nhắc ôn cho ngày sau.
+        </div>
+        <div class="btns" style="justify-content:center; margin-top:14px;">
+          <button class="primary" onclick="setView('mock')">Làm mock test</button>
+          <button class="secondary" onclick="setView('modules')">Mở modules</button>
+        </div>
+      </div>
+    `;
+    return;
+  }
+  const grouped = {};
+  due.forEach(q => {
+    (grouped[q.module] ||= []).push(q);
+  });
+  target.innerHTML = `
+    <div class="card">
+      <h3>Daily review · ${due.length} câu đến hạn</h3>
+      <p class="muted">Các câu này đều là câu từng sai hoặc cần lặp lại để ghi nhớ bền hơn. Chọn một module để ôn nhanh.</p>
+      <div class="module-grid">
+        ${Object.entries(grouped).map(([mid, arr]) => `
+          <div class="card module-card" data-review-mid="${mid}">
+            <div class="module-id">${mid}</div>
+            <h3>${moduleMap[mid].title}</h3>
+            <div class="muted tiny">${arr.length} câu đến hạn</div>
+            <div style="height:10px"></div>
+            <div class="progress"><span style="width:${Math.min(100, arr.length*18)}%"></span></div>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+  target.querySelectorAll("[data-review-mid]").forEach(el => {
+    el.onclick = () => {
+      const mid = el.dataset.reviewMid;
+      startPractice(mid, shuffle(grouped[mid]));
+    };
+  });
+}
+
+function renderMistakes() {
+  const target = document.getElementById("view-mistakes");
+  const rows = app.state.mistakes;
+  target.innerHTML = `
+    <div class="card">
+      <div class="section-title" style="margin-top:0;">
+        <h3>Sổ lỗi</h3>
+        <div class="btns">
+          <button class="secondary" id="clearMistakeLog">Xóa sổ lỗi</button>
+        </div>
+      </div>
+      <p class="muted">Mục này giúp bạn thấy rõ mình đang sai ở mốc thời gian, bản chất sự kiện hay từ khóa gài bẫy.</p>
+      ${rows.length ? `
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Thời gian</th><th>Module</th><th>Câu</th><th>Bạn chọn</th><th>Đúng</th><th>Giải thích</th></tr>
+            </thead>
+            <tbody>
+              ${rows.map(r => `
+                <tr>
+                  <td>${formatDateTime(r.when)}</td>
+                  <td>${r.module}</td>
+                  <td>${r.stem}</td>
+                  <td>${typeof r.selected === "number" ? letter(r.selected) : r.selected}</td>
+                  <td>${typeof r.correct === "number" ? letter(r.correct) : r.correct}</td>
+                  <td>${r.explanation}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : `<div class="empty">Sổ lỗi đang trống. Cứ học tiếp, khi sai hệ thống sẽ tự lưu vào đây.</div>`}
+    </div>
+  `;
+  const btn = document.getElementById("clearMistakeLog");
+  if (btn) btn.onclick = () => {
+    if (confirm("Xóa toàn bộ sổ lỗi?")) {
+      app.state.mistakes = [];
+      saveState();
+      renderMistakes();
+    }
+  };
+}
+
+function renderSettings() {
+  const target = document.getElementById("view-settings");
+  target.innerHTML = `
+    <div class="row grid-2">
+      <div class="card">
+        <h3>Nguồn xây dựng</h3>
+        <ul class="list-clean">
+          <li>Bộ tài liệu học theo module Lịch sử THPT 2026.</li>
+          <li>Bộ ôn tập Lịch sử THPT 2026 cập nhật ngày 19/04/2026.</li>
+          <li>Bộ 100 câu trắc nghiệm Lịch sử THPT 2026 bám mốc hay ra.</li>
+          <li>Khung cấu trúc thi và đề tham khảo từ 2025 đang được dùng để ôn cho 2026.</li>
+        </ul>
+        <p class="muted tiny" style="margin-top:12px;">
+          Website này ưu tiên form ôn an toàn cho 2026: 24 câu trắc nghiệm nhiều lựa chọn và 4 câu đúng/sai, thời gian 50 phút.
+          Một số dữ liệu đã được diễn đạt lại để phù hợp với luyện tập tương tác và tracking lỗi.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Xuất / nhập tiến độ</h3>
+        <div class="btns">
+          <button class="primary" id="exportProgress">Xuất file tiến độ</button>
+          <button class="secondary" id="resetAll">Xóa toàn bộ dữ liệu</button>
+        </div>
+        <div style="height:12px"></div>
+        <input class="file-input" type="file" id="importProgress" accept=".json" />
+        <p class="muted tiny">Bạn có thể tải file JSON về để sao lưu, rồi nhập lại trên máy khác.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px;">
+      <h3>Ghi chú sử dụng</h3>
+      <ul class="list-clean">
+        <li>Practice phù hợp để học ngay sau khi đọc module.</li>
+        <li>Mock test phù hợp để kiểm tra khả năng giữ mạch kiến thức trong 50 phút.</li>
+        <li>Daily review phù hợp để ôn lại câu sai và chống quên.</li>
+        <li>Sổ lỗi giúp phân tích rõ lỗi sai trước khi làm đề mới.</li>
+      </ul>
+    </div>
+  `;
+  document.getElementById("exportProgress").onclick = exportProgress;
+  document.getElementById("resetAll").onclick = () => {
+    if (confirm("Xóa toàn bộ dữ liệu học tập đã lưu trong trình duyệt này?")) {
+      app.state = baseState();
+      saveState();
+      renderAll();
+    }
+  };
+  document.getElementById("importProgress").onchange = importProgress;
+}
+
+function exportProgress() {
+  const blob = new Blob([JSON.stringify(app.state, null, 2)], {type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "lich-su-2026-tien-do.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function importProgress(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const parsed = JSON.parse(reader.result);
+      app.state = Object.assign(baseState(), parsed);
+      saveState();
+      renderAll();
+      alert("Đã nhập tiến độ thành công.");
+    } catch (e) {
+      alert("File không hợp lệ.");
+    }
+  };
+  reader.readAsText(file);
+}
+
+function renderAll() {
+  renderNav();
+  renderDashboard();
+  renderLearn();
+  renderModules();
+  renderPractice();
+  renderMockHome();
+  renderReview();
+  renderMistakes();
+  renderSettings();
+  updateSideReminder();
+  setView(app.currentView);
+}
+
+window.setView = setView;
+window.openModuleDetail = openModuleDetail;
+window.openLearnModule = openLearnModule;
+window.renderMockHome = renderMockHome;
+
+loadState();
+renderAll();
+</script>
+</body>
+</html>
